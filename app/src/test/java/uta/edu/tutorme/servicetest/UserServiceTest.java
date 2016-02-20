@@ -27,4 +27,6 @@ public class UserServiceTest {
     public void testEncryptPassword(){
         assertEquals("encryptedpassword",service.encryptPassword("password"));
     }
+
+
 }
