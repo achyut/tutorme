@@ -21,8 +21,8 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        this.username = (EditText)findViewById(R.id.txt_login_email);
-        this.password = (EditText)findViewById(R.id.txt_login_password);
+        this.username = (EditText)findViewById(R.id.email_edit_txt);
+        this.password = (EditText)findViewById(R.id.pwd_edit_txt);
 
         UserRepository repository = new UserRepository();
         service = new UserService(repository);
