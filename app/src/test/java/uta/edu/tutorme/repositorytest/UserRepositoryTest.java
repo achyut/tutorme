@@ -22,23 +22,6 @@ public class UserRepositoryTest {
         this.repository = new UserRepository();
     }
 
-
-    @Test
-    public void saveUser(){
-        User testuser = new User();
-        testuser.setId(1);
-        testuser.setName("Achyut");
-        repository.save(1,testuser);
-
-        try {
-            User saveduser = repository.findById(1);
-            assertEquals("Achyut",saveduser.getName());
-        } catch (RecordNotFoundException e) {
-            fail("Record not found");
-        }
-    }
-
-
     @Test
     public void testLogin(){
         String email1 = "abc@gmail.com";

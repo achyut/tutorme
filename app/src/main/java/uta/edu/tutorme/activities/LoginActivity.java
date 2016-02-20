@@ -36,7 +36,7 @@ public class LoginActivity extends AppCompatActivity {
             // login logic
             if(service.login(email,password)){
                 // show another activity
-                Toast.makeText(getApplicationContext(),"Logiing in",Toast.LENGTH_LONG);
+                Toast.makeText(getApplicationContext(),"Loging in",Toast.LENGTH_LONG);
             }
             else{
                 Toast.makeText(getApplicationContext(),"Invalid login credentials",Toast.LENGTH_LONG);
