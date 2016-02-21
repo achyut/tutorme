@@ -5,7 +5,7 @@ import android.os.Bundle;
 
 import uta.edu.tutorme.R;
 
-public class Subcategory extends AppCompatActivity {
+public class SubcategoryActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
