@@ -13,5 +13,4 @@ public class UserRepository extends MapRepositoryImpl<Integer,User>{
         return false;
     }
 
-
 }

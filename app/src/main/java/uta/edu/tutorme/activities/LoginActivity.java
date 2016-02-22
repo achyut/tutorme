@@ -23,7 +23,6 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         this.username = (EditText)findViewById(R.id.email_edit_txt);
         this.password = (EditText)findViewById(R.id.pwd_edit_txt);
-
         UserRepository repository = new UserRepository();
         service = new UserService(repository);
     }
@@ -34,12 +33,14 @@ public class LoginActivity extends AppCompatActivity {
         String pass = password.getText().toString();
         if(validateLogin(email,pass)){
             // login logic
-            if(service.login(email,password)){
+            if(service.login(email,pass)){
                 // show another activity
-                Toast.makeText(getApplicationContext(),"Loging in",Toast.LENGTH_LONG);
+                Toast toastemail = Toast.makeText(getApplicationContext(),"Logging in",Toast.LENGTH_LONG);
+                toastemail.show();
             }
             else{
-                Toast.makeText(getApplicationContext(),"Invalid login credentials",Toast.LENGTH_LONG);
+                Toast toastpwd = Toast.makeText(getApplicationContext(),"Invalid login credentials",Toast.LENGTH_LONG);
+                toastpwd.show();
             }
 
         }

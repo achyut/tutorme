@@ -48,7 +48,7 @@
             android:text="Login"
             android:onClick="doLogin"
             android:id="@+id/login_btn"
-            android:layout_gravity="center_horizontal" />
+            android:layout_gravity="center_horizontal"/>
 
         <Button
             android:layout_width="wrap_content"
