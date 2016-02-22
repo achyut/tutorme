@@ -92,7 +92,12 @@ public class SubcategoryActivity extends Activity {
 
         Intent intent = getIntent();
         ArrayList<String> categoryList = intent.getStringArrayListExtra("categoryNames");
-       /* for(int =0;i<categoryList.size();i++){
+      /*  ArrayList<SubCategory> subCategoryList = new ArrayList<SubCategory>();
+        SubCategory subCategory = new SubCategory(1,"Guitar",false);
+        for(int i=0;i<categoryList.size();i++){
+            if(categoryList.get(i).equals("Music")){
+                SubCategory subCategory =
+            }
 
         }*/
 
