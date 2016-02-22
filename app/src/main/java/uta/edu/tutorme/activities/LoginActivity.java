@@ -27,7 +27,6 @@ public class LoginActivity extends AppCompatActivity {
         service = new UserService(repository);
     }
 
-
     public void doLogin(View view){
         String email = username.getText().toString();
         String pass = password.getText().toString();
