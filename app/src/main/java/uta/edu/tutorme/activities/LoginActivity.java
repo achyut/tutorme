@@ -1,5 +1,6 @@
 package uta.edu.tutorme.activities;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -43,6 +44,8 @@ public class LoginActivity extends AppCompatActivity {
             }
 
         }
+        Intent category = new Intent(this, CategoryActivity.class);
+        startActivity(category);
     }
 
 

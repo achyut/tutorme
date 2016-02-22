@@ -7,27 +7,25 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="uta.edu.tutorme.activities.CategoryActivity">
+    tools:context="uta.edu.tutorme.activities.PopulateSubCategoryActivity">
 
-    <ListView
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/category_ListView"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Medium Text"
+        android:id="@+id/subcategory_TextView"
+        android:layout_toRightOf="@+id/category_CheckBox"
+        android:gravity="center"/>
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:id="@+id/subcategory_CheckBox"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-    </LinearLayout>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Next"
-        android:id="@+id/next_category_button"
-        android:layout_below="@+id/category_ListView"
-        android:layout_centerHorizontal="true"/>
+        android:layout_alignParentTop="true"
+        android:gravity="left"
+        android:focusableInTouchMode="false"/>
 
 </RelativeLayout>

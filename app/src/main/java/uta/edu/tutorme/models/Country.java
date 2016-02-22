@@ -3,15 +3,15 @@ package uta.edu.tutorme.models;
 import java.util.List;
 
 /**
- * Created by anmolb77 on 2/20/2016.
+ * Created by Administrator on 21-02-2016.
  */
-public class Category {
+public class Country {
     Integer id = null;
     String name = null;
     boolean selected = false;
     List<SubCategory> subCategories;
 
-    public Category(Integer id, String name, boolean selected) {
+    public Country(Integer id, String name, boolean selected) {
         super();
         this.id = id;
         this.name = name;
