@@ -7,6 +7,9 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import uta.edu.tutorme.R;
+import uta.edu.tutorme.generators.CategoryGenerator;
+import uta.edu.tutorme.models.Category;
+import uta.edu.tutorme.repositories.CategoryRepository;
 import uta.edu.tutorme.repositories.UserRepository;
 import uta.edu.tutorme.services.UserService;
 import uta.edu.tutorme.utils.Validator;
@@ -26,6 +29,11 @@ public class LoginActivity extends AppCompatActivity {
 
         UserRepository repository = new UserRepository();
         service = new UserService(repository);
+
+        CategoryRepository catRepo = new CategoryRepository();
+
+        CategoryGenerator generator = new CategoryGenerator(catRepo);
+        generator.generateCategory();
     }
 
 
