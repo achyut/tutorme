@@ -28,4 +28,7 @@ public class UserService extends GenericSerciveImpl<Integer,User,UserRepository>
         return false;
     }
 
+    public boolean checkIfUserAlreadyExist(User user) {
+        return repository.checkUserExists(user);
+    }
 }

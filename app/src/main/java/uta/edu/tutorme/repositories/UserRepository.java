@@ -18,4 +18,12 @@ public class UserRepository extends MapRepositoryImpl<Integer,User> {
     }
 
 
+    public boolean checkUserExists(User user) {
+        for(User obj:table.values()){
+            if(obj.getEmail().equals(user.getEmail())) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

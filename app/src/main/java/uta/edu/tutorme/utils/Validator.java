@@ -17,18 +17,43 @@ public class Validator {
             return false;
         }
         Pattern pattern = Pattern.compile(EMAIL_PATTERN);
-        Matcher matcher = pattern.matcher(email);
+        Matcher matcher = pattern.matcher(email.trim());
         return matcher.matches();
     }
 
+    public static boolean validateName(String name){
+        if(name.isEmpty()){
+            return false;
+        }
+        return true;
+    }
+
+    public static boolean validatePhoneNumber(String phone){
+        if(phone.isEmpty()){
+            return false;
+        }
+        return true;
+    }
+
+    public static boolean validateAddress(String address){
+        if(address.isEmpty()){
+            return false;
+        }
+        return true;
+    }
 
     public static boolean validatePassword(String password){
-
         if(password.isEmpty()){
             return false;
         }
         return true;
     }
 
+    public static boolean validateUsertype(String usertype){
+        if(usertype.isEmpty()){
+            return false;
+        }
+        return true;
+    }
 
 }
