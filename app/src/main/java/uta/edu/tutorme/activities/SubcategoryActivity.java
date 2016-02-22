@@ -72,6 +72,7 @@ public class SubcategoryActivity extends Activity {
     }
 
     private void displaySubCategoryListView() {
+/*
         ArrayList<SubCategory> subCategoryList = new ArrayList<SubCategory>();
         SubCategory subCategory = new SubCategory(1,"Guitar",false);
         subCategoryList.add(subCategory);
@@ -89,17 +90,39 @@ public class SubcategoryActivity extends Activity {
         subCategoryList.add(subCategory);
         subCategory = new SubCategory(8,"Fine Arts",false);
         subCategoryList.add(subCategory);
+*/
 
         Intent intent = getIntent();
         ArrayList<String> categoryList = intent.getStringArrayListExtra("categoryNames");
-      /*  ArrayList<SubCategory> subCategoryList = new ArrayList<SubCategory>();
+        ArrayList<SubCategory> subCategoryList = new ArrayList<SubCategory>();
         SubCategory subCategory = new SubCategory(1,"Guitar",false);
         for(int i=0;i<categoryList.size();i++){
             if(categoryList.get(i).equals("Music")){
-                SubCategory subCategory =
+                subCategory = new SubCategory(1,"Guitar",false);
+                subCategoryList.add(subCategory);
+                subCategory = new SubCategory(2,"Flute",false);
+                subCategoryList.add(subCategory);
+            }
+            if(categoryList.get(i).equals("Quant")){
+                subCategory = new SubCategory(3,"Algebra",false);
+                subCategoryList.add(subCategory);
+                subCategory = new SubCategory(4,"Geometry",false);
+                subCategoryList.add(subCategory);
+            }
+            if(categoryList.get(i).equals("Astronomy")){
+                subCategory = new SubCategory(5,"Planets",false);
+                subCategoryList.add(subCategory);
+                subCategory = new SubCategory(6,"Satellites",false);
+                subCategoryList.add(subCategory);
+            }
+            if(categoryList.get(i).equals("Arts")){
+                subCategory = new SubCategory(7,"Morden Arts",false);
+                subCategoryList.add(subCategory);
+                subCategory = new SubCategory(8,"Fine Arts",false);
+                subCategoryList.add(subCategory);
             }
 
-        }*/
+        }
 
         customAdapter = new MyCustomAdapter(this,
                 R.layout.activity_populate_category, subCategoryList);
