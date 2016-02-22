@@ -72,24 +72,24 @@ public class CategoryActivity extends Activity {
             else {
                 holder = (Holder) view.getTag();
             }
-            Category country = categoryList.get(position);
-            holder.checkBox.setChecked(country.isSelected());
-            holder.categoryName.setText(country.getName());
-            holder.checkBox.setTag(country);
+            Category category = categoryList.get(position);
+            holder.checkBox.setChecked(category.isSelected());
+            holder.categoryName.setText(category.getName());
+            holder.checkBox.setTag(category);
             return view;
         }
     }
 
     private void displayCategoryListView() {
         ArrayList<Category> categoryList = new ArrayList<Category>();
-        Category country = new Category(1,"Music",false);
-        categoryList.add(country);
-        country = new Category(2,"Quant",false);
-        categoryList.add(country);
-        country = new Category(3,"Astronomy",false);
-        categoryList.add(country);
-        country = new Category(4,"Arts",false);
-        categoryList.add(country);
+        Category category = new Category(1,"Music",false);
+        categoryList.add(category);
+        category = new Category(2,"Quant",false);
+        categoryList.add(category);
+        category = new Category(3,"Astronomy",false);
+        categoryList.add(category);
+        category = new Category(4,"Arts",false);
+        categoryList.add(category);
 
         customAdapter = new MyCustomAdapter(this,
                 R.layout.activity_populate_category, categoryList);

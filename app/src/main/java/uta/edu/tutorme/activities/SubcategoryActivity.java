@@ -4,23 +4,18 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
 import uta.edu.tutorme.R;
-import uta.edu.tutorme.models.SubCategory;
-import uta.edu.tutorme.models.Country;
 import uta.edu.tutorme.models.SubCategory;
 
 public class SubcategoryActivity extends Activity {
@@ -78,14 +73,28 @@ public class SubcategoryActivity extends Activity {
 
     private void displaySubCategoryListView() {
         ArrayList<SubCategory> subCategoryList = new ArrayList<SubCategory>();
-        SubCategory country = new SubCategory(1,"Music",false);
-        subCategoryList.add(country);
-        country = new SubCategory(2,"Quant",false);
-        subCategoryList.add(country);
-        country = new SubCategory(3,"Astronomy",false);
-        subCategoryList.add(country);
-        country = new SubCategory(4,"Arts",false);
-        subCategoryList.add(country);
+        SubCategory subCategory = new SubCategory(1,"Guitar",false);
+        subCategoryList.add(subCategory);
+        subCategory = new SubCategory(2,"Flute",false);
+        subCategoryList.add(subCategory);
+        subCategory = new SubCategory(3,"Algebra",false);
+        subCategoryList.add(subCategory);
+        subCategory = new SubCategory(4,"Geometry",false);
+        subCategoryList.add(subCategory);
+        subCategory = new SubCategory(5,"Planets",false);
+        subCategoryList.add(subCategory);
+        subCategory = new SubCategory(6,"Satellites",false);
+        subCategoryList.add(subCategory);
+        subCategory = new SubCategory(7,"Morden Arts",false);
+        subCategoryList.add(subCategory);
+        subCategory = new SubCategory(8,"Fine Arts",false);
+        subCategoryList.add(subCategory);
+
+        Intent intent = getIntent();
+        ArrayList<String> categoryList = intent.getStringArrayListExtra("categoryNames");
+       /* for(int =0;i<categoryList.size();i++){
+
+        }*/
 
         customAdapter = new MyCustomAdapter(this,
                 R.layout.activity_populate_category, subCategoryList);
