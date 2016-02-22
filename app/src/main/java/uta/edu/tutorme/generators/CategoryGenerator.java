@@ -14,27 +14,27 @@ public class CategoryGenerator {
     }
 
     public void generateCategory(){
-        Category category_1 = new Category();
-        Category category_2 = new Category();
-        Category category_3 = new Category();
-        Category category_4 = new Category();
-        Category category_5 = new Category();
+        Category category_1 = new Category(1,"Science", false);
+        Category category_2 = new Category(2,"Mathematics", false);
+        Category category_3 = new Category(3,"Music", false);
+        Category category_4 = new Category(4,"Sports", false);
+        Category category_5 = new Category(5,"Psychology", false);
 
 
-        category_1.setId(1);
-        category_1.setName("Science");
-
-        category_2.setId(2);
-        category_2.setName("Mathematics");
-
-        category_3.setId(3);
-        category_3.setName("Music");
-
-        category_4.setId(4);
-        category_4.setName("Sports");
-
-        category_5.setId(5);
-        category_5.setName("Psychology");
+//        category_1.setId(1);
+//        category_1.setName("Science");
+//
+//        category_2.setId(2);
+//        category_2.setName("Mathematics");
+//
+//        category_3.setId(3);
+//        category_3.setName("Music");
+//
+//        category_4.setId(4);
+//        category_4.setName("Sports");
+//
+//        category_5.setId(5);
+//        category_5.setName("Psychology");
 
         repository.save(1, category_1);
         repository.save(2, category_2);
