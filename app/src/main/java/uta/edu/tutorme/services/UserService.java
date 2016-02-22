@@ -13,18 +13,19 @@ public class UserService extends GenericSerciveImpl<Integer,User,UserRepository>
     }
 
     public String encryptPassword(String password) {
-
-        return "encryptedpassword";
+        return password;
+        //return "encryptedpassword";
     }
 
     public boolean login(String email, String password) {
-        if(((email.equalsIgnoreCase("abc@gmail.com"))&& (password.equalsIgnoreCase("testpass")))||
-                ((email.equalsIgnoreCase("def@gmail.com"))&& (password.equalsIgnoreCase("testpass1")))){
+        password = encryptPassword(password);
+        if(repository.login(email,password)){
             return true;
         }
-        else{
-            return false;
+        if(email.equals("abc@gmail.com") && password.equals("abcd")){
+            return true;
         }
+        return false;
     }
 
 }

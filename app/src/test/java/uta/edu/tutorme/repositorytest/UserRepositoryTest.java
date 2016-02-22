@@ -33,6 +33,5 @@ public class UserRepositoryTest {
         result = repository.login(email1,password);
         assertFalse(result);
 
-
     }
 }

@@ -49,13 +49,26 @@ public class LoginActivity extends AppCompatActivity {
 
     private boolean validateLogin(String email,String pass){
         boolean result = true;
-        if(!Validator.validateEmail(email)){
-            username.setError(getString(R.string.validate_email));
+        if(email.isEmpty()){
+            username.setError(getString(R.string.email_blank));
             result = false;
         }
-        if(!Validator.validatePassword(pass)){
-            password.setError(getString(R.string.validate_password));
+        else{
+            if(!Validator.validateEmail(email)){
+                username.setError(getString(R.string.validate_email));
+                result = false;
+            }
+        }
+
+        if(pass.isEmpty()){
+            password.setError(getString(R.string.pwd_blank));
             result = false;
+        }
+        else{
+            if(!Validator.validatePassword(pass)){
+                password.setError(getString(R.string.validate_password));
+                result = false;
+            }
         }
         return result;
     }
