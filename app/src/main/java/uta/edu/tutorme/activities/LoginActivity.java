@@ -43,8 +43,8 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void doLogin(View view){
-        String email = username.getText().toString();
-        String pass = password.getText().toString();
+        String email = username.getText().toString().trim();
+        String pass = password.getText().toString().trim();
         if(validateLogin(email,pass)){
             // login logic
             if(service.login(email,pass)){
