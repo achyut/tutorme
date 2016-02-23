@@ -19,6 +19,13 @@
         <activity android:name=".activities.SubcategoryActivity" />
         <activity android:name=".activities.PopulateCategoryActivity" />
         <activity android:name=".activities.PopulateSubCategoryActivity"></activity>
+
+
+        <meta-data android:name="DATABASE" android:value="tutorme.db" />
+        <meta-data android:name="VERSION" android:value="1" />
+        <meta-data android:name="QUERY_LOG" android:value="true" />
+        <meta-data android:name="DOMAIN_PACKAGE_NAME" android:value="uta.edu.tutorme.models" />
+
     </application>
 
 </manifest>

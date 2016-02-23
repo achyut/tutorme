@@ -1,10 +1,15 @@
 package uta.edu.tutorme.models;
 
+import com.orm.SugarRecord;
+import com.orm.dsl.Table;
+
 /**
  * Created by ananda on 2/18/16.
  */
-public class User {
-    Integer id;
+
+@Table
+public class User{
+    Long id;
     String name;
     String email;
     String phone;

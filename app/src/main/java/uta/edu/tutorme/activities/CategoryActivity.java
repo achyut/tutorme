@@ -4,6 +4,7 @@ package uta.edu.tutorme.activities;
 
 import uta.edu.tutorme.R;
 import uta.edu.tutorme.models.Category;
+import uta.edu.tutorme.repositories.CategoryRepository;
 
 
 import android.app.Activity;
@@ -82,6 +83,7 @@ public class CategoryActivity extends Activity {
 
     private void displayCategoryListView() {
         ArrayList<Category> categoryList = new ArrayList<Category>();
+
         Category category = new Category(1,"Music",false);
         categoryList.add(category);
         category = new Category(2,"Quant",false);

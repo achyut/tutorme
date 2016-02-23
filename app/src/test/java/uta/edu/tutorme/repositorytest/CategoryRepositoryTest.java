@@ -25,7 +25,7 @@ public class CategoryRepositoryTest {
 
     @Test
     public void testCreateNewCategory(){
-        Category catgory1 = new Category();
+        Category catgory1 = new Category(1,"Music",false);
         catgory1.setName("Music");
         catgory1.setId(1);
 
@@ -47,7 +47,7 @@ public class CategoryRepositoryTest {
 
     @Test
     public void testGetCategoryByIdWhenExists(){
-        Category catgory1 = new Category();
+        Category catgory1 = new Category(1,"Music",false);
         catgory1.setName("Music");
         catgory1.setId(1);
 
