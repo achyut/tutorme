@@ -39,4 +39,9 @@ public class CategoryRepository extends MapRepositoryImpl<Integer,Category>{
     public Category findById(Integer id) throws RecordNotFoundException {
        return Category.findById(Category.class, (long) id);
     }
+
+    @Override
+    public void deleteAll(List<Integer> ids, List<Category> input) throws RecordNotFoundException, InconsistentSizeException {
+        Category.deleteAll(Category.class);
+    }
 }
