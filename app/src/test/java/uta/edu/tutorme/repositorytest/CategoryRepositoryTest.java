@@ -25,9 +25,9 @@ public class CategoryRepositoryTest {
 
     @Test
     public void testCreateNewCategory(){
-        Category catgory1 = new Category(1,"Music",false);
+        Category catgory1 = new Category("Music",false);
         catgory1.setName("Music");
-        catgory1.setId(1);
+        catgory1.setId(1L);
 
         try{
             boolean result = repository.createNewCategory(catgory1);
@@ -47,9 +47,9 @@ public class CategoryRepositoryTest {
 
     @Test
     public void testGetCategoryByIdWhenExists(){
-        Category catgory1 = new Category(1,"Music",false);
+        Category catgory1 = new Category("Music",false);
         catgory1.setName("Music");
-        catgory1.setId(1);
+        catgory1.setId(1L);
 
         try {
             boolean result = repository.createNewCategory(catgory1);
