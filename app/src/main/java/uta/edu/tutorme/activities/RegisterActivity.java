@@ -16,6 +16,7 @@ import uta.edu.tutorme.models.User;
 import uta.edu.tutorme.repositories.RegisterRepository;
 import uta.edu.tutorme.repositories.UserRepository;
 import uta.edu.tutorme.services.UserService;
+import uta.edu.tutorme.utils.DisplayMessage;
 import uta.edu.tutorme.utils.Validator;
 
 public class RegisterActivity extends AppCompatActivity {
@@ -109,20 +110,17 @@ public class RegisterActivity extends AppCompatActivity {
         if(validateRegister()){
             User user = getUser();
             if(!service.checkIfUserAlreadyExist(user)){
-                service.save(1,user);
-                Toast toast = Toast.makeText(getApplicationContext(),"You have been registered!!!",Toast.LENGTH_LONG);
-                toast.show();
+                service.save(1, user);
+                DisplayMessage.displayToast(getApplicationContext(),"You have been registered!!!");
                 Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
                 startActivity(intent);
             }
             else{
-                Toast toastemail = Toast.makeText(getApplicationContext(),"User with given email address already exists!",Toast.LENGTH_LONG);
-                toastemail.show();
+                DisplayMessage.displayToast(getApplicationContext(),"User with given email address already exists!");
             }
         }
         else{
-            Toast toast = Toast.makeText(getApplicationContext(),"Please enter correct values",Toast.LENGTH_LONG);
-            toast.show();
+            DisplayMessage.displayToast(getApplicationContext(),"Please enter correct values");
         }
    }
 

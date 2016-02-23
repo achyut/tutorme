@@ -50,17 +50,27 @@
             android:id="@+id/login_btn"
             android:layout_gravity="center_horizontal"/>
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="REGISTER"
-            android:onClick="openRegister"
-            android:id="@+id/reg_button" />
+        <RelativeLayout
+            android:layout_marginTop="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="FORGOT PASSWORD"
-            android:id="@+id/frgt_pwd_btn" />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="REGISTER"
+                android:onClick="openRegister"
+                android:id="@+id/reg_button" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="FORGOT PASSWORD"
+                android:id="@+id/frgt_pwd_btn"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
+
+        </RelativeLayout>
     </LinearLayout>
 </RelativeLayout>

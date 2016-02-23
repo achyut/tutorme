@@ -10,6 +10,7 @@ import android.widget.Toast;
 import uta.edu.tutorme.R;
 import uta.edu.tutorme.repositories.UserRepository;
 import uta.edu.tutorme.services.UserService;
+import uta.edu.tutorme.utils.DisplayMessage;
 import uta.edu.tutorme.utils.Validator;
 
 public class LoginActivity extends AppCompatActivity {
@@ -22,12 +23,15 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        this.username = (EditText)findViewById(R.id.email_edit_txt);
-        this.password = (EditText)findViewById(R.id.pwd_edit_txt);
+        initialize();
         UserRepository repository = new UserRepository();
         service = new UserService(repository);
     }
 
+    public void initialize(){
+        this.username = (EditText)findViewById(R.id.email_edit_txt);
+        this.password = (EditText)findViewById(R.id.pwd_edit_txt);
+    }
 
     public void doLogin(View view){
         String email = username.getText().toString();
@@ -36,14 +40,11 @@ public class LoginActivity extends AppCompatActivity {
             // login logic
             if(service.login(email,pass)){
                 // show another activity
-                Toast toastemail = Toast.makeText(getApplicationContext(),"Logging in",Toast.LENGTH_LONG);
-                toastemail.show();
+                DisplayMessage.displayToast(getApplicationContext(),"Logging in");
             }
             else{
-                Toast toastpwd = Toast.makeText(getApplicationContext(),"Invalid login credentials",Toast.LENGTH_LONG);
-                toastpwd.show();
+                DisplayMessage.displayToast(getApplicationContext(), "Invalid login credentials");
             }
-
         }
     }
 
