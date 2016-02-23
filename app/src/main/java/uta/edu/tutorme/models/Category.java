@@ -49,4 +49,14 @@ public class Category extends SugarRecord {
 
     public void setSubCategories(List<SubCategory> subCategories) {
         this.subCategories = subCategories;}
+
+    @Override
+    public String toString() {
+        return "Category{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", selected=" + selected +
+                ", subCategories=" + subCategories +
+                '}';
+    }
 }

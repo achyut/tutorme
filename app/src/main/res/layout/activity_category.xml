@@ -9,25 +9,20 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="uta.edu.tutorme.activities.CategoryActivity">
 
-    <ListView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/category_ListView"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-    </LinearLayout>
+        <ListView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/category_ListView"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Next"
         android:id="@+id/next_category_button"
-        android:layout_below="@+id/category_ListView"
-        android:layout_centerHorizontal="true"/>
+        android:layout_alignBottom="@+id/category_ListView"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

@@ -21,6 +21,12 @@ public class SubCategory extends SugarRecord {
     public SubCategory() {
     }
 
+    public SubCategory(String name, boolean selected, Category category) {
+        this.name = name;
+        this.selected = selected;
+        this.category = category;
+    }
+
     public Long getId() {
         return id;
     }
@@ -47,5 +53,14 @@ public class SubCategory extends SugarRecord {
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    @Override
+    public String toString() {
+        return "SubCategory{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", selected=" + selected +
+                '}';
     }
 }
