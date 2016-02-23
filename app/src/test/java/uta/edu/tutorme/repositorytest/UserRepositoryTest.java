@@ -3,12 +3,10 @@ package uta.edu.tutorme.repositorytest;
 import org.junit.Before;
 import org.junit.Test;
 
-import uta.edu.tutorme.exceptions.RecordNotFoundException;
-import uta.edu.tutorme.models.User;
 import uta.edu.tutorme.repositories.UserRepository;
 
-
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Created by ananda on 2/18/16.
@@ -30,11 +28,10 @@ public class UserRepositoryTest {
         boolean result = repository.login(email1,password);
         assertTrue(result);
         String email12 = "def@gmail.com";
-        String password2 = "testpass";
+        String password2 = "testpass1";
 
         result = repository.login(email1,password);
         assertFalse(result);
-
 
     }
 }

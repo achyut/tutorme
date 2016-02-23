@@ -13,6 +13,7 @@ import uta.edu.tutorme.models.Category;
 import uta.edu.tutorme.repositories.CategoryRepository;
 import uta.edu.tutorme.repositories.UserRepository;
 import uta.edu.tutorme.services.UserService;
+import uta.edu.tutorme.utils.DisplayMessage;
 import uta.edu.tutorme.utils.Validator;
 
 public class LoginActivity extends AppCompatActivity {
@@ -26,9 +27,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        this.username = (EditText)findViewById(R.id.txt_login_email);
-        this.password = (EditText)findViewById(R.id.txt_login_password);
-
+        initialize();
         UserRepository repository = new UserRepository();
         service = new UserService(repository);
 
@@ -38,20 +37,23 @@ public class LoginActivity extends AppCompatActivity {
         generator.generateCategory();
     }
 
+    public void initialize(){
+        this.username = (EditText)findViewById(R.id.email_edit_txt);
+        this.password = (EditText)findViewById(R.id.pwd_edit_txt);
+    }
 
     public void doLogin(View view){
         String email = username.getText().toString();
         String pass = password.getText().toString();
         if(validateLogin(email,pass)){
             // login logic
-            if(service.login(email,password)){
+            if(service.login(email,pass)){
                 // show another activity
-                Toast.makeText(getApplicationContext(), "Loging in", Toast.LENGTH_LONG);
+                DisplayMessage.displayToast(getApplicationContext(),"Logging in");
             }
             else{
-                Toast.makeText(getApplicationContext(), "Invalid login credentials", Toast.LENGTH_LONG);
+                DisplayMessage.displayToast(getApplicationContext(), "Invalid login credentials");
             }
-
         }
 
         Bundle b = new Bundle();
@@ -62,14 +64,33 @@ public class LoginActivity extends AppCompatActivity {
 
     private boolean validateLogin(String email,String pass){
         boolean result = true;
-        if(!Validator.validateEmail(email)){
-            username.setError(getString(R.string.validate_email));
+        if(email.isEmpty()){
+            username.setError(getString(R.string.email_blank));
             result = false;
         }
-        if(!Validator.validatePassword(pass)){
-            password.setError(getString(R.string.validate_password));
+        else{
+            if(!Validator.validateEmail(email)){
+                username.setError(getString(R.string.validate_email));
+                result = false;
+            }
+        }
+
+        if(pass.isEmpty()){
+            password.setError(getString(R.string.pwd_blank));
             result = false;
+        }
+        else{
+            if(!Validator.validatePassword(pass)){
+                password.setError(getString(R.string.validate_password));
+                result = false;
+            }
         }
         return result;
+    }
+
+
+    public void openRegister(View view){
+        Intent intent = new Intent(getApplicationContext(),RegisterActivity.class);
+        startActivity(intent);
     }
 }
