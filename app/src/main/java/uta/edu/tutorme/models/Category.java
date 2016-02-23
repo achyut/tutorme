@@ -1,27 +1,31 @@
 package uta.edu.tutorme.models;
 
+import com.orm.SugarRecord;
+
 import java.util.List;
 
 /**
  * Created by anmolb77 on 2/20/2016.
  */
-public class Category {
-    Integer id = null;
-    String name = null;
-    boolean selected = false;
+public class Category extends SugarRecord {
+    Long id;
+    String name;
+    boolean selected;
     List<SubCategory> subCategories;
 
-    public Category(Integer id, String name, boolean selected) {
+    public Category() {
+    }
+
+    public Category(String name, boolean selected) {
         super();
-        this.id = id;
         this.name = name;
         this.selected = selected;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
     public String getName() {
@@ -37,8 +41,10 @@ public class Category {
     public void setSelected(boolean selected) {
         this.selected = selected;
     }
+
     public List<SubCategory> getSubCategories() {
-        return subCategories;
+        String catid = String.valueOf(getId());
+        return SubCategory.find(SubCategory.class, "category = ?",catid);
     }
 
     public void setSubCategories(List<SubCategory> subCategories) {

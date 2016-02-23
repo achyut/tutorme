@@ -3,6 +3,7 @@ package uta.edu.tutorme.repositorytest;
 import org.junit.Before;
 import org.junit.Test;
 
+import uta.edu.tutorme.models.User;
 import uta.edu.tutorme.repositories.UserRepository;
 
 import static org.junit.Assert.assertFalse;
@@ -33,5 +34,13 @@ public class UserRepositoryTest {
         result = repository.login(email1,password);
         assertFalse(result);
 
+    }
+
+    @Test
+    public void testCreateUser(){
+        User usr = new User();
+        usr.setName("Achyut");
+        usr.setEmail("achyut.pdl@gmail.com");
+        usr.save();
     }
 }

@@ -1,5 +1,8 @@
 package uta.edu.tutorme.repositories;
 
+import com.orm.query.Condition;
+import com.orm.query.Select;
+
 import uta.edu.tutorme.models.User;
 
 /**
@@ -8,21 +11,29 @@ import uta.edu.tutorme.models.User;
 public class UserRepository extends MapRepositoryImpl<Integer,User> {
 
 
+    @Override
+    public void save(Integer id, User user) {
+        user.save();
+    }
+
     public boolean login(String email, String password) {
-        for(User obj:table.values()){
-            if(obj.getEmail().equals(email) && obj.getPassword().equals(password)) {
-                return true;
-            }
+        Select loginQuery = Select.from(User.class)
+                .where(Condition.prop("email").eq(email))
+                .where(Condition.prop("password").eq(password));
+        long count = loginQuery.count();
+        if(count>0){
+            return true;
         }
         return false;
     }
 
 
     public boolean checkUserExists(User user) {
-        for(User obj:table.values()){
-            if(obj.getEmail().equals(user.getEmail())) {
-                return true;
-            }
+        String[] params = new String[1];
+        params[0] = user.getEmail();
+        long noOfUsers = User.count(User.class, "email = ?",params);
+        if(noOfUsers>0){
+            return true;
         }
         return false;
     }

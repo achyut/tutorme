@@ -21,7 +21,7 @@ public class LoginActivity extends AppCompatActivity {
     EditText username;
     EditText password;
     UserService service;
-    CategoryRepository catRepo;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +31,7 @@ public class LoginActivity extends AppCompatActivity {
         UserRepository repository = new UserRepository();
         service = new UserService(repository);
 
-        catRepo = new CategoryRepository();
+        CategoryRepository catRepo = new CategoryRepository();
 
         CategoryGenerator generator = new CategoryGenerator(catRepo);
         generator.generateCategory();
@@ -50,15 +50,14 @@ public class LoginActivity extends AppCompatActivity {
             if(service.login(email,pass)){
                 // show another activity
                 DisplayMessage.displayToast(getApplicationContext(),"Logging in");
+                Bundle b = new Bundle();
+                Intent category = new Intent(this, CategoryActivity.class);
+                startActivity(category);
             }
             else{
                 DisplayMessage.displayToast(getApplicationContext(), "Invalid login credentials");
             }
         }
-
-        Bundle b = new Bundle();
-        Intent category = new Intent(this, CategoryActivity.class);
-        startActivity(category);
     }
 
 

@@ -9,7 +9,7 @@ import android.widget.Toast;
 public class DisplayMessage {
 
     public static void displayToast(Context applicationContext, String message){
-        Toast toastemail = Toast.makeText(applicationContext,"Logging in",Toast.LENGTH_LONG);
+        Toast toastemail = Toast.makeText(applicationContext,message,Toast.LENGTH_LONG);
         toastemail.show();
     }
 }

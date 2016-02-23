@@ -5,6 +5,7 @@ package uta.edu.tutorme.activities;
 import uta.edu.tutorme.R;
 import uta.edu.tutorme.models.Category;
 import uta.edu.tutorme.repositories.CategoryRepository;
+import uta.edu.tutorme.services.CategoryService;
 
 
 import android.app.Activity;
@@ -27,28 +28,33 @@ import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.StringTokenizer;
 
 public class CategoryActivity extends Activity {
 
     MyCustomAdapter customAdapter = null;
+    CategoryService service;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category);
         setTitle("Category");
+        CategoryRepository repository = new CategoryRepository();
+        service = new CategoryService(repository);
         displayCategoryListView();
         nextButtonClick();
+
+
     }
 
     private class MyCustomAdapter extends ArrayAdapter<Category> {
-        private ArrayList<Category> categoryList;
+        private List<Category> categoryList;
         public MyCustomAdapter(Context context, int resourceId,
-                               ArrayList<Category> categoryList) {
+                               List<Category> categoryList) {
             super(context, resourceId, categoryList);
-            this.categoryList = new ArrayList<Category>();
-            this.categoryList.addAll(categoryList);
+            this.categoryList = categoryList;
         }
 
         private class Holder {
@@ -82,9 +88,9 @@ public class CategoryActivity extends Activity {
     }
 
     private void displayCategoryListView() {
-        ArrayList<Category> categoryList = new ArrayList<Category>();
+        List<Category> categoryList = new ArrayList<Category>();
 
-        Category category = new Category(1,"Music",false);
+      /*  Category category = new Category(1,"Music",false);
         categoryList.add(category);
         category = new Category(2,"Quant",false);
         categoryList.add(category);
@@ -92,7 +98,8 @@ public class CategoryActivity extends Activity {
         categoryList.add(category);
         category = new Category(4,"Arts",false);
         categoryList.add(category);
-
+*/
+        categoryList = service.findAll();
         customAdapter = new MyCustomAdapter(this,
                 R.layout.activity_populate_category, categoryList);
         ListView listView = (ListView) findViewById(R.id.category_ListView);
@@ -104,7 +111,7 @@ public class CategoryActivity extends Activity {
         nextButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                ArrayList<Category> categoryList = customAdapter.categoryList;
+                List<Category> categoryList = customAdapter.categoryList;
                 ArrayList<String> categoryNames = new ArrayList<String>();
                 for(int i=0;i<categoryList.size();i++){
                     Category category = categoryList.get(i);

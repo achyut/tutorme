@@ -20,7 +20,7 @@ public class GenericSerciveImpl<I extends Comparable,T,R extends GenericReposito
 
     @Override
     public void save(I id, T input) {
-        repository.save(id,input);
+        repository.save(id, input);
     }
 
     @Override

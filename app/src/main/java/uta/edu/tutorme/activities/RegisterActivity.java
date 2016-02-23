@@ -102,7 +102,7 @@ public class RegisterActivity extends AppCompatActivity {
         String passwordstr = password.getText().toString();
         String confirmstr = confirmpass.getText().toString();
         String usertypestr = usertype.getText().toString();
-        User user = new User(1,namestr,emailstr,phonestr,addressstr,passwordstr,usertypestr);
+        User user = new User(namestr,emailstr,phonestr,addressstr,passwordstr,usertypestr);
         return user;
     }
 
