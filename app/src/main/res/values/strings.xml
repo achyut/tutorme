@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">Tutorme</string>
-    <string name="validate_email">Invalid email entered.</string>
     <string name="validate_password">password cannot be empty</string>
     <string name="title_activity_register">Register</string>
     <string name="hello_world">Hello world!</string>
@@ -8,4 +7,8 @@
     <string name="email_blank">Email cannot be empty!</string>
     <string name="pwd_blank">Password cannot be empty</string>
 
+    <string name="validate_email">Invalid email-id entered.</string>
+    <string name="validate_password">Invalid password entered</string>
+    <string name="email_blank">Email cannot be blank</string>
+    <string name="pwd_blank">Password cannot be blank</string>
 </resources>

@@ -27,7 +27,6 @@ public class UserRepository extends MapRepositoryImpl<Integer,User> {
         return false;
     }
 
-
     public boolean checkUserExists(User user) {
         String[] params = new String[1];
         params[0] = user.getEmail();

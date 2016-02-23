@@ -24,12 +24,12 @@ public class UserRepositoryTest {
     @Test
     public void testLogin(){
         String email1 = "abc@gmail.com";
-        String password = "testpass";
+        String password = "abcd";
 
         boolean result = repository.login(email1,password);
         assertTrue(result);
         String email12 = "def@gmail.com";
-        String password2 = "testpass1";
+        String password2 = "defg";
 
         result = repository.login(email1,password);
         assertFalse(result);
