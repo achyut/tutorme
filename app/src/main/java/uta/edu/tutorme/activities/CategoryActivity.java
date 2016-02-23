@@ -3,6 +3,7 @@ package uta.edu.tutorme.activities;
 
 
 import uta.edu.tutorme.R;
+import uta.edu.tutorme.adapters.MyCustomAdapter;
 import uta.edu.tutorme.models.Category;
 import uta.edu.tutorme.repositories.CategoryRepository;
 import uta.edu.tutorme.services.CategoryService;
@@ -35,7 +36,7 @@ public class CategoryActivity extends Activity {
 
     MyCustomAdapter customAdapter = null;
     CategoryService service;
-
+    List<Category> categoryList = new ArrayList<Category>();
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,60 +46,9 @@ public class CategoryActivity extends Activity {
         service = new CategoryService(repository);
         displayCategoryListView();
         nextButtonClick();
-
-
-    }
-
-    private class MyCustomAdapter extends ArrayAdapter<Category> {
-        private List<Category> categoryList;
-        public MyCustomAdapter(Context context, int resourceId,
-                               List<Category> categoryList) {
-            super(context, resourceId, categoryList);
-            this.categoryList = categoryList;
-        }
-
-        private class Holder {
-            TextView categoryName;
-            CheckBox checkBox;
-        }
-
-        @Override
-        public View getView(int position, View view, ViewGroup parent) {
-
-            Holder holder = null;
-            if (view == null) {
-                LayoutInflater layoutInflater = (LayoutInflater)getSystemService(
-                        Context.LAYOUT_INFLATER_SERVICE);
-                view = layoutInflater.inflate(R.layout.activity_populate_category, null);
-
-                holder = new Holder();
-                holder.categoryName = (TextView) view.findViewById(R.id.category_TextView);
-                holder.checkBox = (CheckBox) view.findViewById(R.id.category_CheckBox);
-                view.setTag(holder);
-            }
-            else {
-                holder = (Holder) view.getTag();
-            }
-            Category category = categoryList.get(position);
-            holder.checkBox.setChecked(category.isSelected());
-            holder.categoryName.setText(category.getName());
-            holder.checkBox.setTag(category);
-            return view;
-        }
     }
 
     private void displayCategoryListView() {
-        List<Category> categoryList = new ArrayList<Category>();
-
-      /*  Category category = new Category(1,"Music",false);
-        categoryList.add(category);
-        category = new Category(2,"Quant",false);
-        categoryList.add(category);
-        category = new Category(3,"Astronomy",false);
-        categoryList.add(category);
-        category = new Category(4,"Arts",false);
-        categoryList.add(category);
-*/
         categoryList = service.findAll();
         customAdapter = new MyCustomAdapter(this,
                 R.layout.activity_populate_category, categoryList);
@@ -111,18 +61,18 @@ public class CategoryActivity extends Activity {
         nextButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                List<Category> categoryList = customAdapter.categoryList;
-                ArrayList<String> categoryNames = new ArrayList<String>();
-                for(int i=0;i<categoryList.size();i++){
-                    Category category = categoryList.get(i);
-                    if(category.isSelected()){
-                        categoryNames.add(category.getName());
-                    }
+            ArrayList<String> categoryNames = new ArrayList<String>();
+            for(int i=0;i<categoryList.size();i++){
+                Category category = categoryList.get(i);
+                if(category.isSelected()){
+                    categoryNames.add(category.getName());
                 }
-                Intent subCategoryIntent = new Intent(getApplicationContext(),SubcategoryActivity.class);
-                subCategoryIntent.putStringArrayListExtra("categoryNames", categoryNames);
-                startActivity(subCategoryIntent);
+            }
 
+            /*Intent subCategoryIntent = new Intent(getApplicationContext(),SubcategoryActivity.class);
+            subCategoryIntent.putStringArrayListExtra("categoryNames", categoryNames);
+            startActivity(subCategoryIntent);
+            */
 
             }
         });
