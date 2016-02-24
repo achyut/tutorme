@@ -42,7 +42,6 @@ public class CategoryGenerator {
         category_4.setSubCategories(gamesub);
 
         try {
-            repository.findById(1);
             MasterRecordRepository masterRecordRepository = new MasterRecordRepository();
             String populatecat = masterRecordRepository.getValue("populatecategory");
             if(populatecat==null || populatecat.equalsIgnoreCase("false")){
