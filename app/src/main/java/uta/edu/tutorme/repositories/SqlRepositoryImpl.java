@@ -1,65 +1,57 @@
-package uta.edu.tutorme.services;
+package uta.edu.tutorme.repositories;
 
 import java.util.List;
 
 import uta.edu.tutorme.exceptions.InconsistentSizeException;
 import uta.edu.tutorme.exceptions.RecordNotFoundException;
 import uta.edu.tutorme.models.SearchModel;
-import uta.edu.tutorme.repositories.GenericRepository;
 
 /**
- * Created by ananda on 2/18/16.
+ * Created by anmolb77 on 2/22/2016.
  */
-public class GenericSerciveImpl<I extends Comparable,T,R extends GenericRepository> implements GenericService<I,T,R>{
-
-    R repository;
-
-    public GenericSerciveImpl(R repository) {
-        this.repository = repository;
-    }
-
+public class SqlRepositoryImpl<I extends Comparable,T> implements GenericRepository<I, T > {
     @Override
     public void save(I id, T input) {
-        repository.save(id, input);
+
     }
 
     @Override
     public int saveAll(List<I> ids, List<T> input) throws RecordNotFoundException, InconsistentSizeException {
-        return repository.saveAll(ids,input);
+        return 0;
     }
 
     @Override
     public boolean update(I id, T input) throws RecordNotFoundException {
-        return repository.update(id,input);
+        return false;
     }
 
     @Override
     public boolean updateAll(List<I> ids, List<T> input) throws RecordNotFoundException, InconsistentSizeException {
-        return repository.updateAll(ids,input);
+        return false;
     }
 
     @Override
     public T findById(I id) throws RecordNotFoundException {
-        return (T)repository.findById(id);
+        return null;
     }
 
     @Override
     public List<T> findAll() {
-        return repository.findAll();
+        return null;
     }
 
     @Override
     public void delete(I id) throws RecordNotFoundException {
-        repository.delete(id);
+
     }
 
     @Override
     public void deleteAll(List<I> ids, List<T> input) throws RecordNotFoundException, InconsistentSizeException {
-        repository.deleteAll(ids,input);
+
     }
 
     @Override
     public List<T> search(SearchModel searchInput) {
-        return repository.search(searchInput);
+        return null;
     }
 }

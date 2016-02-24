@@ -77,7 +77,6 @@ public class MapRepositoryImpl<I extends  Comparable,T> implements GenericReposi
             records.add(obj);
         }
         return records;
-
     }
 
     @Override

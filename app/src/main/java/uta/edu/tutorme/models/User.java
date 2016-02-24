@@ -1,10 +1,14 @@
 package uta.edu.tutorme.models;
 
+import com.orm.SugarRecord;
+import com.orm.dsl.Table;
+
 /**
  * Created by ananda on 2/18/16.
  */
-public class User {
-    Integer id;
+
+public class User extends SugarRecord{
+    Long id;
     String name;
     String email;
     String phone;
@@ -15,8 +19,7 @@ public class User {
     public User() {
     }
 
-    public User(Integer id, String name, String email, String phone, String address, String password, String usertype) {
-        this.id = id;
+    public User(String name, String email, String phone, String address, String password, String usertype) {
         this.name = name;
         this.email = email;
         this.phone = phone;
@@ -25,11 +28,11 @@ public class User {
         this.usertype = usertype;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

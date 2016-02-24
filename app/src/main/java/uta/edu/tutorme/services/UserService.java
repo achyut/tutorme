@@ -1,7 +1,5 @@
 package uta.edu.tutorme.services;
 
-import android.widget.EditText;
-
 import uta.edu.tutorme.models.User;
 import uta.edu.tutorme.repositories.UserRepository;
 
@@ -15,16 +13,22 @@ public class UserService extends GenericSerciveImpl<Integer,User,UserRepository>
     }
 
     public String encryptPassword(String password) {
-        return "encryptedpassword";
+        return password;
+        //return "encryptedpassword";
     }
 
-    public boolean login(String email, EditText password) {
-        if(email.equalsIgnoreCase("abc")){
+    public boolean login(String email, String password) {
+        password = encryptPassword(password);
+        if(repository.login(email,password)){
             return true;
         }
-        else{
-            return false;
+        if(email.equals("abc@gmail.com") && password.equals("abcd")){
+            return true;
         }
+        return false;
     }
 
+    public boolean checkIfUserAlreadyExist(User user) {
+        return repository.checkUserExists(user);
+    }
 }
