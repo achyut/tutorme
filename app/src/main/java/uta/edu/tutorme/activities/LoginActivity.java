@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import uta.edu.tutorme.R;
 import uta.edu.tutorme.generators.CategoryGenerator;
+import uta.edu.tutorme.generators.InitializeTables;
 import uta.edu.tutorme.models.Category;
 import uta.edu.tutorme.repositories.CategoryRepository;
 import uta.edu.tutorme.repositories.UserRepository;
@@ -33,8 +34,13 @@ public class LoginActivity extends AppCompatActivity {
 
         CategoryRepository catRepo = new CategoryRepository();
 
+        InitializeTables tables = new InitializeTables();
+        tables.generateTables();
+
         CategoryGenerator generator = new CategoryGenerator(catRepo);
         generator.generateCategory();
+
+
     }
 
     public void initialize(){
