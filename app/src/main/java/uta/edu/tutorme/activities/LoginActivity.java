@@ -11,7 +11,9 @@ import uta.edu.tutorme.R;
 import uta.edu.tutorme.generators.CategoryGenerator;
 import uta.edu.tutorme.generators.InitializeTables;
 import uta.edu.tutorme.models.Category;
+import uta.edu.tutorme.models.SubCategory;
 import uta.edu.tutorme.repositories.CategoryRepository;
+import uta.edu.tutorme.repositories.SubCategoryRepository;
 import uta.edu.tutorme.repositories.UserRepository;
 import uta.edu.tutorme.services.UserService;
 import uta.edu.tutorme.utils.DisplayMessage;
@@ -33,12 +35,14 @@ public class LoginActivity extends AppCompatActivity {
         service = new UserService(repository);
 
         CategoryRepository catRepo = new CategoryRepository();
+        SubCategoryRepository subCatRepo = new SubCategoryRepository();
 
         InitializeTables tables = new InitializeTables();
         tables.generateTables();
 
-        CategoryGenerator generator = new CategoryGenerator(catRepo);
+        CategoryGenerator generator = new CategoryGenerator(catRepo, subCatRepo);
         generator.generateCategory();
+        generator.generateSubCategory();
 
 
     }

@@ -12,14 +12,16 @@ public class SubCategory extends SugarRecord {
 
     Category category;
 
-    public SubCategory(Integer id, String name, boolean selected) {
+    public SubCategory(String name, boolean selected) {
         super();
         this.name = name;
         this.selected = selected;
     }
 
+/*
     public SubCategory() {
     }
+*/
 
     public SubCategory(String name, boolean selected, Category category) {
         this.name = name;
@@ -46,6 +48,7 @@ public class SubCategory extends SugarRecord {
     public void setSelected(boolean selected) {
         this.selected = selected;
     }
+/*
 
     public Category getCategory() {
         return category;
@@ -54,6 +57,7 @@ public class SubCategory extends SugarRecord {
     public void setCategory(Category category) {
         this.category = category;
     }
+*/
 
     @Override
     public String toString() {
@@ -63,4 +67,6 @@ public class SubCategory extends SugarRecord {
                 ", selected=" + selected +
                 '}';
     }
+
+
 }

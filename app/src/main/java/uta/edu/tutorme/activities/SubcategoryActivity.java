@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,25 +15,29 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 import uta.edu.tutorme.R;
+import uta.edu.tutorme.adapters.SubCategoryAdapter;
 import uta.edu.tutorme.models.SubCategory;
+import uta.edu.tutorme.repositories.SubCategoryRepository;
 
 public class SubcategoryActivity extends Activity {
 
-    MyCustomAdapter customAdapter = null;
+    SubCategoryAdapter customAdapter = null;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_subcategory);
-        setTitle("Sub SubCategory");
+        setTitle("SubCategory");
         displaySubCategoryListView();
-        backButtonClick();
-        submitButtonClick();
+       // backButtonClick();
+       // submitButtonClick();
     }
 
-    private class MyCustomAdapter extends ArrayAdapter<SubCategory> {
+   /* private class MyCustomAdapter extends ArrayAdapter<SubCategory> {
         private ArrayList<SubCategory> subCategoryList;
         public MyCustomAdapter(Context context, int resourceId,
                                ArrayList<SubCategory> subCategoryList) {
@@ -70,9 +75,9 @@ public class SubcategoryActivity extends Activity {
             return view;
         }
     }
-
+*/
     private void displaySubCategoryListView() {
-        ArrayList<SubCategory> subCategoryList = new ArrayList<SubCategory>();
+/*        ArrayList<SubCategory> subCategoryList = new ArrayList<SubCategory>();
         SubCategory subCategory = new SubCategory(1,"Guitar",false);
         subCategoryList.add(subCategory);
         subCategory = new SubCategory(2,"Flute",false);
@@ -88,10 +93,11 @@ public class SubcategoryActivity extends Activity {
         subCategory = new SubCategory(7,"Morden Arts",false);
         subCategoryList.add(subCategory);
         subCategory = new SubCategory(8,"Fine Arts",false);
-        subCategoryList.add(subCategory);
+        subCategoryList.add(subCategory);*/
 
-        Intent intent = getIntent();
-        ArrayList<String> categoryList = intent.getStringArrayListExtra("categoryNames");
+        Bundle bundle = getIntent().getExtras();
+
+      //  ArrayList<String> categoryList = intent.getStringArrayListExtra("categoryNames");
       /*  ArrayList<SubCategory> subCategoryList = new ArrayList<SubCategory>();
         SubCategory subCategory = new SubCategory(1,"Guitar",false);
         for(int i=0;i<categoryList.size();i++){
@@ -101,8 +107,18 @@ public class SubcategoryActivity extends Activity {
 
         }*/
 
-        customAdapter = new MyCustomAdapter(this,
-                R.layout.activity_populate_category, subCategoryList);
+        SubCategoryRepository repo = new SubCategoryRepository();
+        List<SubCategory> subCategories = repo.findAll();
+        Iterator<SubCategory> iterator = subCategories.iterator();
+        while (iterator.hasNext()){
+            Log.i("Subcategory ",subCategories.toString());
+        }
+
+       // List<SubCategory> subCategoryList = new ArrayList<>(repo.findAll());
+
+
+        customAdapter = new SubCategoryAdapter(this,
+                R.layout.activity_populate_sub_category, subCategories);
         ListView listView = (ListView) findViewById(R.id.category_ListView);
         listView.setAdapter(customAdapter);
     }
@@ -117,7 +133,11 @@ public class SubcategoryActivity extends Activity {
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ArrayList<SubCategory> subCategoryList = customAdapter.subCategoryList;
+
+                Intent homepage = new Intent(getApplicationContext(),HomepageActivity.class);
+                    startActivity(homepage);
+
+                /*ArrayList<SubCategory> subCategoryList = customAdapter.subCategoryList;
                 ArrayList<String> categoryNames = new ArrayList<String>();
                 for (int i = 0; i < subCategoryList.size(); i++) {
                     SubCategory category = subCategoryList.get(i);
@@ -127,7 +147,7 @@ public class SubcategoryActivity extends Activity {
                 }
                 Intent subCategoryIntent = new Intent(getApplicationContext(), SubcategoryActivity.class);
                 subCategoryIntent.putStringArrayListExtra("countryNames", categoryNames);
-                startActivity(subCategoryIntent);
+                startActivity(subCategoryIntent);*/
 
 
             }

@@ -30,6 +30,7 @@ public class CategoryActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category);
+        setTitle("Category");
         CategoryRepository repository = new CategoryRepository();
         service = new CategoryService(repository);
         displayCategoryListView();
@@ -51,17 +52,23 @@ public class CategoryActivity extends Activity {
             @Override
             public void onClick(View v) {
                 categoryList = customAdapter.getCategoryList();
-                List<Category> categoryNames = new ArrayList<Category>();
+                ArrayList<String> categoryNames = new ArrayList<>();
 
                 for(int i=0;i<categoryList.size();i++){
                     Category category = categoryList.get(i);
                     if(category.isSelected()){
-                        categoryNames.add(category);
+                        categoryNames.add(category.getName());
                     }
                 }
                 if(categoryNames.size()>0){
-                    Intent homepage = new Intent(getApplicationContext(),HomepageActivity.class);
-                    startActivity(homepage);
+
+                    Intent subCategoryIntent = new Intent(getApplicationContext(),SubcategoryActivity.class);
+                   // subCategoryIntent.putStringArrayListExtra("categoryNames", categoryNames);
+                    startActivity(subCategoryIntent);
+
+
+                   /* Intent homepage = new Intent(getApplicationContext(),HomepageActivity.class);
+                    startActivity(homepage);*/
                 }
                 else{
                     DisplayMessage.displayToast(getApplicationContext(),"Please select at least one category!!");
