@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,15 +13,18 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 import uta.edu.tutorme.R;
+import uta.edu.tutorme.models.Category;
 import uta.edu.tutorme.models.SubCategory;
 
 public class SubcategoryActivity extends Activity {
 
     MyCustomAdapter customAdapter = null;
+    ArrayList<String> categoryListString = new ArrayList<String>();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -32,17 +36,17 @@ public class SubcategoryActivity extends Activity {
         submitButtonClick();
     }
 
-    private class MyCustomAdapter extends ArrayAdapter<SubCategory> {
-        private ArrayList<SubCategory> subCategoryList;
+    private class MyCustomAdapter extends ArrayAdapter<Category> {
+        private ArrayList<Category> categoryList;
         public MyCustomAdapter(Context context, int resourceId,
-                               ArrayList<SubCategory> subCategoryList) {
-            super(context, resourceId, subCategoryList);
-            this.subCategoryList = new ArrayList<SubCategory>();
-            this.subCategoryList.addAll(subCategoryList);
+                               ArrayList<Category> categoryList) {
+            super(context, resourceId, categoryList);
+            this.categoryList = new ArrayList<Category>();
+            this.categoryList.addAll(categoryList);
         }
 
         private class Holder {
-            TextView subCategoryName;
+            TextView categoryName;
             CheckBox checkBox;
         }
 
@@ -56,54 +60,39 @@ public class SubcategoryActivity extends Activity {
                 view = layoutInflater.inflate(R.layout.activity_populate_sub_category, null);
 
                 holder = new Holder();
-                holder.subCategoryName = (TextView) view.findViewById(R.id.subcategory_TextView);
+                holder.categoryName = (TextView) view.findViewById(R.id.subcategory_TextView);
                 holder.checkBox = (CheckBox) view.findViewById(R.id.subcategory_CheckBox);
                 view.setTag(holder);
             }
             else {
                 holder = (Holder) view.getTag();
             }
-            SubCategory country = subCategoryList.get(position);
-            holder.checkBox.setChecked(country.isSelected());
-            holder.subCategoryName.setText(country.getName());
-            holder.checkBox.setTag(country);
+            Category category = categoryList.get(position);
+            holder.checkBox.setChecked(category.isSelected());
+            holder.categoryName.setText(category.getName());
+            holder.checkBox.setTag(category);
             return view;
         }
     }
 
     private void displaySubCategoryListView() {
-        ArrayList<SubCategory> subCategoryList = new ArrayList<SubCategory>();
-        SubCategory subCategory = new SubCategory(1,"Guitar",false);
-        subCategoryList.add(subCategory);
-        subCategory = new SubCategory(2,"Flute",false);
-        subCategoryList.add(subCategory);
-        subCategory = new SubCategory(3,"Algebra",false);
-        subCategoryList.add(subCategory);
-        subCategory = new SubCategory(4,"Geometry",false);
-        subCategoryList.add(subCategory);
-        subCategory = new SubCategory(5,"Planets",false);
-        subCategoryList.add(subCategory);
-        subCategory = new SubCategory(6,"Satellites",false);
-        subCategoryList.add(subCategory);
-        subCategory = new SubCategory(7,"Morden Arts",false);
-        subCategoryList.add(subCategory);
-        subCategory = new SubCategory(8,"Fine Arts",false);
-        subCategoryList.add(subCategory);
-
         Intent intent = getIntent();
-        ArrayList<String> categoryList = intent.getStringArrayListExtra("categoryNames");
-      /*  ArrayList<SubCategory> subCategoryList = new ArrayList<SubCategory>();
-        SubCategory subCategory = new SubCategory(1,"Guitar",false);
-        for(int i=0;i<categoryList.size();i++){
-            if(categoryList.get(i).equals("Music")){
-                SubCategory subCategory =
-            }
+       categoryListString = intent.getStringArrayListExtra("categoryNames");
 
-        }*/
+
+        ArrayList<Category> categoryList = new ArrayList<Category>();
+        Category category = new Category(1,"Music",false);
+        categoryList.add(category);
+        category = new Category(2,"Quant",false);
+        categoryList.add(category);
+        category = new Category(3,"Astronomy",false);
+        categoryList.add(category);
+        category = new Category(4,"Arts",false);
+        categoryList.add(category);
 
         customAdapter = new MyCustomAdapter(this,
-                R.layout.activity_populate_category, subCategoryList);
-        ListView listView = (ListView) findViewById(R.id.category_ListView);
+                R.layout.activity_populate_sub_category, categoryList);
+        ListView listView = (ListView) findViewById(R.id.subcategory_ListView);
         listView.setAdapter(customAdapter);
     }
 
@@ -113,26 +102,17 @@ public class SubcategoryActivity extends Activity {
     }
 
     private void submitButtonClick(){
-        Button submitButton = (Button) findViewById(R.id.next_category_button);
-        submitButton.setOnClickListener(new View.OnClickListener() {
+
+        Button nextButton = (Button) findViewById(R.id.submit_subcategory_button);
+        nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ArrayList<SubCategory> subCategoryList = customAdapter.subCategoryList;
-                ArrayList<String> categoryNames = new ArrayList<String>();
-                for (int i = 0; i < subCategoryList.size(); i++) {
-                    SubCategory category = subCategoryList.get(i);
-                    if (category.isSelected()) {
-                        categoryNames.add(category.getName());
-                    }
-                }
-                Intent subCategoryIntent = new Intent(getApplicationContext(), SubcategoryActivity.class);
-                subCategoryIntent.putStringArrayListExtra("countryNames", categoryNames);
-                startActivity(subCategoryIntent);
+                Toast.makeText(getApplicationContext(),
+                        categoryListString.get(0), Toast.LENGTH_LONG).show();
 
 
             }
         });
-
     }
 
 

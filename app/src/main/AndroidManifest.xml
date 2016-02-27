@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="uta.edu.tutorme" >
+    package="uta.edu.tutorme">
 
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
+        android:name="com.orm.SugarApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        android:name="com.orm.SugarApp">
-        <activity android:name=".activities.LoginActivity" >
+        android:theme="@style/AppTheme">
+        <activity android:name=".activities.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -21,18 +21,37 @@
         <activity android:name=".activities.CategoryActivity" />
         <activity android:name=".activities.SubcategoryActivity" />
         <activity android:name=".activities.PopulateCategoryActivity" />
-        <activity android:name=".activities.PopulateSubCategoryActivity"></activity>
+        <activity android:name=".activities.PopulateSubCategoryActivity" />
         <activity
             android:name=".activities.RegisterActivity"
+<<<<<<< HEAD
             android:label="@string/title_activity_register" >
         </activity>
         <meta-data android:name="DATABASE" android:value="tutorme.db" />
         <meta-data android:name="VERSION" android:value="4" />
         <meta-data android:name="QUERY_LOG" android:value="true" />
         <meta-data android:name="DOMAIN_PACKAGE_NAME" android:value="uta.edu.tutorme" />
+=======
+            android:label="@string/title_activity_register"></activity>
+>>>>>>> 940bea187f447bad4c1af07c5a772d5b982aaabc
 
+        <meta-data
+            android:name="DATABASE"
+            android:value="tutorme.db" />
+        <meta-data
+            android:name="VERSION"
+            android:value="3" />
+        <meta-data
+            android:name="QUERY_LOG"
+            android:value="true" />
+        <meta-data
+            android:name="DOMAIN_PACKAGE_NAME"
+            android:value="uta.edu.tutorme" />
 
+        <activity
+            android:name=".activities.HomepageActivity"
+            android:label="@string/title_activity_homepage"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
-
 
 </manifest>

@@ -11,6 +11,7 @@ import uta.edu.tutorme.utils.DisplayMessage;
 
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -50,7 +51,7 @@ public class CategoryActivity extends Activity {
             @Override
             public void onClick(View v) {
                 categoryList = customAdapter.getCategoryList();
-            List<Category> categoryNames = new ArrayList<Category>();
+                List<Category> categoryNames = new ArrayList<Category>();
 
                 for(int i=0;i<categoryList.size();i++){
                     Category category = categoryList.get(i);
@@ -58,11 +59,20 @@ public class CategoryActivity extends Activity {
                         categoryNames.add(category);
                     }
                 }
-                DisplayMessage.displayToast(getApplicationContext(),categoryNames.toString());
+                if(categoryNames.size()>0){
+                    Intent homepage = new Intent(getApplicationContext(),HomepageActivity.class);
+                    startActivity(homepage);
+                }
+                else{
+                    DisplayMessage.displayToast(getApplicationContext(),"Please select at least one category!!");
+                }
+
             /*Intent subCategoryIntent = new Intent(getApplicationContext(),SubcategoryActivity.class);
             subCategoryIntent.putStringArrayListExtra("categoryNames", categoryNames);
             startActivity(subCategoryIntent);
             */
+
+
 
             }
         });
