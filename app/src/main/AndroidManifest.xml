@@ -24,7 +24,8 @@
         <activity android:name=".activities.PopulateSubCategoryActivity" />
         <activity
             android:name=".activities.RegisterActivity"
-            android:label="@string/title_activity_register"></activity>
+            android:label="@string/title_activity_register" />
+
         <meta-data
             android:name="DATABASE"
             android:value="tutorme.db" />
@@ -41,7 +42,9 @@
         <activity
             android:name=".activities.HomepageActivity"
             android:label="@string/title_activity_homepage"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".activities.PostActivity" />
+        <activity android:name=".activities.PostDetailActivity"></activity>
     </application>
 
 </manifest>
