@@ -63,13 +63,13 @@ public class CategoryActivity extends Activity {
                 }
                 if(categoryNames.size()>0){
 
-                    Intent subCategoryIntent = new Intent(getApplicationContext(),SubcategoryActivity.class);
+                    // Intent subCategoryIntent = new Intent(getApplicationContext(),SubcategoryActivity.class);
                    // subCategoryIntent.putStringArrayListExtra("categoryNames", categoryNames);
-                    startActivity(subCategoryIntent);
+                   // startActivity(subCategoryIntent);
 
 
-                   /* Intent homepage = new Intent(getApplicationContext(),HomepageActivity.class);
-                    startActivity(homepage);*/
+                    Intent homepage = new Intent(getApplicationContext(),HomepageActivity.class);
+                    startActivity(homepage);
                 }
                 else{
                     DisplayMessage.displayToast(getApplicationContext(),"Please select at least one category!!");
