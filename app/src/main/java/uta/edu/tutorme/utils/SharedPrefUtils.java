@@ -27,6 +27,7 @@ public class SharedPrefUtils {
         }
         else{
             Intent categoryactivity = new Intent(activity,CategoryActivity.class);
+            categoryactivity.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             activity.startActivity(categoryactivity);
         }
     }

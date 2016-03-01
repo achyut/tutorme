@@ -31,7 +31,7 @@ public class HomepageActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homepage);
-        SharedPrefUtils.checkIfLoggedIn(getApplicationContext());
+        //SharedPrefUtils.checkIfLoggedIn(getApplicationContext());
         user = SharedPrefUtils.getUserFromSession(getApplicationContext());
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);

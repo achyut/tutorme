@@ -32,7 +32,6 @@ public class CategoryActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category);
-        SharedPrefUtils.checkIfLoggedIn(getApplicationContext());
         setTitle("Category");
         CategoryRepository repository = new CategoryRepository();
         service = new CategoryService(repository);

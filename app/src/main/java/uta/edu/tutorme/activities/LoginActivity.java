@@ -63,10 +63,8 @@ public class LoginActivity extends AppCompatActivity {
             if(user!=null){
                 // show another activity
                 SharedPrefUtils.storeUserInsharedPref(getApplicationContext(),user);
-                DisplayMessage.displayToast(getApplicationContext(),"Logging in");
-                Bundle b = new Bundle();
-                Intent category = new Intent(this, CategoryActivity.class);
-                startActivity(category);
+                DisplayMessage.displayToast(getApplicationContext(), "Logging in");
+                SharedPrefUtils.checkIfLoggedIn(getApplicationContext());
             }
             else{
                 DisplayMessage.displayToast(getApplicationContext(), "Invalid login credentials");

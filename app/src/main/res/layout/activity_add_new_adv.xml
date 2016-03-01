@@ -6,312 +6,302 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="uta.edu.tutorme.activities.AddNewAdvActivity">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_alignParentBottom="true">
+        android:layout_height="601dp"
+        android:fillViewport="false">
 
 
-        <ScrollView
+
+
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="601dp"
-            android:fillViewport="false">
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:weightSum="1">
 
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Post Title"
+                android:id="@+id/txt_posttitle" />
 
-
-            <LinearLayout
-                android:orientation="vertical"
+            <EditText
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
+                android:layout_height="wrap_content"
+                android:id="@+id/edit_posttitle"
+                android:layout_gravity="center_horizontal" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Short Description"
+                android:id="@+id/txt_shortdes" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/edit_shortdes"
+                android:layout_gravity="center_horizontal" />
+             <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="33dp"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+
+                 <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Catagory"
+                android:id="@+id/txt_catagory"
+                     android:layout_weight="0.26" />
+
+                 <TextView
+                     android:layout_width="33dp"
+                     android:layout_height="wrap_content"
+                     android:textAppearance="?android:attr/textAppearanceMedium"
+                     android:text="Sub Catagory"
+                     android:id="@+id/txt_SubCatagory"
+                     android:layout_weight="0.56" />
+
+             </LinearLayout>
+             <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:orientation="horizontal"
                 android:weightSum="1">
 
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="Post Title"
-                    android:id="@+id/txt_posttitle" />
+                    android:text="Music"
+                    android:id="@+id/txt_music"
+                    android:layout_weight="0.45" />
 
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/edit_posttitle"
-                    android:layout_gravity="center_horizontal" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="Short Description"
-                    android:id="@+id/txt_shortdes" />
+                 <TextView
+                     android:layout_width="50dp"
+                     android:layout_height="match_parent"
+                     android:textAppearance="?android:attr/textAppearanceMedium"
+                     android:text="Pinao"
+                     android:id="@+id/txt_pinao"
+                     android:layout_weight="0.56" />
 
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/edit_shortdes"
-                    android:layout_gravity="center_horizontal" />
-                 <LinearLayout
+             </LinearLayout>
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="33dp"
                 android:orientation="horizontal"
                 android:weightSum="1">
 
 
-                     <TextView
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="Catagory"
-                    android:id="@+id/txt_catagory"
-                         android:layout_weight="0.26" />
-
-                     <TextView
-                         android:layout_width="33dp"
-                         android:layout_height="wrap_content"
-                         android:textAppearance="?android:attr/textAppearanceMedium"
-                         android:text="Sub Catagory"
-                         android:id="@+id/txt_SubCatagory"
-                         android:layout_weight="0.56" />
-
-                 </LinearLayout>
-                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:orientation="horizontal"
-                    android:weightSum="1">
-
-
-                    <TextView
-                        android:layout_width="50dp"
-                        android:layout_height="match_parent"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="Music"
-                        android:id="@+id/txt_music"
-                        android:layout_weight="0.45" />
-
-
-                     <TextView
-                         android:layout_width="50dp"
-                         android:layout_height="match_parent"
-                         android:textAppearance="?android:attr/textAppearanceMedium"
-                         android:text="Pinao"
-                         android:id="@+id/txt_pinao"
-                         android:layout_weight="0.56" />
-
-                 </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="33dp"
-                    android:orientation="horizontal"
-                    android:weightSum="1">
-
-
-                    <TextView
-                        android:layout_width="64dp"
-                        android:layout_height="46dp"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="Price:"
-                        android:id="@+id/txt_price" />
-
-                    <EditText
-                        android:layout_width="244dp"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/edit_price"
-                        android:layout_gravity="center_horizontal" />
-
-
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:orientation="horizontal"
-                    android:weightSum="1">
-
-
-                    <TextView
-                        android:layout_width="50dp"
-                        android:layout_height="match_parent"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="Start Date:"
-                        android:id="@+id/txt_Date"
-                        android:layout_weight="0.30" />
-                    <EditText
-                        android:layout_width="50dp"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/edit_Startdate"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_weight="0.22" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="End Date:"
-                        android:id="@+id/txt_Enddate" />
-                    <EditText
-                        android:layout_width="50dp"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/edit_enddate"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_weight="0.27" />
-
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:orientation="horizontal"
-                    android:weightSum="1">
-
-
-                    <TextView
-                        android:layout_width="50dp"
-                        android:layout_height="match_parent"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="Start Time:"
-                        android:id="@+id/txt_StartTime"
-                        android:layout_weight="0.41" />
-                    <EditText
-                        android:layout_width="50dp"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/edit_StartTime"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_weight="0.22" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="End Time:"
-                        android:id="@+id/txt_EndTime" />
-                    <EditText
-                        android:layout_width="50dp"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/edit_endTime"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_weight="0.27" />
-
-                </LinearLayout>
-
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="64dp"
+                    android:layout_height="46dp"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="Long description"
-                    android:id="@+id/txt_longdes" />
+                    android:text="Price:"
+                    android:id="@+id/txt_price" />
 
                 <EditText
-                    android:layout_width="match_parent"
+                    android:layout_width="244dp"
                     android:layout_height="wrap_content"
-                    android:inputType="textMultiLine"
-                    android:ems="10"
-                    android:id="@+id/edit_longdes"
+                    android:id="@+id/edit_price"
                     android:layout_gravity="center_horizontal" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="Address"
-                    android:id="@+id/txt_address" />
 
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+
+                <TextView
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Start Date:"
+                    android:id="@+id/txt_Date"
+                    android:layout_weight="0.30" />
                 <EditText
-                    android:layout_width="match_parent"
+                    android:layout_width="50dp"
                     android:layout_height="wrap_content"
-                    android:inputType="textPostalAddress"
-                    android:ems="10"
-                    android:id="@+id/edit_address" />
+                    android:id="@+id/edit_Startdate"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="0.22" />
+
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="Phone Number"
-                    android:id="@+id/txt_phonenumber" />
-
+                    android:text="End Date:"
+                    android:id="@+id/txt_Enddate" />
                 <EditText
-                    android:layout_width="match_parent"
+                    android:layout_width="50dp"
                     android:layout_height="wrap_content"
-                    android:inputType="phone"
-                    android:ems="10"
-                    android:id="@+id/edit_phonenumber" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="Email Address"
-                    android:id="@+id/txt_emailaddress" />
+                    android:id="@+id/edit_enddate"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="0.27" />
 
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+
+                <TextView
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Start Time:"
+                    android:id="@+id/txt_StartTime"
+                    android:layout_weight="0.41" />
                 <EditText
-                    android:layout_width="match_parent"
+                    android:layout_width="50dp"
                     android:layout_height="wrap_content"
-                    android:inputType="textEmailAddress"
-                    android:ems="10"
-                    android:id="@+id/edit_Emailaddress"
-                    android:layout_gravity="center_horizontal" />
+                    android:id="@+id/edit_StartTime"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="0.22" />
+
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="Preferred Contact Method:"
-                    android:id="@+id/txt_contactmethod" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="68dp"
-                    android:orientation="horizontal"
-                    android:weightSum="1">
-
-                    <RadioGroup android:id="@+id/radio_contactmethod"
-                        android:orientation="horizontal"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-                        <RadioButton
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:text="Email"
-                            android:id="@+id/btn_Email"
-                            android:checked="false"
-                            android:layout_weight="0.24" />
-                        <RadioButton
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:text="SMS"
-                            android:id="@+id/btn_SMS"
-                            android:checked="false"
-                            android:layout_weight="0.31" />
-                        <RadioButton
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:text="Phone Call"
-                            android:id="@+id/btn_phone"
-                            android:checked="false"
-                            android:layout_weight="0.31" />
-
-                    </RadioGroup>
-
-                </LinearLayout>
-
-
-
-                <Button
-                    android:layout_width="wrap_content"
+                    android:text="End Time:"
+                    android:id="@+id/txt_EndTime" />
+                <EditText
+                    android:layout_width="50dp"
                     android:layout_height="wrap_content"
-                    android:text="submit"
-                    android:id="@+id/btn_submit"
-                    android:onClick="doRegister"
-                    android:layout_gravity="center_horizontal" />
+                    android:id="@+id/edit_endTime"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="0.27" />
 
             </LinearLayout>
 
-        </ScrollView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Long description"
+                android:id="@+id/txt_longdes" />
 
-    </LinearLayout>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine"
+                android:ems="10"
+                android:id="@+id/edit_longdes"
+                android:layout_gravity="center_horizontal" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Address"
+                android:id="@+id/txt_address" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPostalAddress"
+                android:ems="10"
+                android:id="@+id/edit_address" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Phone Number"
+                android:id="@+id/txt_phonenumber" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="phone"
+                android:ems="10"
+                android:id="@+id/edit_phonenumber" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Email Address"
+                android:id="@+id/txt_emailaddress" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                android:ems="10"
+                android:id="@+id/edit_Emailaddress"
+                android:layout_gravity="center_horizontal" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Preferred Contact Method:"
+                android:id="@+id/txt_contactmethod" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="68dp"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <RadioGroup android:id="@+id/radio_contactmethod"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="Email"
+                        android:id="@+id/btn_Email"
+                        android:checked="false"
+                        android:layout_weight="0.24" />
+                    <RadioButton
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="SMS"
+                        android:id="@+id/btn_SMS"
+                        android:checked="false"
+                        android:layout_weight="0.31" />
+                    <RadioButton
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Phone Call"
+                        android:id="@+id/btn_phone"
+                        android:checked="false"
+                        android:layout_weight="0.31" />
+
+                </RadioGroup>
+
+            </LinearLayout>
+
+
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="submit"
+                android:id="@+id/btn_submit"
+                android:layout_gravity="center_horizontal" />
+
+        </LinearLayout>
+
+    </ScrollView>
 </RelativeLayout>
 
