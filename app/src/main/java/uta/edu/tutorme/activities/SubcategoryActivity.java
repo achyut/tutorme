@@ -22,6 +22,7 @@ import uta.edu.tutorme.R;
 import uta.edu.tutorme.adapters.SubCategoryAdapter;
 import uta.edu.tutorme.models.SubCategory;
 import uta.edu.tutorme.repositories.SubCategoryRepository;
+import uta.edu.tutorme.utils.SharedPrefUtils;
 
 public class SubcategoryActivity extends Activity {
 
@@ -31,6 +32,7 @@ public class SubcategoryActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_subcategory);
+        SharedPrefUtils.checkIfLoggedIn(getApplicationContext());
         setTitle("SubCategory");
         displaySubCategoryListView();
         // backButtonClick();

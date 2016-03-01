@@ -8,6 +8,7 @@ import uta.edu.tutorme.models.Category;
 import uta.edu.tutorme.repositories.CategoryRepository;
 import uta.edu.tutorme.services.CategoryService;
 import uta.edu.tutorme.utils.DisplayMessage;
+import uta.edu.tutorme.utils.SharedPrefUtils;
 
 
 import android.app.Activity;
@@ -31,6 +32,7 @@ public class CategoryActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category);
+        SharedPrefUtils.checkIfLoggedIn(getApplicationContext());
         setTitle("Category");
         CategoryRepository repository = new CategoryRepository();
         service = new CategoryService(repository);

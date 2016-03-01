@@ -14,14 +14,19 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import uta.edu.tutorme.R;
+import uta.edu.tutorme.models.User;
+import uta.edu.tutorme.utils.SharedPrefUtils;
 
 public class HomepageActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
+    User user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homepage);
+        SharedPrefUtils.checkIfLoggedIn(getApplicationContext());
+        user = SharedPrefUtils.getUserFromSession(getApplicationContext());
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -29,6 +34,7 @@ public class HomepageActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                
                 Snackbar.make(view, "Add new post", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
@@ -82,18 +88,19 @@ public class HomepageActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.drawer_all_post) {
             // Handle the camera action
         } else if (id == R.id.nav_gallery) {
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.drawer_latest_post) {
 
-        } else if (id == R.id.nav_manage) {
+        } else if (id == R.id.drawer_change_password) {
 
         } else if (id == R.id.nav_share) {
 
-        } else if (id == R.id.nav_send) {
-
+        } else if (id == R.id.drawer_logout) {
+            SharedPrefUtils.deleteUserFromSharedPref(getApplicationContext());
+            SharedPrefUtils.checkIfLoggedIn(getApplicationContext());
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
