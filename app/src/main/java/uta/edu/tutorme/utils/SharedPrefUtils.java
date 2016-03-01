@@ -25,11 +25,6 @@ public class SharedPrefUtils {
             Intent i = new Intent(activity,LoginActivity.class);
             activity.startActivity(i);
         }
-        else{
-            Intent categoryactivity = new Intent(activity,CategoryActivity.class);
-            categoryactivity.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            activity.startActivity(categoryactivity);
-        }
     }
 
 

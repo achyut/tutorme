@@ -106,7 +106,8 @@ public class HomepageActivity extends AppCompatActivity
 
         } else if (id == R.id.drawer_logout) {
             SharedPrefUtils.deleteUserFromSharedPref(getApplicationContext());
-            SharedPrefUtils.checkIfLoggedIn(getApplicationContext());
+            Intent intent = new Intent(this,LoginActivity.class);
+            startActivity(intent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

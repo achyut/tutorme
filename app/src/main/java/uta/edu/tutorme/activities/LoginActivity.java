@@ -65,6 +65,8 @@ public class LoginActivity extends AppCompatActivity {
                 SharedPrefUtils.storeUserInsharedPref(getApplicationContext(),user);
                 DisplayMessage.displayToast(getApplicationContext(), "Logging in");
                 SharedPrefUtils.checkIfLoggedIn(getApplicationContext());
+                Intent cat = new Intent(getApplicationContext(),CategoryActivity.class);
+                startActivity(cat);
             }
             else{
                 DisplayMessage.displayToast(getApplicationContext(), "Invalid login credentials");
