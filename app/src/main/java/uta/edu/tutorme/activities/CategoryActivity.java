@@ -26,6 +26,7 @@ public class CategoryActivity extends Activity {
     CategoryAdapter customAdapter = null;
     CategoryService service;
     List<Category> categoryList = new ArrayList<Category>();
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

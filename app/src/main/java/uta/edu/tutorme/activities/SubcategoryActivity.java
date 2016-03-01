@@ -33,49 +33,49 @@ public class SubcategoryActivity extends Activity {
         setContentView(R.layout.activity_subcategory);
         setTitle("SubCategory");
         displaySubCategoryListView();
-       // backButtonClick();
-       // submitButtonClick();
+        // backButtonClick();
+        // submitButtonClick();
     }
 
-   /* private class MyCustomAdapter extends ArrayAdapter<SubCategory> {
-        private ArrayList<SubCategory> subCategoryList;
-        public MyCustomAdapter(Context context, int resourceId,
-                               ArrayList<SubCategory> subCategoryList) {
-            super(context, resourceId, subCategoryList);
-            this.subCategoryList = new ArrayList<SubCategory>();
-            this.subCategoryList.addAll(subCategoryList);
-        }
+    /* private class MyCustomAdapter extends ArrayAdapter<SubCategory> {
+         private ArrayList<SubCategory> subCategoryList;
+         public MyCustomAdapter(Context context, int resourceId,
+                                ArrayList<SubCategory> subCategoryList) {
+             super(context, resourceId, subCategoryList);
+             this.subCategoryList = new ArrayList<SubCategory>();
+             this.subCategoryList.addAll(subCategoryList);
+         }
 
-        private class Holder {
-            TextView subCategoryName;
-            CheckBox checkBox;
-        }
+         private class Holder {
+             TextView subCategoryName;
+             CheckBox checkBox;
+         }
 
-        @Override
-        public View getView(int position, View view, ViewGroup parent) {
+         @Override
+         public View getView(int position, View view, ViewGroup parent) {
 
-            Holder holder = null;
-            if (view == null) {
-                LayoutInflater layoutInflater = (LayoutInflater)getSystemService(
-                        Context.LAYOUT_INFLATER_SERVICE);
-                view = layoutInflater.inflate(R.layout.activity_populate_sub_category, null);
+             Holder holder = null;
+             if (view == null) {
+                 LayoutInflater layoutInflater = (LayoutInflater)getSystemService(
+                         Context.LAYOUT_INFLATER_SERVICE);
+                 view = layoutInflater.inflate(R.layout.activity_populate_sub_category, null);
 
-                holder = new Holder();
-                holder.subCategoryName = (TextView) view.findViewById(R.id.subcategory_TextView);
-                holder.checkBox = (CheckBox) view.findViewById(R.id.subcategory_CheckBox);
-                view.setTag(holder);
-            }
-            else {
-                holder = (Holder) view.getTag();
-            }
-            SubCategory country = subCategoryList.get(position);
-            holder.checkBox.setChecked(country.isSelected());
-            holder.subCategoryName.setText(country.getName());
-            holder.checkBox.setTag(country);
-            return view;
-        }
-    }
-*/
+                 holder = new Holder();
+                 holder.subCategoryName = (TextView) view.findViewById(R.id.subcategory_TextView);
+                 holder.checkBox = (CheckBox) view.findViewById(R.id.subcategory_CheckBox);
+                 view.setTag(holder);
+             }
+             else {
+                 holder = (Holder) view.getTag();
+             }
+             SubCategory country = subCategoryList.get(position);
+             holder.checkBox.setChecked(country.isSelected());
+             holder.subCategoryName.setText(country.getName());
+             holder.checkBox.setTag(country);
+             return view;
+         }
+     }
+ */
     private void displaySubCategoryListView() {
 /*        ArrayList<SubCategory> subCategoryList = new ArrayList<SubCategory>();
         SubCategory subCategory = new SubCategory(1,"Guitar",false);
@@ -97,7 +97,7 @@ public class SubcategoryActivity extends Activity {
 
         Bundle bundle = getIntent().getExtras();
 
-      //  ArrayList<String> categoryList = intent.getStringArrayListExtra("categoryNames");
+        //  ArrayList<String> categoryList = intent.getStringArrayListExtra("categoryNames");
       /*  ArrayList<SubCategory> subCategoryList = new ArrayList<SubCategory>();
         SubCategory subCategory = new SubCategory(1,"Guitar",false);
         for(int i=0;i<categoryList.size();i++){
@@ -114,7 +114,7 @@ public class SubcategoryActivity extends Activity {
             Log.i("Subcategory ",subCategories.toString());
         }
 
-       // List<SubCategory> subCategoryList = new ArrayList<>(repo.findAll());
+        // List<SubCategory> subCategoryList = new ArrayList<>(repo.findAll());
 
 
         customAdapter = new SubCategoryAdapter(this,
@@ -135,7 +135,7 @@ public class SubcategoryActivity extends Activity {
             public void onClick(View v) {
 
                 Intent homepage = new Intent(getApplicationContext(),HomepageActivity.class);
-                    startActivity(homepage);
+                startActivity(homepage);
 
                 /*ArrayList<SubCategory> subCategoryList = customAdapter.subCategoryList;
                 ArrayList<String> categoryNames = new ArrayList<String>();
@@ -157,4 +157,3 @@ public class SubcategoryActivity extends Activity {
 
 
 }
-
