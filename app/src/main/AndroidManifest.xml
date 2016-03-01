@@ -44,7 +44,6 @@
             android:name=".activities.HomepageActivity"
             android:label="@string/title_activity_homepage"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".activities.PostActivity" />
         <activity android:name=".activities.PostDetailActivity">
 
         </activity>

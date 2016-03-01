@@ -1,5 +1,6 @@
 package uta.edu.tutorme.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -13,11 +14,17 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.google.common.base.Predicates;
+
 import uta.edu.tutorme.R;
 
 public class HomepageActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    private void doOpenCreateNewAdv(){
+        Intent intent = new Intent(this,AddNewAdvActivity.class);
+        startActivity(intent);
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,8 +36,9 @@ public class HomepageActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Add new post", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                doOpenCreateNewAdv();
+                //Snackbar.make(view, "Add new post", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+
             }
         });
 
