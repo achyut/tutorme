@@ -12,11 +12,13 @@ import uta.edu.tutorme.generators.CategoryGenerator;
 import uta.edu.tutorme.generators.InitializeTables;
 import uta.edu.tutorme.models.Category;
 import uta.edu.tutorme.models.SubCategory;
+import uta.edu.tutorme.models.User;
 import uta.edu.tutorme.repositories.CategoryRepository;
 import uta.edu.tutorme.repositories.SubCategoryRepository;
 import uta.edu.tutorme.repositories.UserRepository;
 import uta.edu.tutorme.services.UserService;
 import uta.edu.tutorme.utils.DisplayMessage;
+import uta.edu.tutorme.utils.SharedPrefUtils;
 import uta.edu.tutorme.utils.Validator;
 
 public class LoginActivity extends AppCompatActivity {
@@ -57,12 +59,12 @@ public class LoginActivity extends AppCompatActivity {
         String pass = password.getText().toString().trim();
         if(validateLogin(email,pass)){
             // login logic
-            if(service.login(email,pass)){
+            User user = service.login(email,pass);
+            if(user!=null){
                 // show another activity
-                DisplayMessage.displayToast(getApplicationContext(),"Logging in");
-                Bundle b = new Bundle();
-                Intent category = new Intent(this, CategoryActivity.class);
-                startActivity(category);
+                SharedPrefUtils.storeUserInsharedPref(getApplicationContext(),user);
+                DisplayMessage.displayToast(getApplicationContext(), "Logging in");
+                SharedPrefUtils.checkIfLoggedIn(getApplicationContext());
             }
             else{
                 DisplayMessage.displayToast(getApplicationContext(), "Invalid login credentials");

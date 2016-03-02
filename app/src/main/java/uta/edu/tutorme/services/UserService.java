@@ -17,15 +17,10 @@ public class UserService extends GenericSerciveImpl<Integer,User,UserRepository>
         //return "encryptedpassword";
     }
 
-    public boolean login(String email, String password) {
+    public User login(String email, String password) {
         password = encryptPassword(password);
-        if(repository.login(email,password)){
-            return true;
-        }
-       // if(email.equals("abc@gmail.com") && password.equals("abcd")){
-           // return true;
-       // }
-        return false;
+
+        return repository.login(email,password);
     }
 
     public boolean checkIfUserAlreadyExist(User user) {

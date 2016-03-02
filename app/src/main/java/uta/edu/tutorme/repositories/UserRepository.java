@@ -16,15 +16,12 @@ public class UserRepository extends MapRepositoryImpl<Long,User> {
         user.save();
     }
 
-    public boolean login(String email, String password) {
+    public User login(String email, String password) {
         Select loginQuery = Select.from(User.class)
                 .where(Condition.prop("email").eq(email))
                 .where(Condition.prop("password").eq(password));
-        long count = loginQuery.count();
-        if(count>0){
-            return true;
-        }
-        return false;
+        User user = (User)loginQuery.first();
+        return user;
     }
 
     public boolean checkUserExists(User user) {
