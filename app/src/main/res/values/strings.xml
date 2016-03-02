@@ -7,5 +7,6 @@
     <string name="action_settings">Settings</string>
     <string name="email_blank">Email cannot be empty!</string>
     <string name="pwd_blank">Password cannot be empty</string>
+    <string name="title_activity_add_new_adv">AddNewAdvActivity</string>
 
 </resources>
