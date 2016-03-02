@@ -107,7 +107,7 @@
 
                 <TextView
                     android:layout_width="64dp"
-                    android:layout_height="32dp"
+                    android:layout_height="30dp"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="Price:"
                     android:id="@+id/txt_price" />
