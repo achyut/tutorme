@@ -24,6 +24,7 @@
         <activity android:name=".activities.PopulateSubCategoryActivity" />
         <activity
             android:name=".activities.RegisterActivity"
+
             android:label="@string/title_activity_register" />
 
         <meta-data
@@ -44,7 +45,13 @@
             android:label="@string/title_activity_homepage"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".activities.PostActivity" />
-        <activity android:name=".activities.PostDetailActivity"></activity>
+        <activity android:name=".activities.PostDetailActivity">
+
+        </activity>
+        <activity
+            android:name=".activities.AddNewAdvActivity"
+            android:label="@string/title_activity_add_new_adv" >
+        </activity>
     </application>
 
 </manifest>
