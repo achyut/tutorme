@@ -75,7 +75,7 @@
              </LinearLayout>
              <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="45dp"
+                android:layout_height="40dp"
                 android:orientation="horizontal"
                 android:weightSum="1">
 
@@ -107,16 +107,16 @@
 
                 <TextView
                     android:layout_width="64dp"
-                    android:layout_height="46dp"
+                    android:layout_height="32dp"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="Price:"
                     android:id="@+id/txt_price" />
 
                 <EditText
-                    android:layout_width="244dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/edit_price"
-                    android:layout_gravity="center_horizontal" />
+                    android:layout_weight="1" />
 
 
             </LinearLayout>
@@ -129,7 +129,7 @@
 
                 <TextView
                     android:layout_width="50dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="30dp"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="Start Date:"
                     android:id="@+id/txt_Date"
@@ -143,7 +143,7 @@
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="30dp"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="End Date:"
                     android:id="@+id/txt_Enddate" />
@@ -164,7 +164,7 @@
 
                 <TextView
                     android:layout_width="50dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="30dp"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="Start Time:"
                     android:id="@+id/txt_StartTime"
@@ -178,7 +178,7 @@
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="30dp"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="End Time:"
                     android:id="@+id/txt_EndTime" />
