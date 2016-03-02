@@ -1,7 +1,6 @@
 package uta.edu.tutorme.models;
 
 import com.orm.SugarRecord;
-import com.orm.dsl.Table;
 
 /**
  * Created by ananda on 2/18/16.
@@ -16,7 +15,8 @@ public class User extends SugarRecord{
     String password;
     String usertype;
 
-    public User() {
+    public User()
+    {
     }
 
     public User(String name, String email, String phone, String address, String password, String usertype) {

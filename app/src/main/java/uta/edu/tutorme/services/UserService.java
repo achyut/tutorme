@@ -22,9 +22,9 @@ public class UserService extends GenericSerciveImpl<Integer,User,UserRepository>
         if(repository.login(email,password)){
             return true;
         }
-        if(email.equals("abc@gmail.com") && password.equals("abcd")){
-            return true;
-        }
+       // if(email.equals("abc@gmail.com") && password.equals("abcd")){
+           // return true;
+       // }
         return false;
     }
 
