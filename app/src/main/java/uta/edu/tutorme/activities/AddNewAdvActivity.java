@@ -7,7 +7,7 @@ import android.view.MenuItem;
 
 import uta.edu.tutorme.R;
 
-public class AddNewAdvActivity extends AppCompatActivity {
+public class AddNewAdvActivity extends AppCompatActivity implements  {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

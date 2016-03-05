@@ -216,6 +216,8 @@
                 android:text="Long description"
                 android:id="@+id/txt_longdes" />
 
+
+
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -237,6 +239,7 @@
                 android:inputType="textPostalAddress"
                 android:ems="10"
                 android:id="@+id/edit_address" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -308,15 +311,14 @@
                 </RadioGroup>
 
             </LinearLayout>
+            <android.support.design.widget.FloatingActionButton
+                        android:id="@+id/fab1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:layout_margin="@dimen/fab_margin"
+                        android:src="@drawable/ic_send_icon" />
 
-
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="submit"
-                android:id="@+id/btn_submit"
-                android:layout_gravity="center_horizontal" />
 
         </LinearLayout>
 
