@@ -9,7 +9,10 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="601dp"
-        android:fillViewport="false">
+        android:fillViewport="false"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true">
 
 
 
@@ -116,8 +119,50 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/edit_price"
-                    android:layout_weight="1" />
+                    android:layout_weight="0.90" />
 
+
+            </LinearLayout>
+            <LinearLayout
+                   android:layout_width="335dp"
+                   android:layout_height="wrap_content"
+                   android:orientation="horizontal"
+                   android:weightSum="1">
+
+
+                <TextView
+                    android:layout_width="99dp"
+                    android:layout_height="30dp"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Start Date:"
+                    android:id="@+id/txt_Date" />
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/edit_startdate"
+                    android:layout_weight="0.89" />
+
+            </LinearLayout>
+
+            <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal"
+            android:weightSum="1">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="32dp"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="End Date:"
+                    android:id="@+id/txt_Enddate"
+                    android:layout_weight="0.08" />
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/edit_enddate"
+                    android:layout_weight="0.76" />
 
             </LinearLayout>
             <LinearLayout
@@ -126,68 +171,39 @@
                 android:orientation="horizontal"
                 android:weightSum="1">
 
-
-                <TextView
-                    android:layout_width="50dp"
-                    android:layout_height="30dp"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="Start Date:"
-                    android:id="@+id/txt_Date"
-                    android:layout_weight="0.30" />
-                <EditText
-                    android:layout_width="50dp"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/edit_Startdate"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_weight="0.22" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="End Date:"
-                    android:id="@+id/txt_Enddate" />
-                <EditText
-                    android:layout_width="50dp"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/edit_enddate"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_weight="0.27" />
+                    android:text="Start Time:"
+                    android:id="@+id/txt_StartTime"
+                    android:layout_weight="0.07" />
 
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/editstarttime"
+                    android:layout_weight="0.77" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:orientation="horizontal"
                 android:weightSum="1">
-
-
-                <TextView
-                    android:layout_width="50dp"
-                    android:layout_height="30dp"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="Start Time:"
-                    android:id="@+id/txt_StartTime"
-                    android:layout_weight="0.41" />
-                <EditText
-                    android:layout_width="50dp"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/edit_StartTime"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_weight="0.22" />
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="End Time:"
-                    android:id="@+id/txt_EndTime" />
+                    android:id="@+id/txt_EndTime"
+                    android:layout_weight="0.10" />
+
                 <EditText
-                    android:layout_width="50dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/edit_endTime"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_weight="0.27" />
+                    android:id="@+id/edit_endtime"
+                    android:layout_weight="0.73" />
 
             </LinearLayout>
 
