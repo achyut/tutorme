@@ -20,18 +20,20 @@ import java.util.List;
 
 import uta.edu.tutorme.R;
 import uta.edu.tutorme.adapters.SubCategoryAdapter;
+import uta.edu.tutorme.models.Category;
 import uta.edu.tutorme.models.SubCategory;
 import uta.edu.tutorme.repositories.SubCategoryRepository;
 
 public class SubcategoryActivity extends Activity {
 
     SubCategoryAdapter customAdapter = null;
-
+    SubCategoryRepository repo;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_subcategory);
         setTitle("SubCategory");
+        repo = new SubCategoryRepository();
         displaySubCategoryListView();
        // backButtonClick();
        // submitButtonClick();
@@ -107,18 +109,24 @@ public class SubcategoryActivity extends Activity {
 
         }*/
 
-        SubCategoryRepository repo = new SubCategoryRepository();
-        List<SubCategory> subCategories = repo.findAll();
+
+        /*List<SubCategory> subCategories = repo.findAll();
         Iterator<SubCategory> iterator = subCategories.iterator();
         while (iterator.hasNext()){
             Log.i("Subcategory ",subCategories.toString());
+        }*/
+
+        List<SubCategory> subCategoryList = new ArrayList<SubCategory>();
+        subCategoryList = repo.findAll();
+
+        if(subCategoryList.isEmpty()){
+            Log.i("SubCategory List :","is Empty");
+        }else{
+            Log.i("SubCategory List :","is Not Empty");
         }
 
-       // List<SubCategory> subCategoryList = new ArrayList<>(repo.findAll());
-
-
         customAdapter = new SubCategoryAdapter(this,
-                R.layout.activity_populate_sub_category, subCategories);
+                R.layout.activity_populate_sub_category, subCategoryList);
         ListView listView = (ListView) findViewById(R.id.category_ListView);
         listView.setAdapter(customAdapter);
     }

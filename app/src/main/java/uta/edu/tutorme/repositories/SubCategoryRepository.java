@@ -31,8 +31,7 @@ public class SubCategoryRepository extends MapRepositoryImpl<Integer, SubCategor
 
     @Override
     public List<SubCategory> findAll() {
-        List<SubCategory> allSubCategory = SubCategory.listAll(SubCategory.class);
-        return allSubCategory;
+        return SubCategory.listAll(SubCategory.class);
     }
 
     @Override
