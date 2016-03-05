@@ -7,6 +7,9 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.Volley;
+
 import uta.edu.tutorme.R;
 import uta.edu.tutorme.generators.CategoryGenerator;
 import uta.edu.tutorme.generators.InitializeTables;
@@ -44,6 +47,8 @@ public class LoginActivity extends AppCompatActivity {
         generator.generateCategory();
         generator.generateSubCategory();
 
+        //RequestQueue newQ = Volley.newRequestQueue(this);
+
 
     }
 
@@ -59,7 +64,7 @@ public class LoginActivity extends AppCompatActivity {
             // login logic
             if(service.login(email,pass)){
                 // show another activity
-                DisplayMessage.displayToast(getApplicationContext(),"Logging in");
+                DisplayMessage.displayToast(getApplicationContext(), "Logging in");
                 Bundle b = new Bundle();
                 Intent category = new Intent(this, CategoryActivity.class);
                 startActivity(category);
