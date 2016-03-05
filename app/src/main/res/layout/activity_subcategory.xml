@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:text="Back"
         android:id="@+id/back_subcategory_button"
-        android:layout_below="@+id/category_ListView"
+        android:layout_below="@+id/subcategory_ListView"
         android:layout_alignParentLeft="true"/>
 
     <Button
@@ -35,7 +35,7 @@
         android:layout_height="wrap_content"
         android:text="Submit"
         android:id="@+id/submit_subcategory_button"
-        android:layout_below="@+id/category_ListView"
+        android:layout_below="@+id/subcategory_ListView"
         android:layout_alignParentRight="true"/>
 
 </RelativeLayout>
