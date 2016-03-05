@@ -7,12 +7,9 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.TextView;
-
 import java.util.List;
-
 import uta.edu.tutorme.R;
 import uta.edu.tutorme.models.Category;
-import uta.edu.tutorme.utils.DisplayMessage;
 
 /**
  * Created by ananda on 2/23/16.
