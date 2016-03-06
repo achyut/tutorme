@@ -13,7 +13,6 @@ import android.widget.EditText;
 import uta.edu.tutorme.R;
 
 
-
 public class AddNewAdvActivity extends AppCompatActivity {
     public static final String TEXT = "text";
 
