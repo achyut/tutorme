@@ -43,31 +43,31 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/edit_shortdes"
                 android:layout_gravity="center_horizontal" />
-             <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="33dp"
-            android:orientation="horizontal"
-            android:weightSum="1">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="33dp"
+                android:orientation="horizontal"
+                android:weightSum="1">
 
 
-                 <TextView
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Catagory"
-                android:id="@+id/txt_catagory"
-                     android:layout_weight="0.26" />
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Catagory"
+                    android:id="@+id/txt_catagory"
+                    android:layout_weight="0.26" />
 
-                 <TextView
-                     android:layout_width="33dp"
-                     android:layout_height="wrap_content"
-                     android:textAppearance="?android:attr/textAppearanceMedium"
-                     android:text="Sub Catagory"
-                     android:id="@+id/txt_SubCatagory"
-                     android:layout_weight="0.56" />
+                <TextView
+                    android:layout_width="33dp"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Sub Catagory"
+                    android:id="@+id/txt_SubCatagory"
+                    android:layout_weight="0.56" />
 
-             </LinearLayout>
-             <LinearLayout
+            </LinearLayout>
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:orientation="horizontal"
@@ -83,15 +83,15 @@
                     android:layout_weight="0.45" />
 
 
-                 <TextView
-                     android:layout_width="50dp"
-                     android:layout_height="match_parent"
-                     android:textAppearance="?android:attr/textAppearanceMedium"
-                     android:text="Pinao"
-                     android:id="@+id/txt_pinao"
-                     android:layout_weight="0.56" />
+                <TextView
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Pinao"
+                    android:id="@+id/txt_pinao"
+                    android:layout_weight="0.56" />
 
-             </LinearLayout>
+            </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
@@ -145,8 +145,13 @@
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:id="@+id/edit_enddate"
+
                     android:layout_gravity="center_horizontal"
                     android:layout_weight="0.27" />
+
+                android:layout_weight="0.76"
+                android:hint="@string/end_date"/>
+
 
             </LinearLayout>
             <LinearLayout
@@ -170,6 +175,17 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_weight="0.22" />
 
+
+                android:id="@+id/edit_starttime"
+                android:layout_weight="0.89"
+                android:hint="@string/start_time" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
@@ -183,6 +199,11 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_weight="0.27" />
 
+                android:id="@+id/edit_endtime"
+                android:layout_weight="0.76"
+                android:hint="@string/end_time"/>
+
+
             </LinearLayout>
 
             <TextView
@@ -191,6 +212,8 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Long description"
                 android:id="@+id/txt_longdes" />
+
+
 
             <EditText
                 android:layout_width="match_parent"
@@ -213,6 +236,7 @@
                 android:inputType="textPostalAddress"
                 android:ems="10"
                 android:id="@+id/edit_address" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -284,15 +308,14 @@
                 </RadioGroup>
 
             </LinearLayout>
-
-
-
-            <Button
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/fab1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="submit"
-                android:id="@+id/btn_submit"
-                android:layout_gravity="center_horizontal" />
+                android:layout_gravity="right"
+                android:layout_margin="@dimen/fab_margin"
+                android:src="@drawable/ic_send_icon" />
+
 
         </LinearLayout>
 
