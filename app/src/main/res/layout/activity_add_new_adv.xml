@@ -164,7 +164,7 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/edit_enddate"
                     android:layout_weight="0.76"
-                    android:hint="@string/end_date" />/>
+                    android:hint="@string/end_date"/>
 
             </LinearLayout>
             <LinearLayout
@@ -185,8 +185,9 @@
                 <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/editstarttime"
-                    android:layout_weight="0.77" />
+                    android:id="@+id/edit_starttime"
+                    android:layout_weight="0.89"
+                    android:hint="@string/start_time" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -205,7 +206,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/edit_endtime"
-                    android:layout_weight="0.73" />
+                    android:layout_weight="0.76"
+                    android:hint="@string/end_time"/>
 
             </LinearLayout>
 
