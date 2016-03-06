@@ -16,7 +16,7 @@ public class AddNewAdvActivity extends AppCompatActivity {
     public static final String TEXT = "text";
 
     EditText mText;
-    FloatingActionButton fab;
+    FloatingActionButton fabSubmit;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,9 +24,9 @@ public class AddNewAdvActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.hide();
-        fab.setOnClickListener(new View.OnClickListener() {
+        fabSubmit = (FloatingActionButton) findViewById(R.id.fab);
+        fabSubmit.hide();
+        fabSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 sendPost();

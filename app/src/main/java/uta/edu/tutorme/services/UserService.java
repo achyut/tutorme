@@ -14,7 +14,7 @@ public class UserService extends GenericSerciveImpl<Integer,User,UserRepository>
 
     public String encryptPassword(String password) {
         return password;
-        //return "encryptedpassword";
+
     }
 
     public User login(String email, String password) {
