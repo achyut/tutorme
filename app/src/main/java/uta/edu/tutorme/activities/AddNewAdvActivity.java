@@ -12,12 +12,12 @@ import android.widget.EditText;
 
 import uta.edu.tutorme.R;
 
-<<<<<<< HEAD
-public class AddNewAdvActivity extends AppCompatActivity implements  {
-=======
+
+
+
 public class AddNewAdvActivity extends AppCompatActivity {
     public static final String TEXT = "text";
->>>>>>> 8de882b95ca3a957bb4fb8da737fc9d4df39f6c8
+
 
     EditText mText;
     FloatingActionButton fab;
