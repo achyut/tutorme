@@ -1,7 +1,6 @@
 package uta.edu.tutorme.models;
 
 import com.orm.SugarRecord;
-import com.orm.dsl.Table;
 
 import java.util.List;
 
@@ -20,7 +19,8 @@ public class User extends SugarRecord{
     List<Category> categories;
     List<SubCategory> subCategories;
 
-    public User() {
+    public User()
+    {
     }
 
     public User(String name, String email, String phone, String address, String password, String usertype) {

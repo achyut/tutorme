@@ -8,11 +8,11 @@ import uta.edu.tutorme.models.User;
 /**
  * Created by ananda on 2/18/16.
  */
-public class UserRepository extends MapRepositoryImpl<Integer,User> {
+public class UserRepository extends MapRepositoryImpl<Long,User> {
 
 
     @Override
-    public void save(Integer id, User user) {
+    public void save(Long id, User user) {
         user.save();
     }
 
