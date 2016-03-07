@@ -19,7 +19,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 import uta.edu.tutorme.R;
+import uta.edu.tutorme.models.User;
 import uta.edu.tutorme.utils.DisplayMessage;
+import uta.edu.tutorme.utils.SharedPrefUtils;
 import uta.edu.tutorme.utils.Urls;
 import uta.edu.tutorme.utils.Validator;
 import uta.edu.tutorme.volly.MyJsonObjectRequest;
@@ -68,13 +70,26 @@ public class LoginActivity extends AppCompatActivity implements Response.Listene
     public void onErrorResponse(VolleyError error) {
         NetworkResponse response = error.networkResponse;
 
-        if(response.statusCode == 401){
+        if(response!=null && response.statusCode == 401){
             DisplayMessage.displayToast(getApplicationContext(), "Invalid login credentials");
         }
         else{
-            DisplayMessage.displayToast(getApplicationContext(), "OOPS!! Some error occured " + response.statusCode);
+            DisplayMessage.displayToast(getApplicationContext(), "OOPS!! Some error occured ");
         }
 
+    }
+
+    private void setUserInSession(JSONObject response) throws JSONException {
+        int id = response.getInt("id");
+        String name = response.getString("name");
+        String email = response.getString("email");
+        String usertype = response.getString("usertype");
+        User user = new User();
+        user.setId(id);
+        user.setEmail(email);
+        user.setName(name);
+        user.setUsertype(usertype);
+        SharedPrefUtils.storeUserInsharedPref(getApplicationContext(), user);
     }
 
     @Override
@@ -82,9 +97,9 @@ public class LoginActivity extends AppCompatActivity implements Response.Listene
 
         try {
             if(!response.getBoolean("error")){
-
+                setUserInSession(response);
                 DisplayMessage.displayToast(getApplicationContext(), "Logging in");
-                Intent cat = new Intent(getApplicationContext(),CategoryActivity.class);
+                Intent cat = new Intent(getApplicationContext(),HomepageActivity.class);
                 startActivity(cat);
             }
             else{
@@ -93,18 +108,6 @@ public class LoginActivity extends AppCompatActivity implements Response.Listene
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
-
-        //User user = service.login(email,pass);
-        /*if(user!=null){
-            // show another activity
-            SharedPrefUtils.storeUserInsharedPref(getApplicationContext(),user);
-
-        }
-        else{
-
-        }*/
-
     }
 
     private JSONObject getLoginRequestObject(String email,String pass){
