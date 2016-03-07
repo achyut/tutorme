@@ -8,10 +8,14 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+
+import uta.edu.tutorme.adapters.PostCardAdapter;
 import uta.edu.tutorme.models.Post;
 import android.widget.TextView;
 
@@ -22,7 +26,11 @@ import uta.edu.tutorme.utils.SharedPrefUtils;
 
 public class HomepageActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
     User user;
+    PostCardAdapter adapter;
+    RecyclerView list;
+
     private void doOpenCreateNewAdv(){
         Intent intent = new Intent(this,AddNewAdvActivity.class);
         startActivity(intent);
@@ -62,6 +70,14 @@ public class HomepageActivity extends AppCompatActivity
         //email.setText(user.getEmail());
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        LinearLayoutManager lm = new LinearLayoutManager(this);
+        adapter = new PostCardAdapter();
+
+        list = (RecyclerView) findViewById(R.id.list);
+        list.setHasFixedSize(true);
+        list.setLayoutManager(lm);
+        list.setAdapter(adapter);
     }
 
 
