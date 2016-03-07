@@ -18,11 +18,6 @@ public class SubCategory extends SugarRecord {
         this.selected = selected;
     }
 
-/*
-    public SubCategory() {
-    }
-*/
-
     public SubCategory(String name, boolean selected, Category category) {
         this.name = name;
         this.selected = selected;

@@ -19,6 +19,7 @@ import com.google.common.base.Predicates;
 
 import uta.edu.tutorme.R;
 import uta.edu.tutorme.models.User;
+import uta.edu.tutorme.utils.DisplayMessage;
 import uta.edu.tutorme.utils.SharedPrefUtils;
 
 public class HomepageActivity extends AppCompatActivity
@@ -34,6 +35,7 @@ public class HomepageActivity extends AppCompatActivity
         setContentView(R.layout.activity_homepage);
         //SharedPrefUtils.checkIfLoggedIn(getApplicationContext());
         user = SharedPrefUtils.getUserFromSession(getApplicationContext());
+        DisplayMessage.displayToast(getApplicationContext(), user.getCategories().toString());
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -53,9 +55,11 @@ public class HomepageActivity extends AppCompatActivity
         drawer.setDrawerListener(toggle);
         toggle.syncState();
         TextView username = (TextView) findViewById(R.id.drawer_username);
-        username.setText(user.getName());
+
+        //username.setText(user.getName());
         TextView email = (TextView) findViewById(R.id.drawer_username);
-        email.setText(user.getEmail());
+
+        //email.setText(user.getEmail());
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
     }

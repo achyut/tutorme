@@ -5,6 +5,7 @@ package uta.edu.tutorme.activities;
 import uta.edu.tutorme.R;
 import uta.edu.tutorme.adapters.CategoryAdapter;
 import uta.edu.tutorme.models.Category;
+import uta.edu.tutorme.models.User;
 import uta.edu.tutorme.repositories.CategoryRepository;
 import uta.edu.tutorme.services.CategoryService;
 import uta.edu.tutorme.utils.DisplayMessage;
@@ -48,27 +49,28 @@ public class CategoryActivity extends Activity {
 
     }
 
+    private void setCategoriesForUser(List<Category> categories){
+        User user = SharedPrefUtils.getUserFromSession(getApplicationContext());
+        user.setCategories(categories);
+        user.save();
+    }
+
     private void nextButtonClick() {
         Button nextButton = (Button) findViewById(R.id.next_category_button);
         nextButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 categoryList = customAdapter.getCategoryList();
-                ArrayList<String> categoryNames = new ArrayList<>();
+                ArrayList<Category> categoryNames = new ArrayList<>();
 
                 for(int i=0;i<categoryList.size();i++){
                     Category category = categoryList.get(i);
                     if(category.isSelected()){
-                        categoryNames.add(category.getName());
+                        categoryNames.add(category);
                     }
                 }
                 if(categoryNames.size()>0){
-
-                    // Intent subCategoryIntent = new Intent(getApplicationContext(),SubcategoryActivity.class);
-                   // subCategoryIntent.putStringArrayListExtra("categoryNames", categoryNames);
-                   // startActivity(subCategoryIntent);
-
-
+                    setCategoriesForUser(categoryNames);
                     Intent homepage = new Intent(getApplicationContext(),HomepageActivity.class);
                     startActivity(homepage);
                 }

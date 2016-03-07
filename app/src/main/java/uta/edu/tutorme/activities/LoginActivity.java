@@ -64,7 +64,6 @@ public class LoginActivity extends AppCompatActivity {
                 // show another activity
                 SharedPrefUtils.storeUserInsharedPref(getApplicationContext(),user);
                 DisplayMessage.displayToast(getApplicationContext(), "Logging in");
-                SharedPrefUtils.checkIfLoggedIn(getApplicationContext());
                 Intent cat = new Intent(getApplicationContext(),CategoryActivity.class);
                 startActivity(cat);
             }

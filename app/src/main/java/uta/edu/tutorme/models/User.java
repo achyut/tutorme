@@ -3,6 +3,8 @@ package uta.edu.tutorme.models;
 import com.orm.SugarRecord;
 import com.orm.dsl.Table;
 
+import java.util.List;
+
 /**
  * Created by ananda on 2/18/16.
  */
@@ -15,6 +17,8 @@ public class User extends SugarRecord{
     String address;
     String password;
     String usertype;
+    List<Category> categories;
+    List<SubCategory> subCategories;
 
     public User() {
     }
@@ -82,5 +86,21 @@ public class User extends SugarRecord{
 
     public void setUsertype(String usertype) {
         this.usertype = usertype;
+    }
+
+    public List<Category> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(List<Category> categories) {
+        this.categories = categories;
+    }
+
+    public List<SubCategory> getSubCategories() {
+        return subCategories;
+    }
+
+    public void setSubCategories(List<SubCategory> subCategories) {
+        this.subCategories = subCategories;
     }
 }
