@@ -12,6 +12,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import uta.edu.tutorme.models.Post;
 import android.widget.TextView;
 
 import uta.edu.tutorme.R;
@@ -25,6 +26,10 @@ public class HomepageActivity extends AppCompatActivity
     private void doOpenCreateNewAdv(){
         Intent intent = new Intent(this,AddNewAdvActivity.class);
         startActivity(intent);
+
+       Intent i = getIntent();
+        Post postobj= (Post)i.getSerializableExtra("postObj");
+
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -118,4 +123,5 @@ public class HomepageActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
 }

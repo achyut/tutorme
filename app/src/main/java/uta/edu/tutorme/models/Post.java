@@ -1,14 +1,7 @@
 package uta.edu.tutorme.models;
-
+import java.io.Serializable;
 import java.util.Date;
-
-/**
- * Created by Aishwarya on 3/1/2016.
- */
-public class Post{
-
-
-
+public class Post implements Serializable{
     private int id;
     private String title;
     private String shortdesc;
