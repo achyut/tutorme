@@ -1,38 +1,37 @@
 package uta.edu.tutorme.models;
 
-import com.orm.SugarRecord;
-
 import java.util.Date;
 
 /**
  * Created by Aishwarya on 3/1/2016.
  */
-public class Post extends SugarRecord{
-    private Long id;
-    private String title;
-    private String shortDesc;
-    private String longDesc;
-    private Category catg;
-    private SubCategory subCatg;
-    private double price;
-    private Date startDate;
-    private Date endDate;
-    private Date startTime;
-    private Date endTime;
-    private String address;
-    private String phoneNumber;
-    private String email;
-    private String prefContact;
-    private User u;
+public class Post{
 
-    @Override
-    public  Long getId()
-    {
+
+
+    private int id;
+    private String title;
+    private String shortdesc;
+    private String longdesc;
+    private double price;
+    private double rating;
+    private Date startdate;
+    private Date enddate;
+    private Date starttime;
+    private Date endtime;
+    private String address;
+    private String contact;
+    private String email;
+    private String preferedcontact;
+    private Category category;
+    private SubCategory subcategory;
+    private User created_by;
+
+    public int getId() {
         return id;
     }
 
-    @Override
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -44,36 +43,20 @@ public class Post extends SugarRecord{
         this.title = title;
     }
 
-    public String getShortDesc() {
-        return shortDesc;
+    public String getShortdesc() {
+        return shortdesc;
     }
 
-    public void setShortDesc(String shortDesc) {
-        this.shortDesc = shortDesc;
+    public void setShortdesc(String shortdesc) {
+        this.shortdesc = shortdesc;
     }
 
-    public String getLongDesc() {
-        return longDesc;
+    public String getLongdesc() {
+        return longdesc;
     }
 
-    public void setLongDesc(String longDesc) {
-        this.longDesc = longDesc;
-    }
-
-    public Category getCatg() {
-        return catg;
-    }
-
-    public void setCatg(Category catg) {
-        this.catg = catg;
-    }
-
-    public SubCategory getSubCatg() {
-        return subCatg;
-    }
-
-    public void setSubCatg(SubCategory subCatg) {
-        this.subCatg = subCatg;
+    public void setLongdesc(String longdesc) {
+        this.longdesc = longdesc;
     }
 
     public double getPrice() {
@@ -84,36 +67,44 @@ public class Post extends SugarRecord{
         this.price = price;
     }
 
-    public Date getStartDate() {
-        return startDate;
+    public double getRating() {
+        return rating;
     }
 
-    public void setStartDate(Date startDate) {
-        this.startDate = startDate;
+    public void setRating(double rating) {
+        this.rating = rating;
     }
 
-    public Date getEndDate() {
-        return endDate;
+    public Date getStartdate() {
+        return startdate;
     }
 
-    public void setEndDate(Date endDate) {
-        this.endDate = endDate;
+    public void setStartdate(Date startdate) {
+        this.startdate = startdate;
     }
 
-    public Date getStartTime() {
-        return startTime;
+    public Date getEnddate() {
+        return enddate;
     }
 
-    public void setStartTime(Date startTime) {
-        this.startTime = startTime;
+    public void setEnddate(Date enddate) {
+        this.enddate = enddate;
     }
 
-    public Date getEndTime() {
-        return endTime;
+    public Date getStarttime() {
+        return starttime;
     }
 
-    public void setEndTime(Date endTime) {
-        this.endTime = endTime;
+    public void setStarttime(Date starttime) {
+        this.starttime = starttime;
+    }
+
+    public Date getEndtime() {
+        return endtime;
+    }
+
+    public void setEndtime(Date endtime) {
+        this.endtime = endtime;
     }
 
     public String getAddress() {
@@ -124,12 +115,12 @@ public class Post extends SugarRecord{
         this.address = address;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
+    public String getContact() {
+        return contact;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setContact(String contact) {
+        this.contact = contact;
     }
 
     public String getEmail() {
@@ -140,19 +131,35 @@ public class Post extends SugarRecord{
         this.email = email;
     }
 
-    public String getPrefContact() {
-        return prefContact;
+    public String getPreferedcontact() {
+        return preferedcontact;
     }
 
-    public void setPrefContact(String prefContact) {
-        this.prefContact = prefContact;
+    public void setPreferedcontact(String preferedcontact) {
+        this.preferedcontact = preferedcontact;
     }
 
-    public User getU() {
-        return u;
+    public Category getCategory() {
+        return category;
     }
 
-    public void setU(User u) {
-        this.u = u;
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public SubCategory getSubcategory() {
+        return subcategory;
+    }
+
+    public void setSubcategory(SubCategory subcategory) {
+        this.subcategory = subcategory;
+    }
+
+    public User getCreated_by() {
+        return created_by;
+    }
+
+    public void setCreated_by(User created_by) {
+        this.created_by = created_by;
     }
 }

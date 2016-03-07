@@ -1,13 +1,11 @@
 package uta.edu.tutorme.models;
 
-import com.orm.SugarRecord;
-
 import java.util.List;
 
 /**
  * Created by anmolb77 on 2/20/2016.
  */
-public class Category extends SugarRecord {
+public class Category {
     Long id;
     String name;
     boolean selected;
@@ -43,12 +41,12 @@ public class Category extends SugarRecord {
     }
 
     public List<SubCategory> getSubCategories() {
-        String catid = String.valueOf(getId());
-        return SubCategory.find(SubCategory.class, "category = ?",catid);
+        return subCategories;
     }
 
     public void setSubCategories(List<SubCategory> subCategories) {
-        this.subCategories = subCategories;}
+        this.subCategories = subCategories;
+    }
 
     @Override
     public String toString() {

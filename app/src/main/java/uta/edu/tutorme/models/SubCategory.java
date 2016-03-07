@@ -1,11 +1,9 @@
 package uta.edu.tutorme.models;
 
-import com.orm.SugarRecord;
-
 /**
  * Created by ananda on 2/19/16.
  */
-public class SubCategory extends SugarRecord {
+public class SubCategory {
     Long id;
     String name;
     boolean selected;

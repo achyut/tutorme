@@ -31,7 +31,7 @@ public class SharedPrefUtils {
     public static User getUserFromSession(Context activity){
         SharedPreferences settings = activity.getSharedPreferences(PREFS_NAME, 0);
         Long id = settings.getLong("userid",-1);
-        User usr = User.findById(User.class,id);
+        User usr = new User();
 
         /*String username = settings.getString("username", null);
         String email = settings.getString("email",null);

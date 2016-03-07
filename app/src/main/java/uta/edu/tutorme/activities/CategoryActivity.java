@@ -2,16 +2,6 @@
 package uta.edu.tutorme.activities;
 
 
-import uta.edu.tutorme.R;
-import uta.edu.tutorme.adapters.CategoryAdapter;
-import uta.edu.tutorme.models.Category;
-import uta.edu.tutorme.models.User;
-import uta.edu.tutorme.repositories.CategoryRepository;
-import uta.edu.tutorme.services.CategoryService;
-import uta.edu.tutorme.utils.DisplayMessage;
-import uta.edu.tutorme.utils.SharedPrefUtils;
-
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -23,10 +13,16 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
 
+import uta.edu.tutorme.R;
+import uta.edu.tutorme.adapters.CategoryAdapter;
+import uta.edu.tutorme.models.Category;
+import uta.edu.tutorme.models.User;
+import uta.edu.tutorme.utils.DisplayMessage;
+import uta.edu.tutorme.utils.SharedPrefUtils;
+
 public class CategoryActivity extends Activity {
 
     CategoryAdapter customAdapter = null;
-    CategoryService service;
     List<Category> categoryList = new ArrayList<Category>();
 
     @Override
@@ -34,14 +30,11 @@ public class CategoryActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category);
         setTitle("Category");
-        CategoryRepository repository = new CategoryRepository();
-        service = new CategoryService(repository);
         displayCategoryListView();
         nextButtonClick();
     }
 
     private void displayCategoryListView() {
-        categoryList = service.findAll();
         customAdapter = new CategoryAdapter(this,
                 R.layout.activity_populate_category, categoryList);
         ListView listView = (ListView) findViewById(R.id.category_ListView);
@@ -52,7 +45,7 @@ public class CategoryActivity extends Activity {
     private void setCategoriesForUser(List<Category> categories){
         User user = SharedPrefUtils.getUserFromSession(getApplicationContext());
         user.setCategories(categories);
-        user.save();
+        // write code to store user categories
     }
 
     private void nextButtonClick() {

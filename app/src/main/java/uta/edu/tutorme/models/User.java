@@ -1,23 +1,22 @@
 package uta.edu.tutorme.models;
 
-import com.orm.SugarRecord;
-
 import java.util.List;
 
 /**
  * Created by ananda on 2/18/16.
  */
 
-public class User extends SugarRecord{
-    Long id;
-    String name;
-    String email;
-    String phone;
-    String address;
-    String password;
-    String usertype;
-    List<Category> categories;
-    List<SubCategory> subCategories;
+public class User{
+
+    private int id;
+    private String name;
+    private String email;
+    private String phone;
+    private String address;
+    private String password;
+    private String usertype;
+    private List<Category> categories;
+    private List<SubCategory> subCategories;
 
     public User()
     {
@@ -32,11 +31,11 @@ public class User extends SugarRecord{
         this.usertype = usertype;
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
