@@ -35,9 +35,7 @@ public class HomepageActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homepage);
-        //SharedPrefUtils.checkIfLoggedIn(getApplicationContext());
         user = SharedPrefUtils.getUserFromSession(getApplicationContext());
-        DisplayMessage.displayToast(getApplicationContext(), user.getCategories().toString());
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -65,6 +63,7 @@ public class HomepageActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
     }
+
 
     @Override
     public void onBackPressed() {
