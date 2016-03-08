@@ -1,26 +1,8 @@
 package uta.edu.tutorme.models;
-
-<<<<<<< HEAD
-import com.orm.SugarRecord;
-
 import java.io.Serializable;
-=======
->>>>>>> c229f4b30a147d63ed3737d556d0bb0da417d494
 import java.util.Date;
-
-/**
- * Created by Aishwarya on 3/1/2016.
- */
-<<<<<<< HEAD
-public class Post extends SugarRecord implements Serializable{
-    private Long id;
-=======
-public class Post{
-
-
-
+public class Post implements Serializable{
     private int id;
->>>>>>> c229f4b30a147d63ed3737d556d0bb0da417d494
     private String title;
     private String shortdesc;
     private String longdesc;
