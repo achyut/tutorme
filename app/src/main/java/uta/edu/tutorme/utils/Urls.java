@@ -12,6 +12,7 @@ public class Urls {
     public static String FORGOT_PASSWORD_URL = BASE_URL+"/forgot";
     private static String CHANGE_PASSWORD_URL = BASE_URL+"/changepassword";
     private static String USER_POSTS = BASE_URL+"/users/post";
+    public static String ALL_CATEGORIES = BASE_URL+"/allcategories";
     public static String CATEGORIES = BASE_URL+"/categories";
     public static String SUBCATEGORIES = BASE_URL+"/subcategories";
     public static String POSTS = BASE_URL+"/post";

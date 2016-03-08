@@ -30,6 +30,7 @@ import java.util.List;
 import java.util.Map;
 
 import uta.edu.tutorme.R;
+import uta.edu.tutorme.models.SubCategory;
 import uta.edu.tutorme.models.User;
 import uta.edu.tutorme.utils.DisplayMessage;
 import uta.edu.tutorme.utils.SharedPrefUtils;
@@ -74,6 +75,8 @@ public class AddNewAdvActivity extends AppCompatActivity implements Response.Lis
     private int day;
 
 
+    Map<String,List<SubCategory>> categories = new HashMap<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -102,11 +105,13 @@ public class AddNewAdvActivity extends AppCompatActivity implements Response.Lis
         addListenerOnSpinner2ItemSelection();
     }
 
+    public void setDataInCategories(){
+
+    }
 
     // add items into spinner dynamically
     public void addItemsOnSpinner1() {
 
-        spinner1 = (Spinner) findViewById(R.id.spinner1);
         List<String> list = new ArrayList<String>();
         list.add("list 1");
         list.add("list 2");
@@ -119,7 +124,6 @@ public class AddNewAdvActivity extends AppCompatActivity implements Response.Lis
 
     // add items into spinner dynamically
     public void addItemsOnSpinner2() {
-        spinner2 = (Spinner) findViewById(R.id.spinner2);
         List<String> list = new ArrayList<String>();
         list.add("sp list 1");
         list.add("sp list 2");
@@ -174,7 +178,8 @@ public class AddNewAdvActivity extends AppCompatActivity implements Response.Lis
         this.startTime=(EditText)findViewById(R.id.edit_starttime);
         this.phoneNumber=(EditText)findViewById(R.id.edit_phonenumber);
         this.email=(EditText)findViewById(R.id.edit_Emailaddress);
-
+        this.spinner1 = (Spinner) findViewById(R.id.spinner1);
+        this.spinner2 = (Spinner) findViewById(R.id.spinner2);
     }
     public void onErrorResponse(VolleyError error) {
         NetworkResponse response = error.networkResponse;
