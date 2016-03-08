@@ -21,15 +21,20 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
 import uta.edu.tutorme.R;
+import uta.edu.tutorme.models.Category;
+import uta.edu.tutorme.models.PostCard;
 import uta.edu.tutorme.models.SubCategory;
 import uta.edu.tutorme.models.User;
 import uta.edu.tutorme.utils.DisplayMessage;
@@ -75,7 +80,7 @@ public class AddNewAdvActivity extends AppCompatActivity implements Response.Lis
     private int day;
 
 
-    Map<String,List<SubCategory>> categories = new HashMap<>();
+    Map<Integer,Category> categoriesMap = new HashMap<Integer,Category>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,23 +104,86 @@ public class AddNewAdvActivity extends AppCompatActivity implements Response.Lis
         month = calendar.get(Calendar.MONTH);
         day = calendar.get(Calendar.DAY_OF_MONTH);
 
-        addItemsOnSpinner1();
-        addItemsOnSpinner2();
+        mQueue = VolleyRequestQueue.getInstance(this.getApplicationContext())
+                .getRequestQueue();
+        setDataInCategories();
         addListenerOnSpinner1ItemSelection();
-        addListenerOnSpinner2ItemSelection();
     }
 
     public void setDataInCategories(){
+        progressDialog.setMessage("Loading Category data.");
+        progressDialog.show();
+        MyJsonObjectRequest postRequest = new MyJsonObjectRequest(Request.Method
+                .GET, Urls.ALL_CATEGORIES,
+                null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                try {
+                    JSONArray arr = response.getJSONArray("result");
 
+                    if(arr.length()>0) {
+
+                        for (int i = 0; i < arr.length(); i++) {
+                            JSONObject obj = arr.getJSONObject(i);
+                            int id = obj.getInt("id");
+                            String catname = obj.getString("name");
+
+                            JSONArray subcatarr = obj.getJSONArray("subcategory");
+                            List<SubCategory> subCategories = new ArrayList<SubCategory>();
+                            if(subcatarr.length()>0){
+                                for(int j=0;j<subcatarr.length();j++){
+                                    JSONObject subcatobj = subcatarr.getJSONObject(j);
+                                    int subcatid = subcatobj.getInt("id");
+                                    String subcatname = subcatobj.getString("name");
+                                    SubCategory subcat = new SubCategory(subcatid,subcatname);
+                                    subCategories.add(subcat);
+                                }
+                            }
+                            Category cat = new Category(id,catname,subCategories);
+                            categoriesMap.put(i,cat);
+                        }
+                    }
+                    addItemsOnSpinner1();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                progressDialog.hide();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                progressDialog.hide();
+            }
+        });
+
+        postRequest.setTag(REQUEST_TAG);
+        mQueue.add(postRequest);
+    }
+
+
+    public void addListenerOnSpinner1ItemSelection() {
+        spinner1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                addItemsOnSpinner2(position);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
     }
 
     // add items into spinner dynamically
     public void addItemsOnSpinner1() {
 
         List<String> list = new ArrayList<String>();
-        list.add("list 1");
-        list.add("list 2");
-        list.add("list 3");
+        for (Map.Entry<Integer,Category> entry : categoriesMap.entrySet()) {
+            Integer key = entry.getKey();
+            Category cat = entry.getValue();
+            list.add(cat.getName());
+        }
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, list);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -123,46 +191,18 @@ public class AddNewAdvActivity extends AppCompatActivity implements Response.Lis
     }
 
     // add items into spinner dynamically
-    public void addItemsOnSpinner2() {
+    public void addItemsOnSpinner2(int position) {
         List<String> list = new ArrayList<String>();
-        list.add("sp list 1");
-        list.add("sp list 2");
-        list.add("sp list 3");
+        Category cat = categoriesMap.get(position);
+        for(SubCategory subcat:cat.getSubCategories()){
+            list.add(subcat.getName());
+        }
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, list);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner2.setAdapter(dataAdapter);
     }
 
-    public void addListenerOnSpinner1ItemSelection() {
-        spinner1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-    }
-
-    public void addListenerOnSpinner2ItemSelection() {
-        spinner1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-    }
 
 
 
@@ -193,11 +233,6 @@ public class AddNewAdvActivity extends AppCompatActivity implements Response.Lis
 
     }
 
-    protected void onStart() {
-        super.onStart();
-        mQueue = VolleyRequestQueue.getInstance(this.getApplicationContext())
-                .getRequestQueue();
-    }
     protected void onStop() {
         super.onStop();
         if (mQueue != null) {
@@ -225,8 +260,12 @@ public class AddNewAdvActivity extends AppCompatActivity implements Response.Lis
         reqmap.put("shortdesc",shortDesc1);
         reqmap.put("longdesc",longDesc1);
         reqmap.put("price",price1);
-        reqmap.put("category","6");
-        reqmap.put("subcategory","1");
+        int pos1 = spinner1.getSelectedItemPosition();
+        Category cat = categoriesMap.get(pos1);
+        int pos2 = spinner2.getSelectedItemPosition();
+
+        reqmap.put("category",String.valueOf(cat.getId()));
+        reqmap.put("subcategory",String.valueOf(cat.getSubCategories().get(pos2).getId()));
         reqmap.put("startdate",startDate1);
         reqmap.put("enddate",endDate1);
         reqmap.put("starttime",startTime1);
