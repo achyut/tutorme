@@ -1,27 +1,19 @@
 package uta.edu.tutorme.activities;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import uta.edu.tutorme.R;
 import uta.edu.tutorme.adapters.SubCategoryAdapter;
 import uta.edu.tutorme.models.SubCategory;
-import uta.edu.tutorme.repositories.SubCategoryRepository;
 import uta.edu.tutorme.utils.SharedPrefUtils;
 
 public class SubcategoryActivity extends Activity {
@@ -109,18 +101,24 @@ public class SubcategoryActivity extends Activity {
 
         }*/
 
-        SubCategoryRepository repo = new SubCategoryRepository();
-        List<SubCategory> subCategories = repo.findAll();
+
+        /*List<SubCategory> subCategories = repo.findAll();
         Iterator<SubCategory> iterator = subCategories.iterator();
         while (iterator.hasNext()){
             Log.i("Subcategory ",subCategories.toString());
+        }*/
+        
+        List<SubCategory> subCategoryList = new ArrayList<SubCategory>();
+
+
+        if(subCategoryList.isEmpty()){
+            Log.i("SubCategory List :","is Empty");
+        }else{
+            Log.i("SubCategory List :","is Not Empty");
         }
 
-        // List<SubCategory> subCategoryList = new ArrayList<>(repo.findAll());
-
-
         customAdapter = new SubCategoryAdapter(this,
-                R.layout.activity_populate_sub_category, subCategories);
+                R.layout.activity_populate_sub_category, subCategoryList);
         ListView listView = (ListView) findViewById(R.id.category_ListView);
         listView.setAdapter(customAdapter);
     }

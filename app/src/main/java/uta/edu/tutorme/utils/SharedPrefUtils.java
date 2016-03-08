@@ -25,25 +25,22 @@ public class SharedPrefUtils {
             Intent i = new Intent(activity,LoginActivity.class);
             activity.startActivity(i);
         }
-        else{
-            Intent categoryactivity = new Intent(activity,CategoryActivity.class);
-            categoryactivity.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            activity.startActivity(categoryactivity);
-        }
     }
 
 
     public static User getUserFromSession(Context activity){
         SharedPreferences settings = activity.getSharedPreferences(PREFS_NAME, 0);
-        User usr = new User();
         Long id = settings.getLong("userid",-1);
-        String username = settings.getString("username", null);
+        User usr = new User();
+
+        /*String username = settings.getString("username", null);
         String email = settings.getString("email",null);
         String usertype = settings.getString("usertype",null);
         usr.setId(id);
         usr.setName(username);
         usr.setEmail(email);
         usr.setUsertype(usertype);
+        */
         return usr;
     }
 
