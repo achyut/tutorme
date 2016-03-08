@@ -49,68 +49,8 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/edit_shortdes"
                 android:layout_gravity="center_horizontal" />
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="33dp"
-                android:orientation="horizontal"
-                android:weightSum="1">
 
-
-                <TextView
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="Catagory"
-                    android:id="@+id/txt_catagory"
-                    android:layout_weight="0.26" />
-
-                <TextView
-                    android:layout_width="33dp"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="Sub Catagory"
-                    android:id="@+id/txt_SubCatagory"
-                    android:layout_weight="0.56" />
-
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:orientation="horizontal"
-                android:weightSum="1">
-
-
-                <EditText
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/editText"
-                    android:layout_weight="0.55" />
-
-                <EditText
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/editText2"
-                    android:layout_weight="0.47" />
-
-                <TextView
-                    android:layout_width="50dp"
-                    android:layout_height="match_parent"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text=""
-                    android:id="@+id/txt_music"
-                    android:layout_weight="0.45" />
-
-
-                <TextView
-                    android:layout_width="50dp"
-                    android:layout_height="match_parent"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text=""
-                    android:id="@+id/txt_pinao"
-                    android:layout_weight="0.56" />
-
-            </LinearLayout>
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:orientation="horizontal"
@@ -118,110 +58,132 @@
 
 
                 <TextView
-                    android:layout_width="64dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="40dp"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="Price:"
-                    android:id="@+id/txt_price" />
+                    android:id="@+id/txt_price"
+                    android:layout_alignParentTop="true"/>
 
                 <EditText
-                    android:layout_width="wrap_content"
+                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"
+                    android:ems="10"
                     android:id="@+id/edit_price"
-                    android:layout_weight="0.28" />
+                    android:layout_weight="1"
+                    android:layout_toRightOf="@+id/txt_price"/>
 
 
-            </LinearLayout>
-            <LinearLayout
+            </RelativeLayout>
+
+
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="45dp"
+                android:layout_height="40dp"
                 android:orientation="horizontal"
                 android:weightSum="1">
 
-
-                <TextView
-                    android:layout_width="50dp"
-                    android:layout_height="30dp"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="Start Date:"
-                    android:id="@+id/txt_Date"
-                    android:layout_weight="0.55" />
-                <EditText
-                    android:layout_width="50dp"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/edit_Startdate"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_weight="0.22" />
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="30dp"
+                    android:layout_height="40dp"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="End Date:"
-                    android:id="@+id/txt_Enddate" />
+                    android:text="Start date:"
+                    android:id="@+id/txt_startdate"
+                    android:layout_alignParentTop="true" />
+
                 <EditText
-                    android:layout_width="50dp"
+                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/edit_enddate"
-
-                    android:layout_gravity="center_horizontal"
-                    android:layout_weight="0.27" />
-
-                android:layout_weight="0.76"
-                android:hint="@string/end_date"/>
+                    android:inputType="date"
+                    android:ems="10"
+                    android:layout_toRightOf="@+id/txt_startdate"
+                    android:id="@+id/edit_startdate"
+                    android:layout_weight="0.82" />
 
 
-            </LinearLayout>
-            <LinearLayout
+            </RelativeLayout>
+
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="45dp"
+                android:layout_height="40dp"
                 android:orientation="horizontal"
                 android:weightSum="1">
 
 
                 <TextView
-                    android:layout_width="50dp"
-                    android:layout_height="30dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="End date:"
+                    android:id="@+id/txt_enddate"
+                    android:layout_alignParentTop="true" />
+
+                <EditText
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="date"
+                    android:ems="10"
+                    android:layout_toRightOf="@+id/txt_enddate"
+                    android:id="@+id/edit_enddate"
+                    android:layout_weight="0.82" />
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="Start Time:"
-                    android:id="@+id/txt_StartTime"
-                    android:layout_weight="0.41" />
+                    android:id="@+id/txt_starttime"
+                    android:layout_alignParentTop="true" />
+
                 <EditText
-                    android:layout_width="105dp"
+                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/edit_StartTime"
-                    android:layout_weight="0.02" />
+                    android:inputType="time"
+                    android:ems="10"
+                    android:layout_toRightOf="@+id/txt_starttime"
+                    android:id="@+id/edit_starttime"
+                    android:layout_weight="0.82" />
 
 
-                android:id="@+id/edit_starttime"
-                android:layout_weight="0.89"
-                android:hint="@string/start_time" />
-            </LinearLayout>
-            <LinearLayout
+            </RelativeLayout>
+
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="45dp"
+                android:layout_height="40dp"
                 android:orientation="horizontal"
                 android:weightSum="1">
 
+
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="30dp"
+                    android:layout_height="40dp"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="End Time:"
-                    android:id="@+id/txt_EndTime" />
+                    android:id="@+id/txt_endtime"
+                    android:layout_alignParentTop="true" />
+
                 <EditText
-                    android:layout_width="50dp"
+                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/edit_endTime"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_weight="0.27" />
+                    android:inputType="time"
+                    android:ems="10"
+                    android:layout_toRightOf="@+id/txt_endtime"
+                    android:id="@+id/edit_endtime"
+                    android:layout_weight="0.82" />
 
-                android:id="@+id/edit_endtime"
-                android:layout_weight="0.76"
-                android:hint="@string/end_time"/>
-
-
-            </LinearLayout>
+            </RelativeLayout>
 
             <TextView
                 android:layout_width="wrap_content"

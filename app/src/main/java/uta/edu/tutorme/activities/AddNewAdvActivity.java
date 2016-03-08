@@ -79,18 +79,18 @@ public class AddNewAdvActivity extends AppCompatActivity implements Response.Lis
         this.shortDesc = (EditText)findViewById(R.id.edit_shortdes);
         this.longDesc = (EditText)findViewById(R.id.edit_longdes);
         this.price = (EditText)findViewById(R.id.edit_price);
-        this.startDate = (EditText)findViewById(R.id.edit_Startdate);
-        this.endDate = (EditText)findViewById(R.id.edit_endTime);
+        this.startDate = (EditText)findViewById(R.id.edit_startdate);
+        this.endDate = (EditText)findViewById(R.id.edit_enddate);
         this.address=(EditText)findViewById(R.id.edit_address);
-        this.endTime=(EditText)findViewById(R.id.edit_endTime);
-        this.startTime=(EditText)findViewById(R.id.edit_StartTime);
+        this.endTime=(EditText)findViewById(R.id.edit_endtime);
+        this.startTime=(EditText)findViewById(R.id.edit_starttime);
         this.phoneNumber=(EditText)findViewById(R.id.edit_phonenumber);
         this.email=(EditText)findViewById(R.id.edit_Emailaddress);
 
     }
     public void onErrorResponse(VolleyError error) {
         NetworkResponse response = error.networkResponse;
-        progressDialog.hide();
+        //progressDialog.hide();
         if(response!=null && response.statusCode == 400){
             DisplayMessage.displayToast(getApplicationContext(),VollyUtils.getString(response,"message"));
         }
