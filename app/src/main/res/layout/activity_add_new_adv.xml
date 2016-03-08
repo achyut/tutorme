@@ -12,8 +12,6 @@
         android:fillViewport="false">
 
 
-
-
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
@@ -31,13 +29,6 @@
                 android:text="Post Title"
                 android:id="@+id/txt_posttitle" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Short Description"
-                android:id="@+id/txt_shortdes" />
-
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -45,6 +36,13 @@
                 android:layout_alignParentTop="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Short Description"
+                android:id="@+id/txt_shortdes" />
 
             <EditText
                 android:layout_width="match_parent"
@@ -82,11 +80,23 @@
                 android:weightSum="1">
 
 
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/editText"
+                    android:layout_weight="0.55" />
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/editText2"
+                    android:layout_weight="0.47" />
+
                 <TextView
                     android:layout_width="50dp"
                     android:layout_height="match_parent"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="Music"
+                    android:text=""
                     android:id="@+id/txt_music"
                     android:layout_weight="0.45" />
 
@@ -95,7 +105,7 @@
                     android:layout_width="50dp"
                     android:layout_height="match_parent"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="Pinao"
+                    android:text=""
                     android:id="@+id/txt_pinao"
                     android:layout_weight="0.56" />
 
@@ -118,7 +128,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/edit_price"
-                    android:layout_weight="1" />
+                    android:layout_weight="0.28" />
 
 
             </LinearLayout>
@@ -135,7 +145,7 @@
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="Start Date:"
                     android:id="@+id/txt_Date"
-                    android:layout_weight="0.30" />
+                    android:layout_weight="0.55" />
                 <EditText
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
@@ -177,11 +187,10 @@
                     android:id="@+id/txt_StartTime"
                     android:layout_weight="0.41" />
                 <EditText
-                    android:layout_width="50dp"
+                    android:layout_width="105dp"
                     android:layout_height="wrap_content"
                     android:id="@+id/edit_StartTime"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_weight="0.22" />
+                    android:layout_weight="0.02" />
 
 
                 android:id="@+id/edit_starttime"

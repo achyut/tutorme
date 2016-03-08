@@ -10,6 +10,14 @@ public class PostCard {
     private double rating;
     private String shortdesc;
 
+    public PostCard(int id, String title, double price, double rating, String shortdesc) {
+        this.id = id;
+        this.title = title;
+        this.price = price;
+        this.rating = rating;
+        this.shortdesc = shortdesc;
+    }
+
     public int getId() {
         return id;
     }

@@ -27,14 +27,25 @@ public class PostCardAdapter extends RecyclerView.Adapter<PostCardHolder> {
     }
 
     public void removeCard(int index){
-        cards.remove(index);
-        notifyItemRemoved(index);
+        if(!cards.isEmpty()){
+            cards.remove(index);
+            notifyItemRemoved(index);
+        }
+
     }
 
     public void removeCard(PostCard card){
-        int index = cards.indexOf(card);
-        removeCard(index);
+        if(!cards.isEmpty()){
+            int index = cards.indexOf(card);
+            removeCard(index);
+        }
+
     }
+    public void emptyCards(){
+        cards.clear();
+        notifyDataSetChanged();
+    }
+
     @Override
     public PostCardHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.
@@ -46,11 +57,13 @@ public class PostCardAdapter extends RecyclerView.Adapter<PostCardHolder> {
 
     @Override
     public void onBindViewHolder(PostCardHolder holder, int position) {
-
+        PostCard card = cards.get(position);
+        holder.bind(card);
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return cards.size();
     }
+
 }

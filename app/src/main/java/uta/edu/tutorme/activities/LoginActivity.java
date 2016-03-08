@@ -43,7 +43,6 @@ public class LoginActivity extends AppCompatActivity implements Response.Listene
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         initialize();
-
     }
 
     @Override
@@ -99,8 +98,8 @@ public class LoginActivity extends AppCompatActivity implements Response.Listene
             if(!response.getBoolean("error")){
                 setUserInSession(response);
                 DisplayMessage.displayToast(getApplicationContext(), "Logging in");
-                Intent cat = new Intent(getApplicationContext(),HomepageActivity.class);
-                startActivity(cat);
+                Intent i = new Intent(getApplicationContext(),HomepageActivity.class);
+                startActivity(i);
             }
             else{
                 DisplayMessage.displayToast(getApplicationContext(),response.getString("message"));

@@ -1,5 +1,6 @@
 package uta.edu.tutorme.activities;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -16,34 +17,63 @@ import android.view.MenuItem;
 import android.view.View;
 
 import uta.edu.tutorme.adapters.PostCardAdapter;
-import uta.edu.tutorme.models.Post;
+
 import android.widget.TextView;
 
+import com.android.volley.NetworkResponse;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import uta.edu.tutorme.R;
+import uta.edu.tutorme.models.PostCard;
 import uta.edu.tutorme.models.User;
 import uta.edu.tutorme.utils.DisplayMessage;
 import uta.edu.tutorme.utils.SharedPrefUtils;
+import uta.edu.tutorme.utils.Urls;
+import uta.edu.tutorme.volly.MyJsonObjectRequest;
+import uta.edu.tutorme.volly.VolleyRequestQueue;
 
 public class HomepageActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener,Response.Listener<JSONObject>,
+        Response.ErrorListener {
+
+    public static final String REQUEST_TAG = "HOMEPAGE_ACTIVITY";
 
     User user;
     PostCardAdapter adapter;
     RecyclerView list;
+    private RequestQueue mQueue;
+    ProgressDialog progressDialog;
 
     private void doOpenCreateNewAdv(){
         Intent intent = new Intent(this,AddNewAdvActivity.class);
         startActivity(intent);
-
+/*
        Intent i = getIntent();
-        Post postobj= (Post)i.getSerializableExtra("postObj");
+        Post postobj= (Post)i.getSerializableExtra("postObj");*/
 
     }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (mQueue != null) {
+            mQueue.cancelAll(REQUEST_TAG);
+        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homepage);
         user = SharedPrefUtils.getUserFromSession(getApplicationContext());
+        progressDialog = new ProgressDialog(this);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -78,8 +108,24 @@ public class HomepageActivity extends AppCompatActivity
         list.setHasFixedSize(true);
         list.setLayoutManager(lm);
         list.setAdapter(adapter);
+        mQueue = VolleyRequestQueue.getInstance(this.getApplicationContext())
+                .getRequestQueue();
+        refreshList();
+
     }
 
+    private void refreshList(){
+        adapter.emptyCards();
+
+        progressDialog.setMessage("Loading your posts...");
+        progressDialog.show();
+        MyJsonObjectRequest getAllPostRequest = new MyJsonObjectRequest(Request.Method
+                .GET, Urls.getUserPostsURL(user.getId()),
+                null, this, this);
+
+        getAllPostRequest.setTag(REQUEST_TAG);
+        mQueue.add(getAllPostRequest);
+    }
 
     @Override
     public void onBackPressed() {
@@ -106,7 +152,8 @@ public class HomepageActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_refresh) {
+            refreshList();
             return true;
         }
 
@@ -140,4 +187,40 @@ public class HomepageActivity extends AppCompatActivity
         return true;
     }
 
+    @Override
+    public void onErrorResponse(VolleyError error) {
+        progressDialog.hide();
+        NetworkResponse response = error.networkResponse;
+
+        if(response!=null && response.statusCode == 401){
+            DisplayMessage.displayToast(getApplicationContext(), "Invalid login credentials");
+        }
+        else{
+            DisplayMessage.displayToast(getApplicationContext(), "OOPS!! Some error occured ");
+        }
+    }
+
+    @Override
+    public void onResponse(JSONObject response) {
+        try {
+            JSONArray arr = response.getJSONArray("result");
+
+            if(arr.length()>0) {
+                for (int i = 0; i < arr.length(); i++) {
+                    JSONObject obj = arr.getJSONObject(i);
+                    int id = obj.getInt("id");
+                    String title = obj.getString("title");
+                    double price = obj.getDouble("price");
+                    double rating = obj.getDouble("rating");
+                    String shortdesc = obj.getString("shortdesc");
+                    PostCard card = new PostCard(id,title,price,rating,shortdesc);
+                    adapter.addCard(card);
+                    list.scrollToPosition(0);
+                }
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        progressDialog.hide();
+    }
 }

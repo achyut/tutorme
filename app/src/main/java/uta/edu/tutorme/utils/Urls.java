@@ -5,7 +5,8 @@ package uta.edu.tutorme.utils;
  */
 public class Urls {
 
-    public static String BASE_URL = "http://0e5465d5.ngrok.io";
+    //public static String BASE_URL = "http://192.168.43.245:8000";
+    public static String BASE_URL = "http://tutorme.gq";
 
     public static String LOGIN_URL= BASE_URL+"/login";
     private static String USER_POSTS = BASE_URL+"/users/post";
