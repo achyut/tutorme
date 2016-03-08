@@ -1,11 +1,14 @@
 package uta.edu.tutorme.activities;
 
+import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
 
@@ -17,6 +20,7 @@ import com.android.volley.VolleyError;
 
 import org.json.JSONObject;
 
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -38,7 +42,9 @@ public class AddNewAdvActivity extends AppCompatActivity implements Response.Lis
     public static final String REQUEST_TAG = "POST_ADDNEW";
     private RequestQueue mQueue;
     ProgressDialog progressDialog;
+
     User user;
+
 
     EditText title;
     EditText shortDesc;
@@ -54,6 +60,10 @@ public class AddNewAdvActivity extends AppCompatActivity implements Response.Lis
     EditText phoneNumber;
     EditText email;
     RadioButton prefCM;
+    private DatePicker datePicker;
+    private int year;
+    private int month;
+    private int day;
 
 
     @Override
@@ -72,7 +82,15 @@ public class AddNewAdvActivity extends AppCompatActivity implements Response.Lis
 
         user = SharedPrefUtils.getUserFromSession(getApplicationContext());
         progressDialog = new ProgressDialog(this);
+        Calendar calendar = Calendar.getInstance();
+        year = calendar.get(Calendar.YEAR);
+
+        month = calendar.get(Calendar.MONTH);
+        day = calendar.get(Calendar.DAY_OF_MONTH);
+
     }
+
+
 
     private void initialize() {
         this.title = (EditText)findViewById(R.id.edit_posttitle);
@@ -141,7 +159,7 @@ public class AddNewAdvActivity extends AppCompatActivity implements Response.Lis
         reqmap.put("address",address1);
         reqmap.put("contact",phoneNumber1);
         reqmap.put("email",email1);
-        reqmap.put("preferedcontact","Mobile");
+        reqmap.put("preferedcontact", "Mobile");
 
         reqmap.put("created_by",String.valueOf(user.getId()));
 

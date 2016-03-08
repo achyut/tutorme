@@ -165,4 +165,9 @@ public class LoginActivity extends AppCompatActivity implements Response.Listene
         startActivity(intent);
     }
 
+    public void doForgotPassword(View view){
+        Intent intent = new Intent(getApplicationContext(),ForgetPasswordActivity.class);
+        startActivity(intent);
+    }
+
 }

@@ -108,6 +108,7 @@ public class HomepageActivity extends AppCompatActivity
         list.setHasFixedSize(true);
         list.setLayoutManager(lm);
         list.setAdapter(adapter);
+
         mQueue = VolleyRequestQueue.getInstance(this.getApplicationContext())
                 .getRequestQueue();
         refreshList();
@@ -135,6 +136,11 @@ public class HomepageActivity extends AppCompatActivity
         } else {
             super.onBackPressed();
         }
+    }
+
+    public void openPostDetails(View view){
+
+     //   DisplayMessage.displayToast(getApplicationContext(), "Opeaning post details "+position);
     }
 
     @Override
@@ -173,12 +179,15 @@ public class HomepageActivity extends AppCompatActivity
         } else if (id == R.id.drawer_latest_post) {
 
         } else if (id == R.id.drawer_change_password) {
+            Intent intent = new Intent(getApplicationContext(),ChangePasswordActivity.class);
+            startActivity(intent);
 
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.drawer_logout) {
             SharedPrefUtils.deleteUserFromSharedPref(getApplicationContext());
             Intent intent = new Intent(this,LoginActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
         }
 

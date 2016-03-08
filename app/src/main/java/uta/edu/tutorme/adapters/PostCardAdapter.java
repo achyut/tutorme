@@ -17,6 +17,7 @@ import uta.edu.tutorme.models.PostCard;
 public class PostCardAdapter extends RecyclerView.Adapter<PostCardHolder> {
     List<PostCard> cards;
 
+
     public PostCardAdapter() {
         this.cards = new ArrayList<PostCard>();
     }
@@ -52,13 +53,13 @@ public class PostCardAdapter extends RecyclerView.Adapter<PostCardHolder> {
                 from(parent.getContext()).
                 inflate(R.layout.row_card, parent, false);
 
-        return new PostCardHolder(itemView);
+        return new PostCardHolder(parent.getContext(),itemView);
     }
 
     @Override
     public void onBindViewHolder(PostCardHolder holder, int position) {
         PostCard card = cards.get(position);
-        holder.bind(card);
+        holder.bind(cards,card,position);
     }
 
     @Override

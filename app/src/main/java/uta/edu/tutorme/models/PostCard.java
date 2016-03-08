@@ -1,9 +1,11 @@
 package uta.edu.tutorme.models;
 
+import java.io.Serializable;
+
 /**
  * Created by ananda on 3/7/16.
  */
-public class PostCard {
+public class PostCard implements Serializable{
     private int id;
     private String title;
     private double price;
