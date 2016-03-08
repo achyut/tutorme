@@ -4,8 +4,10 @@ import com.android.volley.AuthFailureError;
 import com.android.volley.NetworkResponse;
 import com.android.volley.Response;
 import com.android.volley.RetryPolicy;
+import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
@@ -17,6 +19,7 @@ import java.util.Map;
 public class MyJsonObjectRequest extends JsonObjectRequest {
 
     private int mStatusCode;
+    private JSONObject responseobj;
 
     public MyJsonObjectRequest(int method, String url, JSONObject jsonRequest,
                                Response.Listener<JSONObject> listener,
@@ -36,8 +39,31 @@ public class MyJsonObjectRequest extends JsonObjectRequest {
 
     @Override
     protected Response<JSONObject> parseNetworkResponse(NetworkResponse response) {
-        mStatusCode = response.statusCode;
+        if(response!=null){
+            mStatusCode = response.statusCode;
+            if(response.data!=null){
+                String json = new String(response.data);
+                try {
+                    responseobj = new JSONObject(json);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
         return super.parseNetworkResponse(response);
+    }
+
+    @Override
+    protected VolleyError parseNetworkError(VolleyError volleyError) {
+
+        //return volleyError;
+
+        return super.parseNetworkError(volleyError);
+    }
+
+    public JSONObject getResponseData(){
+        return this.responseobj;
     }
 
     @Override
