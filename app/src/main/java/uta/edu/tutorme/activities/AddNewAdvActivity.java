@@ -1,38 +1,39 @@
 package uta.edu.tutorme.activities;
-
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
+
+import java.io.Serializable;
 
 import uta.edu.tutorme.R;
+import uta.edu.tutorme.models.Post;
 
 
-public class AddNewAdvActivity extends AppCompatActivity {
-    public static final String TEXT = "text";
+public class AddNewAdvActivity extends AppCompatActivity implements Serializable {
 
 
-    EditText mText;
     FloatingActionButton fabSubmit;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_new_adv);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        fabSubmit = (FloatingActionButton) findViewById(R.id.fab);
+        fabSubmit = (FloatingActionButton) findViewById(R.id.fab1);
         fabSubmit.hide();
         fabSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 sendPost();
             }
+
         });
     }
 
@@ -59,9 +60,9 @@ public class AddNewAdvActivity extends AppCompatActivity {
     }
     private void sendPost()
     {
-        Intent data = new Intent();
-        data.putExtra(TEXT, mText.getText().toString());
-        setResult(RESULT_OK, data);
-        finish();
+        Post post = new Post();
+        Intent intent = new Intent(this,HomepageActivity.class);
+        intent.putExtra("Post", post);
+        startActivity(intent);
     }
 }

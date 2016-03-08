@@ -3,8 +3,6 @@ package uta.edu.tutorme.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -13,8 +11,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-
-import com.google.common.base.Predicates;
+import android.view.View;
+import uta.edu.tutorme.models.Post;
 
 import uta.edu.tutorme.R;
 import uta.edu.tutorme.models.User;
@@ -26,6 +24,10 @@ public class HomepageActivity extends AppCompatActivity
     private void doOpenCreateNewAdv(){
         Intent intent = new Intent(this,AddNewAdvActivity.class);
         startActivity(intent);
+
+       Intent i = getIntent();
+        Post postobj= (Post)i.getSerializableExtra("postObj");
+
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -113,4 +115,5 @@ public class HomepageActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
 }
