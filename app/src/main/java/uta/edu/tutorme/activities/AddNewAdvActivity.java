@@ -8,9 +8,12 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.Spinner;
 
 import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
@@ -20,8 +23,10 @@ import com.android.volley.VolleyError;
 
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import uta.edu.tutorme.R;
@@ -60,6 +65,9 @@ public class AddNewAdvActivity extends AppCompatActivity implements Response.Lis
     EditText phoneNumber;
     EditText email;
     RadioButton prefCM;
+    private Spinner spinner1;
+    private Spinner spinner2;
+
     private DatePicker datePicker;
     private int year;
     private int month;
@@ -88,6 +96,68 @@ public class AddNewAdvActivity extends AppCompatActivity implements Response.Lis
         month = calendar.get(Calendar.MONTH);
         day = calendar.get(Calendar.DAY_OF_MONTH);
 
+        addItemsOnSpinner1();
+        addItemsOnSpinner2();
+        addListenerOnSpinner1ItemSelection();
+        addListenerOnSpinner2ItemSelection();
+    }
+
+
+    // add items into spinner dynamically
+    public void addItemsOnSpinner1() {
+
+        spinner1 = (Spinner) findViewById(R.id.spinner1);
+        List<String> list = new ArrayList<String>();
+        list.add("list 1");
+        list.add("list 2");
+        list.add("list 3");
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_item, list);
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner1.setAdapter(dataAdapter);
+    }
+
+    // add items into spinner dynamically
+    public void addItemsOnSpinner2() {
+        spinner2 = (Spinner) findViewById(R.id.spinner2);
+        List<String> list = new ArrayList<String>();
+        list.add("sp list 1");
+        list.add("sp list 2");
+        list.add("sp list 3");
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_item, list);
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner2.setAdapter(dataAdapter);
+    }
+
+    public void addListenerOnSpinner1ItemSelection() {
+        spinner1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+    }
+
+    public void addListenerOnSpinner2ItemSelection() {
+        spinner1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
     }
 
 

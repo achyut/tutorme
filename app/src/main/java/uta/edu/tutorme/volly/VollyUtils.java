@@ -27,11 +27,17 @@ public class VollyUtils {
     public static String getString(NetworkResponse response,String key){
         JSONObject resp = getResponseData(response);
         try {
-            return resp.getString(key);
+            if(resp!=null){
+                return resp.getString(key);
+            }
+            else{
+                return "Connecting!!!";
+            }
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        return null;
+        return "Connecting!!!";
     }
 
 

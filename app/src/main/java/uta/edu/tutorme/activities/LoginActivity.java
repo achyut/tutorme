@@ -72,6 +72,9 @@ public class LoginActivity extends AppCompatActivity implements Response.Listene
         if(response!=null && response.statusCode == 401){
             DisplayMessage.displayToast(getApplicationContext(), "Invalid login credentials");
         }
+        else if(response!=null && response.statusCode == 404){
+            DisplayMessage.displayToast(getApplicationContext(), "Please check your Internet Connection!!");
+        }
         else{
             DisplayMessage.displayToast(getApplicationContext(), "OOPS!! Some error occured ");
         }

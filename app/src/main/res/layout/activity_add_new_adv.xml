@@ -50,6 +50,56 @@
                 android:id="@+id/edit_shortdes"
                 android:layout_gravity="center_horizontal" />
 
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Category"
+                    android:id="@+id/txt_category" />
+
+                <Spinner
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/spinner1"
+                    android:spinnerMode="dialog"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true" />
+
+            </RelativeLayout>
+
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Sub Category"
+                    android:id="@+id/txt_subcategory" />
+
+                <Spinner
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/spinner2"
+                    android:spinnerMode="dialog"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true" />
+
+            </RelativeLayout>
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
@@ -66,13 +116,15 @@
                     android:layout_alignParentTop="true"/>
 
                 <EditText
-                    android:layout_width="fill_parent"
+                    android:layout_width="200dp"
                     android:layout_height="wrap_content"
                     android:inputType="numberDecimal"
                     android:ems="10"
                     android:id="@+id/edit_price"
                     android:layout_weight="1"
-                    android:layout_toRightOf="@+id/txt_price"/>
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true" />
 
 
             </RelativeLayout>
@@ -94,13 +146,15 @@
                     android:layout_alignParentTop="true" />
 
                 <EditText
-                    android:layout_width="fill_parent"
+                    android:layout_width="200dp"
                     android:layout_height="wrap_content"
                     android:inputType="date"
                     android:ems="10"
-                    android:layout_toRightOf="@+id/txt_startdate"
                     android:id="@+id/edit_startdate"
-                    android:layout_weight="0.82" />
+                    android:layout_weight="0.82"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true" />
 
 
             </RelativeLayout>
@@ -121,13 +175,15 @@
                     android:layout_alignParentTop="true" />
 
                 <EditText
-                    android:layout_width="fill_parent"
+                    android:layout_width="200dp"
                     android:layout_height="wrap_content"
                     android:inputType="date"
                     android:ems="10"
-                    android:layout_toRightOf="@+id/txt_enddate"
                     android:id="@+id/edit_enddate"
-                    android:layout_weight="0.82" />
+                    android:layout_weight="0.82"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true" />
 
             </RelativeLayout>
 
@@ -148,13 +204,15 @@
                     android:layout_alignParentTop="true" />
 
                 <EditText
-                    android:layout_width="fill_parent"
+                    android:layout_width="200dp"
                     android:layout_height="wrap_content"
                     android:inputType="time"
                     android:ems="10"
-                    android:layout_toRightOf="@+id/txt_starttime"
                     android:id="@+id/edit_starttime"
-                    android:layout_weight="0.82" />
+                    android:layout_weight="0.82"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true" />
 
 
             </RelativeLayout>
@@ -175,13 +233,15 @@
                     android:layout_alignParentTop="true" />
 
                 <EditText
-                    android:layout_width="fill_parent"
+                    android:layout_width="200dp"
                     android:layout_height="wrap_content"
                     android:inputType="time"
                     android:ems="10"
-                    android:layout_toRightOf="@+id/txt_endtime"
                     android:id="@+id/edit_endtime"
-                    android:layout_weight="0.82" />
+                    android:layout_weight="0.82"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true" />
 
             </RelativeLayout>
 
