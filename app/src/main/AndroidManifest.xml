@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="uta.edu.tutorme">
+
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -22,20 +23,17 @@
         <activity android:name=".activities.PopulateSubCategoryActivity" />
         <activity
             android:name=".activities.RegisterActivity"
-
             android:label="@string/title_activity_register" />
-
         <activity
             android:name=".activities.HomepageActivity"
             android:label="@string/title_activity_homepage"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".activities.PostDetailActivity">
-
-        </activity>
+        <activity android:name=".activities.PostDetailActivity" />
         <activity
             android:name=".activities.AddNewAdvActivity"
-            android:label="@string/title_activity_add_new_adv" >
-        </activity>
+            android:label="@string/title_activity_add_new_adv" />
+        <activity android:name=".activities.ForgetPasswordActivity" />
+        <activity android:name=".activities.ChangePasswordActivity"></activity>
     </application>
 
 </manifest>

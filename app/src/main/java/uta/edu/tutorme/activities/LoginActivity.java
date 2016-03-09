@@ -72,6 +72,9 @@ public class LoginActivity extends AppCompatActivity implements Response.Listene
         if(response!=null && response.statusCode == 401){
             DisplayMessage.displayToast(getApplicationContext(), "Invalid login credentials");
         }
+        else if(response!=null && response.statusCode == 404){
+            DisplayMessage.displayToast(getApplicationContext(), "Please check your Internet Connection!!");
+        }
         else{
             DisplayMessage.displayToast(getApplicationContext(), "OOPS!! Some error occured ");
         }
@@ -162,6 +165,11 @@ public class LoginActivity extends AppCompatActivity implements Response.Listene
 
     public void openRegister(View view){
         Intent intent = new Intent(getApplicationContext(),RegisterActivity.class);
+        startActivity(intent);
+    }
+
+    public void doForgotPassword(View view){
+        Intent intent = new Intent(getApplicationContext(),ForgetPasswordActivity.class);
         startActivity(intent);
     }
 
