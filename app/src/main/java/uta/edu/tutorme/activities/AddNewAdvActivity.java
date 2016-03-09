@@ -20,6 +20,7 @@ import java.util.Map;
 
 import uta.edu.tutorme.R;
 import uta.edu.tutorme.utils.DisplayMessage;
+import uta.edu.tutorme.utils.Validator;
 import uta.edu.tutorme.volly.VolleyRequestQueue;
 
 
@@ -129,5 +130,50 @@ public class AddNewAdvActivity extends AppCompatActivity implements Response.Lis
         Intent intent = new Intent(this,HomepageActivity.class);
         startActivity(intent);
     }
+    private boolean validateAdvertisement(String title1,String shortDesc1, String longDesc1,String category1, String subCategory1,String startDate1,
+                                String endDate1, String startTime1, String endTime1,String address1,String phoneNumber1,
+                                String email1) {
+        boolean result = true;
+        if (email1.isEmpty()) {
+            email.setError(getString(R.string.email_blank));
+            result = false;
+        } else if (!Validator.validateEmail(email1)) {
+            email.setError(getString(R.string.validate_email));
+            result = false;
+        } else if (title1.isEmpty()) {
+            title.setError("title cannot be blank");
+            result = false;
+        } else if (shortDesc1.isEmpty()) {
+            shortDesc.setError("Short Description cannot be blank");
+            result = false;
+        } else if (longDesc1.isEmpty()) {
+            longDesc.setError("Long Description cannot be blank");
+            result = false;
+        } else if (category1.isEmpty()) {
+            category.setError("Category cannot be blank");
+            result = false;
+        } else if (subCategory1.isEmpty()) {
+            subcategory.setError(" Sub Category cannot be blank");
+            result = false;
+        } else if (startDate1.isEmpty()) {
+            startDate.setError("Start Date cannot be blank");
+            result = false;
+        } else if (endDate1.isEmpty()) {
+            endDate.setError("End Date cannot be blank");
+            result = false;
+        } else if (startTime1.isEmpty()) {
+            startTime.setError("Start Time cannot be blank");
+            result = false;
+        } else if (endTime1.isEmpty()) {
+            endTime.setError("End Time cannot be blank");
+            result = false;
+        } else if (address1.isEmpty()) {
+            address.setError("Address cannot be blank");
+            result = false;
+        } else if (phoneNumber1.isEmpty()) {
+            phoneNumber.setError("End Time cannot be blank");
+            result = false;
+        }
 
-}
+        return result;
+    }}
