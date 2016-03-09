@@ -258,7 +258,7 @@ public class AddNewAdvActivity extends AppCompatActivity implements Response.Lis
 
         progressDialog.setMessage("Adding new post.");
         progressDialog.show();
-        if(validateAdvertisement(title1, shortDesc1,longDesc1,startDate1,endDate1,
+        if(validateAdvertisement(title1, shortDesc1,longDesc1,price1,startDate1,endDate1,
                 startTime1,endTime1,address1,phoneNumber1,email1))
         {
         MyJsonObjectRequest postRequest = new MyJsonObjectRequest(Request.Method
@@ -278,7 +278,7 @@ public class AddNewAdvActivity extends AppCompatActivity implements Response.Lis
         Intent intent = new Intent(this,HomepageActivity.class);
         startActivity(intent);
     }
-    private boolean validateAdvertisement(String title1,String shortDesc1, String longDesc1,String startDate1,
+    private boolean validateAdvertisement(String title1,String shortDesc1, String longDesc1,String price1,String startDate1,
                                 String endDate1, String startTime1, String endTime1,String address1,String phoneNumber1,
                                 String email1) {
         boolean result = true;
