@@ -6,7 +6,7 @@ import java.util.List;
  * Created by anmolb77 on 2/20/2016.
  */
 public class Category {
-    Long id;
+    int id;
     String name;
     boolean selected;
     List<SubCategory> subCategories;
@@ -20,10 +20,16 @@ public class Category {
         this.selected = selected;
     }
 
-    public Long getId() {
+    public Category(int id, String name, List<SubCategory> subCategories) {
+        this.id = id;
+        this.name = name;
+        this.subCategories = subCategories;
+    }
+
+    public int getId() {
         return id;
     }
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
     public String getName() {
