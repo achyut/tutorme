@@ -45,8 +45,6 @@ import uta.edu.tutorme.volly.VollyUtils;
 
 public class AddNewAdvActivity extends AppCompatActivity implements Response.Listener<JSONObject>,
         Response.ErrorListener {
-
-
     FloatingActionButton fabSubmit;
     public static final String REQUEST_TAG = "POST_ADDNEW";
     private RequestQueue mQueue;
@@ -246,8 +244,23 @@ public class AddNewAdvActivity extends AppCompatActivity implements Response.Lis
     }
     private void sendPost()
     {
+        String title1 = title.getText().toString();
+        String shortDesc1 = shortDesc.getText().toString();
+        String longDesc1 = longDesc.getText().toString();
+        String price1 = price.getText().toString();
+        String startDate1 = startDate.getText().toString();
+        String endDate1= endDate.getText().toString();
+        String startTime1=startTime.getText().toString();
+        String endTime1= endTime.getText().toString();
+        String address1 = address.getText().toString();
+        String phoneNumber1 = phoneNumber.getText().toString();
+        String email1 = email.getText().toString();
+
         progressDialog.setMessage("Adding new post.");
         progressDialog.show();
+        if(validateAdvertisement(title1, shortDesc1,longDesc1,startDate1,endDate1,
+                startTime1,endTime1,address1,phoneNumber1,email1))
+        {
         MyJsonObjectRequest postRequest = new MyJsonObjectRequest(Request.Method
                 .POST, Urls.POSTS,
                 getPostJSONObject(), this, this);
@@ -255,7 +268,7 @@ public class AddNewAdvActivity extends AppCompatActivity implements Response.Lis
 
         postRequest.setTag(REQUEST_TAG);
         mQueue.add(postRequest);
-
+    }
     }
 
     @Override
@@ -265,7 +278,7 @@ public class AddNewAdvActivity extends AppCompatActivity implements Response.Lis
         Intent intent = new Intent(this,HomepageActivity.class);
         startActivity(intent);
     }
-    private boolean validateAdvertisement(String title1,String shortDesc1, String longDesc1,String category1, String subCategory1,String startDate1,
+    private boolean validateAdvertisement(String title1,String shortDesc1, String longDesc1,String startDate1,
                                 String endDate1, String startTime1, String endTime1,String address1,String phoneNumber1,
                                 String email1) {
         boolean result = true;
@@ -284,13 +297,7 @@ public class AddNewAdvActivity extends AppCompatActivity implements Response.Lis
         } else if (longDesc1.isEmpty()) {
             longDesc.setError("Long Description cannot be blank");
             result = false;
-        } else if (category1.isEmpty()) {
-            category.setError("Category cannot be blank");
-            result = false;
-        } else if (subCategory1.isEmpty()) {
-            subcategory.setError(" Sub Category cannot be blank");
-            result = false;
-        } else if (startDate1.isEmpty()) {
+        }else if (startDate1.isEmpty()) {
             startDate.setError("Start Date cannot be blank");
             result = false;
         } else if (endDate1.isEmpty()) {
