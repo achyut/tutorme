@@ -65,7 +65,7 @@
                     android:id="@+id/txt_category" />
 
                 <Spinner
-                    android:layout_width="150dp"
+                    android:layout_width="200dp"
                     android:layout_height="wrap_content"
                     android:id="@+id/spinner1"
                     android:spinnerMode="dialog"
@@ -91,7 +91,7 @@
                     android:id="@+id/txt_subcategory" />
 
                 <Spinner
-                    android:layout_width="150dp"
+                    android:layout_width="200dp"
                     android:layout_height="wrap_content"
                     android:id="@+id/spinner2"
                     android:spinnerMode="dialog"

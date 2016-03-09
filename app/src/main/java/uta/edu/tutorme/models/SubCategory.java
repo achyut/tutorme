@@ -4,7 +4,7 @@ package uta.edu.tutorme.models;
  * Created by ananda on 2/19/16.
  */
 public class SubCategory {
-    Long id;
+    int id;
     String name;
     boolean selected;
 
@@ -22,10 +22,15 @@ public class SubCategory {
         this.category = category;
     }
 
-    public Long getId() {
+    public SubCategory(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public int getId() {
         return id;
     }
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
     public String getName() {
