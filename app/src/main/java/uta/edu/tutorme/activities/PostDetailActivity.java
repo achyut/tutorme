@@ -69,7 +69,6 @@ public class PostDetailActivity extends AppCompatActivity {
         post.setStarttime(calendarStartTime.getTime());
         post.setEndtime(calendarEndTime.getTime());
 
-
         TextView postTitle =  (TextView)findViewById(R.id.exiting_edit_posttitle);
         TextView postAddress =  (TextView)findViewById(R.id.exiting_edit_address);
         TextView postShortDesc =  (TextView)findViewById(R.id.exiting_edit_shortdes);
