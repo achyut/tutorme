@@ -69,6 +69,7 @@
                 android:layout_height="wrap_content"
                 android:text="FORGOT PASSWORD"
                 android:id="@+id/frgt_pwd_btn"
+                android:onClick="doForgotPassword"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true" />

@@ -1,39 +1,31 @@
 package uta.edu.tutorme.activities;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import uta.edu.tutorme.R;
 import uta.edu.tutorme.adapters.SubCategoryAdapter;
-import uta.edu.tutorme.models.Category;
 import uta.edu.tutorme.models.SubCategory;
-import uta.edu.tutorme.repositories.SubCategoryRepository;
+import uta.edu.tutorme.utils.SharedPrefUtils;
 
 public class SubcategoryActivity extends Activity {
 
     SubCategoryAdapter customAdapter = null;
-    SubCategoryRepository repo;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_subcategory);
+        SharedPrefUtils.checkIfLoggedIn(getApplicationContext());
         setTitle("SubCategory");
-        repo = new SubCategoryRepository();
         displaySubCategoryListView();
         // backButtonClick();
         // submitButtonClick();
@@ -117,7 +109,6 @@ public class SubcategoryActivity extends Activity {
         }*/
         
         List<SubCategory> subCategoryList = new ArrayList<SubCategory>();
-        subCategoryList = repo.findAll();
 
 
         if(subCategoryList.isEmpty()){

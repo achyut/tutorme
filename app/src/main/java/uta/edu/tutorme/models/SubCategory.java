@@ -1,12 +1,10 @@
 package uta.edu.tutorme.models;
 
-import com.orm.SugarRecord;
-
 /**
  * Created by ananda on 2/19/16.
  */
-public class SubCategory extends SugarRecord {
-    Long id;
+public class SubCategory {
+    int id;
     String name;
     boolean selected;
 
@@ -18,21 +16,21 @@ public class SubCategory extends SugarRecord {
         this.selected = selected;
     }
 
-/*
-    public SubCategory() {
-    }
-*/
-
     public SubCategory(String name, boolean selected, Category category) {
         this.name = name;
         this.selected = selected;
         this.category = category;
     }
 
-    public Long getId() {
+    public SubCategory(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public int getId() {
         return id;
     }
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
     public String getName() {

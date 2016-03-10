@@ -3,7 +3,7 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_camera"
+            android:id="@+id/drawer_all_post"
             android:icon="@drawable/ic_menu_camera"
             android:title="All Post" />
         <item
@@ -11,11 +11,11 @@
             android:icon="@drawable/ic_menu_gallery"
             android:title="Gallery" />
         <item
-            android:id="@+id/nav_slideshow"
+            android:id="@+id/drawer_latest_post"
             android:icon="@drawable/ic_menu_slideshow"
             android:title="Latest" />
         <item
-            android:id="@+id/nav_manage"
+            android:id="@+id/drawer_change_password"
             android:icon="@drawable/ic_menu_manage"
             android:title="Change Password" />
     </group>
@@ -27,7 +27,7 @@
                 android:icon="@drawable/ic_menu_share"
                 android:title="Share" />
             <item
-                android:id="@+id/nav_send"
+                android:id="@+id/drawer_logout"
                 android:icon="@android:drawable/ic_lock_power_off"
                 android:title="Logout" />
         </menu>
