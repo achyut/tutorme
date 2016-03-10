@@ -16,7 +16,12 @@ public class Urls {
     public static String CATEGORIES = BASE_URL+"/categories";
     public static String SUBCATEGORIES = BASE_URL+"/subcategories";
     public static String POSTS = BASE_URL+"/post";
+    public static String USERS = BASE_URL+"/users";
 
+
+    public static String getPostDetailURL(int postid){
+        return POSTS+"/"+postid;
+    }
     public static String getUserPostsURL(int userid){
         return USER_POSTS+"/"+userid;
     }
