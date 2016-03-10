@@ -4,7 +4,7 @@ import android.app.Application;
 import android.test.ApplicationTestCase;
 import android.test.suitebuilder.annotation.SmallTest;
 
-import com.orm.SugarContext;
+
 
 import uta.edu.tutorme.models.User;
 
@@ -23,7 +23,7 @@ public class ApplicationTest extends ApplicationTestCase<Application> {
 
     public ApplicationTest() {
         super(Application.class);
-        SugarContext.init(getContext());
+        //SugarContext.init(getContext());
     }
 
 
@@ -31,6 +31,6 @@ public class ApplicationTest extends ApplicationTestCase<Application> {
         User usr = new User();
         usr.setName("Achyut");
         usr.setEmail("achyut.pdl@gmail.com");
-        usr.save();
+        //usr.save();
     }
 }
