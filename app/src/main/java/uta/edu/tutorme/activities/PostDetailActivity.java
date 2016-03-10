@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.TextView;
 
@@ -24,11 +26,13 @@ import java.text.FieldPosition;
 import java.text.ParsePosition;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import uta.edu.tutorme.R;
 import uta.edu.tutorme.models.Category;
 import uta.edu.tutorme.models.Post;
 import uta.edu.tutorme.models.PostCard;
+import uta.edu.tutorme.models.SubCategory;
 import uta.edu.tutorme.utils.DisplayMessage;
 import uta.edu.tutorme.utils.SharedPrefUtils;
 import uta.edu.tutorme.utils.Urls;
@@ -50,6 +54,9 @@ public class PostDetailActivity extends AppCompatActivity implements  Response.L
     TextView postEndDate;
     TextView postStartTime;
     TextView postEndTime;
+    TextView postCategory;
+    TextView postSubCategory;
+    TextView postPrice;
 
     PostCard postCard;
     private RequestQueue mQueue;
@@ -79,6 +86,7 @@ public class PostDetailActivity extends AppCompatActivity implements  Response.L
     private Post getPostFromUrl(JSONObject request){
 
         //***** Dummy Supporters  Start *****//*
+
         Calendar calendarStartDate = Calendar.getInstance();
         calendarStartDate.set(Calendar.DATE, 10);
         calendarStartDate.set(Calendar.MONTH, 9);
@@ -92,25 +100,23 @@ public class PostDetailActivity extends AppCompatActivity implements  Response.L
         Calendar calendarStartTime = Calendar.getInstance();
         calendarStartTime.set(Calendar.HOUR,9);
         calendarStartTime.set(Calendar.MINUTE, 00);
-        calendarStartTime.set(Calendar.SECOND,00);
+        calendarStartTime.set(Calendar.SECOND, 00);
 
         Calendar calendarEndTime = Calendar.getInstance();
-        calendarEndTime.set(Calendar.HOUR,10);
+        calendarEndTime.set(Calendar.HOUR, 10);
         calendarEndTime.set(Calendar.MINUTE, 30);
-        calendarEndTime.set(Calendar.SECOND,00);
-
-
-/***** Dummy Supporters End  *****/
+        calendarEndTime.set(Calendar.SECOND, 00);
 
         Post post = new Post();
+
         try {
 
 
             String title = request.getString("title");
             String shortdesc = request.getString("title");
             String longdesc = request.getString("title");
-            String price = String.valueOf(request.getDouble("price"));
-            String rating = String.valueOf(request.getDouble("rating"));
+            double price = request.getDouble("price");
+            double rating = request.getDouble("rating");
             String startdate = request.getString("startdate");
             String enddate = request.getString("enddate");
             String starttime = request.getString("starttime");
@@ -134,7 +140,10 @@ public class PostDetailActivity extends AppCompatActivity implements  Response.L
             post.setEnddate(calendarEndDate.getTime());
             post.setStarttime(calendarStartTime.getTime());
             post.setEndtime(calendarEndTime.getTime());
-
+            post.setCategory(new Category(category, false));
+            post.setSubcategory(new SubCategory(subcategory,false));
+            post.setPrice(price);
+            post.setRating(rating);
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -162,6 +171,9 @@ public class PostDetailActivity extends AppCompatActivity implements  Response.L
         postEndDate =  (TextView)findViewById(R.id.exiting_edit_enddate);
         postStartTime =  (TextView)findViewById(R.id.exiting_edit_starttime);
         postEndTime =  (TextView)findViewById(R.id.exiting_edit_endtime);
+        postCategory =  (TextView)findViewById(R.id.exiting_edt_category);
+        postSubCategory =  (TextView)findViewById(R.id.exiting_edt_subcategory);
+        postPrice =  (TextView)findViewById(R.id.exiting_edit_price);
 
 
         mQueue = VolleyRequestQueue.getInstance(this.getApplicationContext())
@@ -188,6 +200,45 @@ public class PostDetailActivity extends AppCompatActivity implements  Response.L
         progressDialog.hide();
 
         Post post = getPostFromUrl(response);
+/*
+=======
+        post.setTitle("Piano Class Available");
+        post.setAddress("University Center, Arlington Texas");
+      //  post.setCategory("Music");
+        post.setContact("342554353");
+        //post.setCreated_by();
+        post.setEmail("ap@gmail.com");
+        post.setShortdesc("Basic piano learning classes");
+        post.setLongdesc("In this class, you will learn the basics and the notes for the piano");
+        post.setStartdate(calendarStartDate.getTime());
+        post.setEnddate(calendarEndDate.getTime());
+        post.setStarttime(calendarStartTime.getTime());
+        post.setEndtime(calendarEndTime.getTime());
+        Category category = new Category();
+        category.setName("Music");
+        SubCategory subCategory = new SubCategory("Piano", true);
+        subCategory.setName("Piano");
+        post.setCategory(category);
+        post.setSubcategory(subCategory);
+        */
+/***** Dummy Data End  *****//*
+
+
+
+        TextView postTitle =  (TextView)findViewById(R.id.exiting_edit_posttitle);
+        TextView postAddress =  (TextView)findViewById(R.id.exiting_edit_address);
+        TextView postShortDesc =  (TextView)findViewById(R.id.exiting_edit_shortdes);
+        TextView postLongDesc =  (TextView)findViewById(R.id.exiting_edit_longdes);
+        TextView postEmail =  (TextView)findViewById(R.id.exiting_edit_Emailaddress);
+        TextView postContact =  (TextView)findViewById(R.id.exiting_edit_phonenumber);
+        TextView postStartDate =  (TextView)findViewById(R.id.exiting_edit_startdate);
+        TextView postEndDate =  (TextView)findViewById(R.id.exiting_edit_enddate);
+        TextView postStartTime =  (TextView)findViewById(R.id.exiting_edit_starttime);
+        TextView postEndTime =  (TextView)findViewById(R.id.exiting_edit_endtime);
+        RadioGroup postPrefContact =  (RadioGroup)findViewById(R.id.exiting_radio_contactmethod);
+        RadioButton sms = (RadioButton)findViewById(R.id.exiting_btn_SMS);
+>>>>>>> f09a00e5336cdfa680d1a5a48fc9133c3b669ef4
+*/
 
         postTitle.setText(post.getTitle());
         postAddress.setText(post.getAddress());
@@ -199,5 +250,9 @@ public class PostDetailActivity extends AppCompatActivity implements  Response.L
         postEndDate.setText(post.getEnddate().toString());
         postStartTime.setText(post.getStarttime().toString());
         postEndTime.setText(post.getEndtime().toString());
+        postCategory.setText(post.getCategory().getName());
+        postSubCategory.setText(post.getSubcategory().getName());
+        postPrice.setText("$"+post.getPrice()+"/hr");
+
     }
 }
