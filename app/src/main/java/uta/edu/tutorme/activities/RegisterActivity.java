@@ -25,6 +25,7 @@ import uta.edu.tutorme.utils.DisplayMessage;
 import uta.edu.tutorme.utils.Urls;
 import uta.edu.tutorme.utils.Validator;
 import uta.edu.tutorme.volly.MyJsonObjectRequest;
+import uta.edu.tutorme.volly.VolleyRequestQueue;
 import uta.edu.tutorme.volly.VollyUtils;
 
 public class RegisterActivity extends AppCompatActivity  implements Response.Listener<JSONObject>,
@@ -56,7 +57,23 @@ public class RegisterActivity extends AppCompatActivity  implements Response.Lis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         initialize();
+        progressDialog = new ProgressDialog(this);
     }
+
+    protected void onStart() {
+        super.onStart();
+        mQueue = VolleyRequestQueue.getInstance(this.getApplicationContext())
+                .getRequestQueue();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (mQueue != null) {
+            mQueue.cancelAll(REQUEST_TAG);
+        }
+    }
+
 
     private boolean validateRegister(){
         String namestr = name.getText().toString();
@@ -105,13 +122,13 @@ public class RegisterActivity extends AppCompatActivity  implements Response.Lis
     }
 
     private JSONObject getRegisterJsonObject(){
-        String namestr = name.getText().toString();
-        String emailstr = email.getText().toString();
-        String phonestr = phone.getText().toString();
-        String addressstr = address.getText().toString();
-        String passwordstr = password.getText().toString();
-        String confirmstr = confirmpass.getText().toString();
-        String usertypestr = usertype.getText().toString();
+        String namestr = name.getText().toString().trim();
+        String emailstr = email.getText().toString().trim();
+        String phonestr = phone.getText().toString().trim();
+        String addressstr = address.getText().toString().trim();
+        String passwordstr = password.getText().toString().trim();
+        String confirmstr = confirmpass.getText().toString().trim();
+        String usertypestr = usertype.getText().toString().trim();
         Map<String, String> reqmap = new HashMap<String, String>();
         reqmap.put("name", namestr);
         reqmap.put("email",emailstr);
@@ -136,17 +153,6 @@ public class RegisterActivity extends AppCompatActivity  implements Response.Lis
             postRequest.setTag(REQUEST_TAG);
             mQueue.add(postRequest);
 
-
-            /*if(!service.checkIfUserAlreadyExist(user)){
-                service.save(1, user);
-                DisplayMessage.displayToast(getApplicationContext(),"You have been registered!!!");
-                Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
-                startActivity(intent);
-            }
-            else{
-                DisplayMessage.displayToast(getApplicationContext(),"User with given email address already exists!");
-            }
-            */
         }
         else{
             DisplayMessage.displayToast(getApplicationContext(),"Please enter correct values");
@@ -175,9 +181,9 @@ public class RegisterActivity extends AppCompatActivity  implements Response.Lis
             progressDialog.hide();
         try {
             if(!response.getBoolean("error")){
-                DisplayMessage.displayToast(getApplicationContext(), "Successfully Registered!!");
-                Intent i = new Intent(getApplicationContext(),HomepageActivity.class);
-                startActivity(i);
+                DisplayMessage.displayToast(getApplicationContext(),"You have been registered!!!");
+                Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
+                startActivity(intent);
             }
             else{
                 DisplayMessage.displayToast(getApplicationContext(),response.getString("message"));
