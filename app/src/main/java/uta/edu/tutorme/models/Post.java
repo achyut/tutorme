@@ -8,10 +8,10 @@ public class Post implements Serializable{
     private String longdesc;
     private double price;
     private double rating;
-    private Date startdate;
-    private Date enddate;
-    private Date starttime;
-    private Date endtime;
+    private String startdate;
+    private String enddate;
+    private String starttime;
+    private String endtime;
     private String address;
     private String contact;
     private String email;
@@ -68,35 +68,36 @@ public class Post implements Serializable{
         this.rating = rating;
     }
 
-    public Date getStartdate() {
+
+    public String getStartdate() {
         return startdate;
     }
 
-    public void setStartdate(Date startdate) {
+    public void setStartdate(String startdate) {
         this.startdate = startdate;
     }
 
-    public Date getEnddate() {
+    public String getEnddate() {
         return enddate;
     }
 
-    public void setEnddate(Date enddate) {
+    public void setEnddate(String enddate) {
         this.enddate = enddate;
     }
 
-    public Date getStarttime() {
+    public String getStarttime() {
         return starttime;
     }
 
-    public void setStarttime(Date starttime) {
+    public void setStarttime(String starttime) {
         this.starttime = starttime;
     }
 
-    public Date getEndtime() {
+    public String getEndtime() {
         return endtime;
     }
 
-    public void setEndtime(Date endtime) {
+    public void setEndtime(String endtime) {
         this.endtime = endtime;
     }
 

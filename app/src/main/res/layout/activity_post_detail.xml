@@ -29,6 +29,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#000000"
                 android:text="Post Title"
                 android:id="@+id/exiting_txt_posttitle" />
 
@@ -38,13 +39,14 @@
                 android:id="@+id/exiting_edit_posttitle"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true" />
+                android:layout_alignParentEnd="true"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Short Description"
+                android:textColor="#000000"
                 android:id="@+id/exiting_txt_shortdes" />
 
             <TextView
@@ -54,55 +56,34 @@
                 android:layout_gravity="center_horizontal" />
 
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:orientation="horizontal"
-                android:weightSum="1">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="Category"
+                    android:textColor="#000000"
                     android:id="@+id/exiting_txt_category" />
-
-                <Spinner
-                    android:layout_width="150dp"
+                <TextView
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/exiting_spinner1"
-                    android:spinnerMode="dialog"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentEnd="true" />
+                    android:layout_gravity="center_horizontal"
+                    android:id="@+id/exiting_edt_category" />
 
-            </RelativeLayout>
-
-
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:orientation="horizontal"
-                android:weightSum="1">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="Sub Category"
+                    android:textColor="#000000"
                     android:id="@+id/exiting_txt_subcategory" />
-
-                <Spinner
-                    android:layout_width="150dp"
+                <TextView
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/exiting_spinner2"
-                    android:spinnerMode="dialog"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentEnd="true" />
+                    android:layout_gravity="center_horizontal"
+                    android:id="@+id/exiting_edt_subcategory" />
 
-            </RelativeLayout>
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
@@ -115,6 +96,7 @@
                     android:layout_height="40dp"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="Price:"
+                    android:textColor="#000000"
                     android:id="@+id/exiting_txt_price"
                     android:layout_alignParentTop="true"/>
 
@@ -145,6 +127,7 @@
                     android:layout_height="40dp"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="Start date:"
+                    android:textColor="#000000"
                     android:id="@+id/exiting_txt_startdate"
                     android:layout_alignParentTop="true" />
 
@@ -174,6 +157,7 @@
                     android:layout_height="40dp"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="End date:"
+                    android:textColor="#000000"
                     android:id="@+id/exiting_txt_enddate"
                     android:layout_alignParentTop="true" />
 
@@ -203,6 +187,7 @@
                     android:layout_height="40dp"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="Start Time:"
+                    android:textColor="#000000"
                     android:id="@+id/exiting_txt_starttime"
                     android:layout_alignParentTop="true" />
 
@@ -232,6 +217,7 @@
                     android:layout_height="40dp"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="End Time:"
+                    android:textColor="#000000"
                     android:id="@+id/exiting_txt_endtime"
                     android:layout_alignParentTop="true" />
 
@@ -253,6 +239,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Long description"
+                android:textColor="#000000"
                 android:id="@+id/exiting_txt_longdes" />
 
 
@@ -270,6 +257,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Address"
+                android:textColor="#000000"
                 android:id="@+id/exiting_txt_address" />
 
             <TextView
@@ -284,6 +272,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Phone Number"
+                android:textColor="#000000"
                 android:id="@+id/exiting_txt_phonenumber" />
 
             <TextView
@@ -297,6 +286,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Email Address"
+                android:textColor="#000000"
                 android:id="@+id/exiting_txt_emailaddress" />
 
             <TextView
@@ -311,6 +301,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Preferred Contact Method:"
+                android:textColor="#000000"
                 android:id="@+id/exiting_txt_contactmethod" />
 
             <LinearLayout
@@ -320,6 +311,7 @@
                 android:weightSum="1">
 
                 <RadioGroup android:id="@+id/exiting_radio_contactmethod"
+                    android:textColor="#000000"
                     android:orientation="horizontal"
                     android:layout_gravity="center_horizontal"
                     android:layout_width="match_parent"
@@ -337,7 +329,7 @@
                         android:layout_height="wrap_content"
                         android:text="SMS"
                         android:id="@+id/exiting_btn_SMS"
-                        android:checked="false"
+                        android:checked="true"
                         android:layout_weight="0.31" />
                     <RadioButton
                         android:layout_width="0dp"
@@ -350,13 +342,12 @@
                 </RadioGroup>
 
             </LinearLayout>
-            <android.support.design.widget.FloatingActionButton
-                android:id="@+id/exiting_fab1"
+            <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:layout_margin="@dimen/fab_margin"
-                android:src="@drawable/ic_send_icon" />
+                android:text="Update Details"
+                android:id="@+id/update_details_button"
+                android:layout_centerHorizontal="true" />
 
 
         </LinearLayout>

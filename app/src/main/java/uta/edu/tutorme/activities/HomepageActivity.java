@@ -92,12 +92,7 @@ public class HomepageActivity extends AppCompatActivity
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
-        TextView username = (TextView) findViewById(R.id.drawer_username);
 
-        //username.setText(user.getName());
-        TextView email = (TextView) findViewById(R.id.drawer_username);
-
-        //email.setText(user.getEmail());
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
@@ -113,6 +108,13 @@ public class HomepageActivity extends AppCompatActivity
                 .getRequestQueue();
         refreshList();
 
+
+
+        TextView username = (TextView) drawer.findViewById(R.id.drawer_username);
+        //username.setText("User");
+
+        TextView email = (TextView) drawer.findViewById(R.id.drawer_user_email);
+        //email.setText(user.getEmail());
     }
 
     private void refreshList(){

@@ -28,12 +28,14 @@
             android:name=".activities.HomepageActivity"
             android:label="@string/title_activity_homepage"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".activities.PostDetailActivity" />
+        <activity android:name=".activities.PostDetailActivity"
+            android:label="@string/title_activity_existing_adv" />
         <activity
             android:name=".activities.AddNewAdvActivity"
             android:label="@string/title_activity_add_new_adv" />
         <activity android:name=".activities.ForgetPasswordActivity" />
-        <activity android:name=".activities.ChangePasswordActivity"></activity>
+        <activity android:name=".activities.ChangePasswordActivity" />
+        <activity android:name=".activities.UpdatePostDetailActivity"></activity>
     </application>
 
 </manifest>
