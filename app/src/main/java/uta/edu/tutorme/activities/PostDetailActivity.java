@@ -1,12 +1,17 @@
 package uta.edu.tutorme.activities;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
+import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -18,12 +23,14 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.DateFormat;
 import java.text.FieldPosition;
 import java.text.ParsePosition;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -128,6 +135,93 @@ public class PostDetailActivity extends AppCompatActivity implements  Response.L
 
         return post;
     }
+
+    public void doDeletePost(View view){
+        new AlertDialog.Builder(this)
+                .setMessage("Are you sure you want to delete this post?")
+                .setCancelable(false)
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        deletePost();
+                    }
+                })
+                .setNegativeButton("No", null)
+                .show();
+    }
+
+
+    public void deletePost() {
+        progressDialog.setMessage("Deleting post. Please wait...");
+        progressDialog.show();
+        MyJsonObjectRequest postRequest = new MyJsonObjectRequest(Request.Method
+                .GET, Urls.getDeletePostURL(postCard.getId()),
+                null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                try {
+                    progressDialog.hide();
+                    if(!response.getBoolean("error")){
+                        DisplayMessage.displayToast(getApplicationContext(), "Post deleted successfully.");
+                        Intent i = new Intent(getApplicationContext(),HomepageActivity.class);
+                        startActivity(i);
+                    }
+                    else{
+                        DisplayMessage.displayToast(getApplicationContext(),response.getString("message"));
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                progressDialog.hide();
+                NetworkResponse response = error.networkResponse;
+                if(response!=null && response.statusCode == 400){
+                    DisplayMessage.displayToast(getApplicationContext(), VollyUtils.getString(response, "message"));
+                }
+                else{
+                    DisplayMessage.displayToast(getApplicationContext(),VollyUtils.getString(response, "message"));
+                }
+            }
+        });
+        postRequest.setTag(REQUEST_TAG);
+        mQueue.add(postRequest);
+    }
+
+    public void doEditPost(View view){
+
+    }
+
+    public void doCall(View view){
+        String phonenumber = postContact.getText().toString().trim().toLowerCase();
+        Intent intent = new Intent(Intent.ACTION_DIAL);
+        intent.setData(Uri.parse("tel:"+phonenumber));
+        startActivity(intent);
+    }
+
+    public void doEmail(View view){
+        String title = postTitle.getText().toString().trim().toLowerCase();
+        String email = postEmail.getText().toString().trim().toLowerCase();
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        Uri data = Uri.parse("mailto:"
+                + email
+                + "?subject= Want to take the course "+title + "&body= Hello, I would like to take" +
+                " the course that has been posted in tutor me. Thank you.");
+
+        intent.setData(data);
+        startActivity(intent);
+
+    }
+
+    public void doOpenMap(View view){
+        String address = postAddress.getText().toString().trim().toLowerCase();
+        Uri gmmIntentUri = Uri.parse("geo:0,0?q="+address);
+        Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+        mapIntent.setPackage("com.google.android.apps.maps");
+        startActivity(mapIntent);
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

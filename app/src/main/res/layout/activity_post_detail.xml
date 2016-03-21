@@ -25,6 +25,7 @@
             android:weightSum="1">
 
 
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -242,8 +243,6 @@
                 android:textColor="#000000"
                 android:id="@+id/exiting_txt_longdes" />
 
-
-
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -252,50 +251,120 @@
                 android:id="@+id/exiting_edit_longdes"
                 android:layout_gravity="center_horizontal" />
 
-            <TextView
+            <RelativeLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Address"
-                android:textColor="#000000"
-                android:id="@+id/exiting_txt_address" />
+                android:layout_height="wrap_content">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textPostalAddress"
-                android:ems="10"
-                android:id="@+id/exiting_edit_address" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Phone Number"
+                    android:textColor="#000000"
+                    android:id="@+id/exiting_txt_phonenumber"/>
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imageButton"
+                    android:onClick="doCall"
+                    android:src="@android:drawable/ic_menu_call"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignBottom="@+id/exiting_edit_phonenumber"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true" />
 
-            <TextView
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="phone"
+                    android:ems="10"
+                    android:id="@+id/exiting_edit_phonenumber"
+                    android:layout_below="@+id/exiting_txt_phonenumber"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_toLeftOf="@+id/imageButton"
+                    android:layout_toStartOf="@+id/imageButton" />
+
+            </RelativeLayout>
+
+
+
+
+            <RelativeLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Phone Number"
-                android:textColor="#000000"
-                android:id="@+id/exiting_txt_phonenumber" />
+                android:layout_height="wrap_content">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="phone"
-                android:ems="10"
-                android:id="@+id/exiting_edit_phonenumber" />
-            <TextView
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Email Address"
+                    android:textColor="#000000"
+                    android:id="@+id/exiting_txt_emailaddress" />
+
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imageButton1"
+                    android:onClick="doEmail"
+                    android:src="@android:drawable/ic_menu_send"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignBottom="@+id/exiting_edit_Emailaddress" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
+                    android:ems="10"
+                    android:id="@+id/exiting_edit_Emailaddress"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_below="@+id/exiting_txt_emailaddress"
+                    android:layout_toLeftOf="@+id/imageButton1"
+                    android:layout_toStartOf="@+id/imageButton1" />
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Email Address"
-                android:textColor="#000000"
-                android:id="@+id/exiting_txt_emailaddress" />
+                android:layout_height="wrap_content">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textEmailAddress"
-                android:ems="10"
-                android:id="@+id/exiting_edit_Emailaddress"
-                android:layout_gravity="center_horizontal" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Address"
+                    android:textColor="#000000"
+                    android:id="@+id/exiting_txt_address" />
+
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imageButton2"
+                    android:onClick="doOpenMap"
+                    android:src="@android:drawable/ic_menu_mapmode"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignBottom="@+id/exiting_edit_address" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPostalAddress"
+                    android:ems="10"
+                    android:id="@+id/exiting_edit_address"
+                    android:layout_below="@+id/exiting_txt_address"
+                    android:layout_toLeftOf="@+id/imageButton2"
+                    android:layout_toStartOf="@+id/imageButton2" />
+
+            </RelativeLayout>
+
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -309,6 +378,7 @@
                 android:layout_height="68dp"
                 android:orientation="horizontal"
                 android:weightSum="1">
+
 
                 <RadioGroup android:id="@+id/exiting_radio_contactmethod"
                     android:textColor="#000000"
@@ -342,12 +412,27 @@
                 </RadioGroup>
 
             </LinearLayout>
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Update Details"
-                android:id="@+id/update_details_button"
-                android:layout_centerHorizontal="true" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Update Post"
+                    android:id="@+id/update_details_button"
+                    android:layout_alignParentLeft="true" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Delete post"
+                    android:onClick="doDeletePost"
+                    android:id="@+id/delete_button"
+                    android:layout_alignParentRight="true" />
+            </RelativeLayout>
+
 
 
         </LinearLayout>

@@ -162,7 +162,7 @@ public class AddSubCategoryActivity extends AppCompatActivity implements Respons
 
     @Override
     public void onResponse(JSONObject response) {
-       // progressDialog.hide();
+        progressDialog.hide();
         try {
             if(!response.getBoolean("error")){
                 DisplayMessage.displayToast(getApplicationContext(), "New sub category added.");
@@ -186,7 +186,7 @@ public class AddSubCategoryActivity extends AppCompatActivity implements Respons
 
     @Override
     public void onErrorResponse(VolleyError error) {
-       // progressDialog.hide();
+        progressDialog.hide();
         NetworkResponse response = error.networkResponse;
         if(response!=null && response.statusCode == 400){
             DisplayMessage.displayToast(getApplicationContext(), VollyUtils.getString(response, "message"));

@@ -30,6 +30,9 @@ public class Urls {
         return CATEGORIES+"/subcategories/"+categoryid;
     }
 
+    public static String getDeletePostURL(int postid){
+        return POSTS+"/delete/"+postid;
+    }
     public static String getChangePasswordUrl(int userid){
         return CHANGE_PASSWORD_URL+"/"+userid;
     }
