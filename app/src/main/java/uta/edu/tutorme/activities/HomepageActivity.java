@@ -164,6 +164,16 @@ public class HomepageActivity extends AppCompatActivity
             refreshList();
             return true;
         }
+        if (id == R.id.action_add_category) {
+            Intent i = new Intent(getApplicationContext(),AddCategoryActivity.class);
+            startActivity(i);
+            return true;
+        }
+        if (id == R.id.action_add_subcategory) {
+            Intent i = new Intent(getApplicationContext(),AddSubCategoryActivity.class);
+            startActivity(i);
+            return true;
+        }
 
         return super.onOptionsItemSelected(item);
     }

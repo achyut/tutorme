@@ -1,12 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="uta.edu.tutorme.activities.UpdatePostDetailActivity">
 
     <ScrollView
@@ -30,12 +27,12 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Post Title"
-                android:id="@+id/exiting_update_txt_posttitle" />
+                android:id="@+id/txt_posttitle_update" />
 
-            <TextView
+            <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/exiting_update_edit_posttitle"
+                android:id="@+id/edit_posttitle_update"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true" />
@@ -45,12 +42,12 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Short Description"
-                android:id="@+id/exiting_update_txt_shortdes" />
+                android:id="@+id/txt_shortdes_update" />
 
-            <TextView
+            <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/exiting_update_edit_shortdes"
+                android:id="@+id/edit_shortdes_update"
                 android:layout_gravity="center_horizontal" />
 
 
@@ -65,12 +62,12 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="Category"
-                    android:id="@+id/exiting_update_txt_category" />
+                    android:id="@+id/txt_category_update" />
 
                 <Spinner
-                    android:layout_width="150dp"
+                    android:layout_width="200dp"
                     android:layout_height="wrap_content"
-                    android:id="@+id/exiting_update_spinner1"
+                    android:id="@+id/spinner1_update"
                     android:spinnerMode="dialog"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentRight="true"
@@ -91,12 +88,12 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="Sub Category"
-                    android:id="@+id/exiting_update_txt_subcategory" />
+                    android:id="@+id/txt_subcategory_update" />
 
                 <Spinner
-                    android:layout_width="150dp"
+                    android:layout_width="200dp"
                     android:layout_height="wrap_content"
-                    android:id="@+id/exiting_update_spinner2"
+                    android:id="@+id/spinner2_update"
                     android:spinnerMode="dialog"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentRight="true"
@@ -114,16 +111,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="Price:"
-                    android:id="@+id/exiting_update_txt_price"
+                    android:text="Price ( $ ):"
+                    android:id="@+id/txt_price_update"
                     android:layout_alignParentTop="true"/>
 
-                <TextView
+                <EditText
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
                     android:inputType="numberDecimal"
                     android:ems="10"
-                    android:id="@+id/exiting_update_edit_price"
+                    android:id="@+id/edit_price_update"
                     android:layout_weight="1"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentRight="true"
@@ -145,15 +142,15 @@
                     android:layout_height="40dp"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="Start date:"
-                    android:id="@+id/exiting_update_txt_startdate"
+                    android:id="@+id/txt_startdate_update"
                     android:layout_alignParentTop="true" />
 
-                <TextView
+                <EditText
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
                     android:inputType="date"
                     android:ems="10"
-                    android:id="@+id/exiting_update_edit_startdate"
+                    android:id="@+id/edit_startdate_update"
                     android:layout_weight="0.82"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentRight="true"
@@ -174,15 +171,15 @@
                     android:layout_height="40dp"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="End date:"
-                    android:id="@+id/exiting_update_txt_enddate"
+                    android:id="@+id/txt_enddate_update"
                     android:layout_alignParentTop="true" />
 
-                <TextView
+                <EditText
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
                     android:inputType="date"
                     android:ems="10"
-                    android:id="@+id/exiting_update_edit_enddate"
+                    android:id="@+id/edit_enddate_update"
                     android:layout_weight="0.82"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentRight="true"
@@ -203,15 +200,15 @@
                     android:layout_height="40dp"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="Start Time:"
-                    android:id="@+id/exiting_update_txt_starttime"
+                    android:id="@+id/txt_starttime_update"
                     android:layout_alignParentTop="true" />
 
-                <TextView
+                <EditText
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
                     android:inputType="time"
                     android:ems="10"
-                    android:id="@+id/exiting_update_edit_starttime"
+                    android:id="@+id/edit_starttime_update"
                     android:layout_weight="0.82"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentRight="true"
@@ -232,15 +229,15 @@
                     android:layout_height="40dp"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="End Time:"
-                    android:id="@+id/exiting_update_txt_endtime"
+                    android:id="@+id/txt_endtime_update"
                     android:layout_alignParentTop="true" />
 
-                <TextView
+                <EditText
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
                     android:inputType="time"
                     android:ems="10"
-                    android:id="@+id/exiting_update_edit_endtime"
+                    android:id="@+id/edit_endtime_update"
                     android:layout_weight="0.82"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentRight="true"
@@ -253,16 +250,16 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Long description"
-                android:id="@+id/exiting_update_txt_longdes" />
+                android:id="@+id/txt_longdes_update" />
 
 
 
-            <TextView
+            <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textMultiLine"
                 android:ems="10"
-                android:id="@+id/exiting_update_edit_longdes"
+                android:id="@+id/edit_longdes_update"
                 android:layout_gravity="center_horizontal" />
 
             <TextView
@@ -270,48 +267,48 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Address"
-                android:id="@+id/exiting_update_txt_address" />
+                android:id="@+id/txt_address_update" />
 
-            <TextView
+            <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPostalAddress"
                 android:ems="10"
-                android:id="@+id/exiting_update_edit_address" />
+                android:id="@+id/edit_address_update" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Phone Number"
-                android:id="@+id/exiting_update_txt_phonenumber" />
+                android:id="@+id/txt_phonenumber_update" />
 
-            <TextView
+            <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="phone"
                 android:ems="10"
-                android:id="@+id/exiting_update_edit_phonenumber" />
+                android:id="@+id/edit_phonenumber_update" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Email Address"
-                android:id="@+id/exiting_update_txt_emailaddress" />
+                android:id="@+id/txt_emailaddress_update" />
 
-            <TextView
+            <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress"
                 android:ems="10"
-                android:id="@+id/exiting_update_edit_Emailaddress"
+                android:id="@+id/edit_Emailaddress_update"
                 android:layout_gravity="center_horizontal" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Preferred Contact Method:"
-                android:id="@+id/exiting_update_txt_contactmethod" />
+                android:id="@+id/txt_contactmethod_update" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -319,7 +316,7 @@
                 android:orientation="horizontal"
                 android:weightSum="1">
 
-                <RadioGroup android:id="@+id/exiting_update_radio_contactmethod"
+                <RadioGroup android:id="@+id/radio_contactmethod_update"
                     android:orientation="horizontal"
                     android:layout_gravity="center_horizontal"
                     android:layout_width="match_parent"
@@ -329,21 +326,21 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:text="Email"
-                        android:id="@+id/exiting_update_btn_Email"
+                        android:id="@+id/btn_Email_update"
                         android:checked="false"
                         android:layout_weight="0.24" />
                     <RadioButton
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:text="SMS"
-                        android:id="@+id/exiting_update_btn_SMS"
+                        android:id="@+id/btn_SMS_update"
                         android:checked="false"
                         android:layout_weight="0.31" />
                     <RadioButton
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:text="Phone Call"
-                        android:id="@+id/exiting_update_btn_phone"
+                        android:id="@+id/btn_phone_update"
                         android:checked="false"
                         android:layout_weight="0.31" />
 
@@ -351,7 +348,7 @@
 
             </LinearLayout>
             <android.support.design.widget.FloatingActionButton
-                android:id="@+id/exiting_update_fab1"
+                android:id="@+id/fab_update"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
@@ -364,3 +361,4 @@
     </ScrollView>
 
 </RelativeLayout>
+
