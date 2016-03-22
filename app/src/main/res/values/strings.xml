@@ -3,6 +3,9 @@
     <string name="title_activity_register">Register</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_refresh">Refresh</string>
+    <string name="action_add_category">Add category</string>
+    <string name="action_add_subcategory">Add subcategory</string>
+
     <string name="validate_email">Invalid email-id entered.</string>
     <string name="validate_password">Invalid password entered</string>
     <string name="email_blank">Email cannot be blank</string>

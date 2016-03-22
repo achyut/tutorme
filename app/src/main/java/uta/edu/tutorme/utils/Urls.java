@@ -5,7 +5,13 @@ package uta.edu.tutorme.utils;
  */
 public class Urls {
 
+<<<<<<< HEAD
     public static String BASE_URL = "http://2c294003.ngrok.io";
+=======
+    //public static String BASE_URL = "http://192.168.43.245:8000";
+    public static String BASE_URL = "http://7b925480.ngrok.io";
+
+>>>>>>> ff5b99b9dabbcd66a0801fb3d3eaffc2ddf4591a
     public static String LOGIN_URL= BASE_URL+"/login";
     public static String FORGOT_PASSWORD_URL = BASE_URL+"/forgot";
     private static String CHANGE_PASSWORD_URL = BASE_URL+"/changepassword";
@@ -28,6 +34,9 @@ public class Urls {
         return CATEGORIES+"/subcategories/"+categoryid;
     }
 
+    public static String getDeletePostURL(int postid){
+        return POSTS+"/delete/"+postid;
+    }
     public static String getChangePasswordUrl(int userid){
         return CHANGE_PASSWORD_URL+"/"+userid;
     }
