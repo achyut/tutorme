@@ -15,9 +15,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-
-import uta.edu.tutorme.adapters.PostCardAdapter;
-
 import android.widget.TextView;
 
 import com.android.volley.NetworkResponse;
@@ -31,6 +28,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import uta.edu.tutorme.R;
+import uta.edu.tutorme.adapters.PostCardAdapter;
 import uta.edu.tutorme.models.PostCard;
 import uta.edu.tutorme.models.User;
 import uta.edu.tutorme.utils.DisplayMessage;
@@ -193,8 +191,11 @@ public class HomepageActivity extends AppCompatActivity
         } else if (id == R.id.drawer_change_password) {
             Intent intent = new Intent(getApplicationContext(),ChangePasswordActivity.class);
             startActivity(intent);
-
-        } else if (id == R.id.nav_share) {
+        } else if(id==R.id.drawer_edit_profile) {
+            Intent intent = new Intent(getApplicationContext(), EditProfileActivity.class);
+            startActivity(intent);
+        }
+        else if (id == R.id.nav_share) {
 
         } else if (id == R.id.drawer_logout) {
             SharedPrefUtils.deleteUserFromSharedPref(getApplicationContext());
