@@ -26,6 +26,9 @@ public class Urls {
         return USER_POSTS+"/"+userid;
     }
 
+    public static String getUserDetails(int userid){
+        return USERS+"/"+userid;
+    }
     public static String getSubcategoriesOfCategory(int categoryid){
         return CATEGORIES+"/subcategories/"+categoryid;
     }

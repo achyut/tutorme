@@ -4,17 +4,10 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
 import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Spannable;
-import android.text.SpannableString;
-import android.text.style.ForegroundColorSpan;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.TextView;
 import android.widget.TextView;
 
 import com.android.volley.NetworkResponse;
@@ -23,17 +16,8 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.text.DateFormat;
-import java.text.FieldPosition;
-import java.text.ParsePosition;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
 
 import uta.edu.tutorme.R;
 import uta.edu.tutorme.models.Category;
@@ -98,8 +82,8 @@ public class PostDetailActivity extends AppCompatActivity implements  Response.L
 
 
             String title = request.getString("title");
-            String shortdesc = request.getString("title");
-            String longdesc = request.getString("title");
+            String shortdesc = request.getString("shortdesc");
+            String longdesc = request.getString("longdesc");
             double price = request.getDouble("price");
             double rating = request.getDouble("rating");
             String startdate = request.getString("startdate");
@@ -230,7 +214,6 @@ public class PostDetailActivity extends AppCompatActivity implements  Response.L
         SharedPrefUtils.checkIfLoggedIn(getApplicationContext());
         postCard = (PostCard)getIntent().getSerializableExtra("post");
         progressDialog = new ProgressDialog(this);
-        //DisplayMessage.displayToast(getApplicationContext(), "Position " + postCard.getTitle());
 
         postTitle =  (TextView)findViewById(R.id.exiting_edit_posttitle);
         postAddress =  (TextView)findViewById(R.id.exiting_edit_address);
@@ -271,27 +254,6 @@ public class PostDetailActivity extends AppCompatActivity implements  Response.L
         progressDialog.hide();
 
         Post post = getPostFromUrl(response);
-/*
-=======
-        post.setTitle("Piano Class Available");
-        post.setAddress("University Center, Arlington Texas");
-      //  post.setCategory("Music");
-        post.setContact("342554353");
-        //post.setCreated_by();
-        post.setEmail("ap@gmail.com");
-        post.setShortdesc("Basic piano learning classes");
-        post.setLongdesc("In this class, you will learn the basics and the notes for the piano");
-        post.setStartdate(calendarStartDate.getTime());
-        post.setEnddate(calendarEndDate.getTime());
-        post.setStarttime(calendarStartTime.getTime());
-        post.setEndtime(calendarEndTime.getTime());
-        Category category = new Category();
-        category.setName("Music");
-        SubCategory subCategory = new SubCategory("Piano", true);
-        subCategory.setName("Piano");
-        post.setCategory(category);
-        post.setSubcategory(subCategory);
-/***** Dummy Data End  *****/
 
         postTitle.setText(post.getTitle());
         postAddress.setText(post.getAddress());
