@@ -42,7 +42,9 @@
         <activity android:name=".activities.AddCategoryActivity" />
         <activity android:name=".activities.AddSubCategoryActivity" />
         <activity android:name=".activities.EditProfileActivity" />
-        <activity android:name=".activities.UpdateProfilePage"></activity>
+        <activity android:name=".activities.UpdateProfilePage"
+            android:label="@string/update_profile">
+        </activity>
     </application>
 
 </manifest>

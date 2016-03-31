@@ -13,7 +13,7 @@
     <string name="title_activity_homepage">Homepage</string>
     <string name="title_activity_add_new_adv">New Post</string>
     <string name="title_activity_existing_adv">Post Details</string>
-
+    <string name="update_profile">Update Profile</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="start_date">Start Date</string>
