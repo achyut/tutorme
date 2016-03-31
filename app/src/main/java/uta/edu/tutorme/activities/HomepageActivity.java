@@ -172,7 +172,7 @@ public class HomepageActivity extends AppCompatActivity
             startActivity(i);
             return true;
         }
-        if(id == R.id.action_search_advance){
+        if(id == R.id.search){
             Intent i = new Intent(getApplicationContext(),SearchActivity.class);
             startActivity(i);
             return true;
