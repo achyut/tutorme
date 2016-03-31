@@ -20,6 +20,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import uta.edu.tutorme.R;
+import uta.edu.tutorme.models.User;
 import uta.edu.tutorme.utils.DisplayMessage;
 import uta.edu.tutorme.utils.Urls;
 import uta.edu.tutorme.utils.Validator;
@@ -55,6 +56,18 @@ public class UpdateProfilePage extends AppCompatActivity  implements Response.Li
         setContentView(R.layout.activity_update_profile_page);
         initialize();
         progressDialog = new ProgressDialog(this);
+        User user = new User();
+        user.setName("Achyut");
+        user.setEmail("achyut.pdl@gmail.com");
+        user.setAddress("Arbor Oaks, UTA");
+        user.setPhone("4563733729");
+        user.setUsertype("Tutor");
+
+        name.setText(user.getName());
+        email.setText(user.getEmail());
+        phone.setText(user.getAddress());
+        address.setText(user.getPhone());
+        usertype.setText(user.getUsertype());
     }
 
     protected void onStart() {
@@ -116,7 +129,7 @@ public class UpdateProfilePage extends AppCompatActivity  implements Response.Li
     }
 
 
-    public void doRegister(View view){
+    public void doUpdateProfile(View view){
         if(validateProfile()){
             progressDialog.setMessage("Updating Profile!!!");
             progressDialog.show();
@@ -155,15 +168,15 @@ public class UpdateProfilePage extends AppCompatActivity  implements Response.Li
     public void onResponse(JSONObject response) {
         progressDialog.hide();
         try {
-            if(!response.getBoolean("error")){
+         //   if(!response.getBoolean("error")){
                 DisplayMessage.displayToast(getApplicationContext(),"Profile has been updated!!!");
                 Intent intent = new Intent(getApplicationContext(),HomepageActivity.class);
                 startActivity(intent);
-            }
-            else{
+           // }
+          /*  else{
                 DisplayMessage.displayToast(getApplicationContext(),response.getString("message"));
-            }
-        } catch (JSONException e) {
+            }*/
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
