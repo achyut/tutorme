@@ -8,17 +8,36 @@ import android.view.View;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.widget.EditText;
+import android.widget.Spinner;
+
 import uta.edu.tutorme.R;
-import uta.edu.tutorme.beans.FilterElementRange;
-import uta.edu.tutorme.beans.FilterElementSimple;
 import uta.edu.tutorme.beans.FilterRequest;
 
 public class SearchActivity extends AppCompatActivity {
+
+    EditText keywords;
+    EditText priceFrom;
+    EditText priceTo;
+    Spinner categories;
+    Spinner subcategories;
+    EditText rating;
+
+    private void initialize(){
+        keywords = (EditText)findViewById(R.id.input_search_keywords);
+        priceFrom = (EditText)findViewById(R.id.input_price_from);
+        priceTo = (EditText)findViewById(R.id.input_price_to);
+        categories = (Spinner)findViewById(R.id.spinner_categories);
+        subcategories = (Spinner)findViewById(R.id.spinner_subcategories);
+        rating =  (EditText)findViewById(R.id.input_rating);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
+        initialize();
+
     }
 
     public void doSearch(View view){

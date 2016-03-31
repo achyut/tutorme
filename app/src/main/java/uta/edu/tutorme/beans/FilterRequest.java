@@ -9,64 +9,58 @@ import java.io.Serializable;
 import java.util.List;
 
 public class FilterRequest implements Serializable{
+    private String keyword;
+    private String rating;
+    private String category;
+    private String subcategory;
+    private String priceFrom;
+    private String priceTo;
 
-    @SerializedName("simple-hints")
-    protected List<FilterElementSimple> simpleHints;
-
-    @SerializedName("range-hints")
-    protected List<FilterElementRange> rangeHints;
-
-    @SerializedName("list-hints")
-    protected List<FilterElementList> listHints;
-    protected int page;
-    protected int pageSize;
-
-    public List<FilterElementSimple> getSimpleHints() {
-        return simpleHints;
+    public String getKeyword() {
+        return keyword;
     }
 
-    public void setSimpleHints(List<FilterElementSimple> simpleHints) {
-        this.simpleHints = simpleHints;
+    public void setKeyword(String keyword) {
+        this.keyword = keyword;
     }
 
-
-    public List<FilterElementRange> getRangeHints() {
-        return rangeHints;
+    public String getRating() {
+        return rating;
     }
 
-    public void setRangeHints(List<FilterElementRange> rangeHints) {
-        this.rangeHints = rangeHints;
+    public void setRating(String rating) {
+        this.rating = rating;
     }
 
-    public List<FilterElementList> getListHints() {
-        return listHints;
+    public String getCategory() {
+        return category;
     }
 
-    public void setListHints(List<FilterElementList> listHints) {
-        this.listHints = listHints;
+    public void setCategory(String category) {
+        this.category = category;
     }
 
-    public int getPage() {
-        return page;
+    public String getSubcategory() {
+        return subcategory;
     }
 
-    public void setPage(int page) {
-        this.page = page;
+    public void setSubcategory(String subcategory) {
+        this.subcategory = subcategory;
     }
 
-    public int getPageSize() {
-        return pageSize;
+    public String getPriceFrom() {
+        return priceFrom;
     }
 
-    public void setPageSize(int pageSize) {
-        this.pageSize = pageSize;
+    public void setPriceFrom(String priceFrom) {
+        this.priceFrom = priceFrom;
     }
 
-    @Override
-    public String toString() {
-        return "FilterRequest [simpleHints=" + simpleHints + ", rangeHints="
-                + rangeHints + ", listHints=" + listHints + ", page=" + page
-                + ", pageSize=" + pageSize + "]";
+    public String getPriceTo() {
+        return priceTo;
     }
 
+    public void setPriceTo(String priceTo) {
+        this.priceTo = priceTo;
+    }
 }

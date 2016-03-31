@@ -42,9 +42,11 @@
         <activity android:name=".activities.AddCategoryActivity" />
         <activity android:name=".activities.AddSubCategoryActivity" />
         <activity android:name=".activities.EditProfileActivity" />
+
         <activity android:name=".activities.SearchResultActivity"
             android:label="Search Results"
             ></activity>
+        <activity android:name=".activities.UpdateProfilePage"></activity>
     </application>
 
 </manifest>

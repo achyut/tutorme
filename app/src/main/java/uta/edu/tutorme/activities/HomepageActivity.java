@@ -196,7 +196,7 @@ public class HomepageActivity extends AppCompatActivity
             Intent intent = new Intent(getApplicationContext(),ChangePasswordActivity.class);
             startActivity(intent);
         } else if(id==R.id.drawer_edit_profile) {
-            Intent intent = new Intent(getApplicationContext(), EditProfileActivity.class);
+            Intent intent = new Intent(getApplicationContext(), UpdateProfilePage.class);
             startActivity(intent);
         }
         else if (id == R.id.nav_share) {

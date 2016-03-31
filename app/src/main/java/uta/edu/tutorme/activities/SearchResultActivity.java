@@ -1,7 +1,6 @@
 package uta.edu.tutorme.activities;
 
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -12,25 +11,19 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
 import com.google.gson.Gson;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.logging.Filter;
 
 import uta.edu.tutorme.R;
 import uta.edu.tutorme.adapters.PostCardAdapter;
 import uta.edu.tutorme.beans.FilterRequest;
-import uta.edu.tutorme.models.Category;
 import uta.edu.tutorme.models.PostCard;
-import uta.edu.tutorme.models.SubCategory;
 import uta.edu.tutorme.utils.DisplayMessage;
 import uta.edu.tutorme.utils.Urls;
 import uta.edu.tutorme.volly.MyJsonObjectRequest;
@@ -72,7 +65,12 @@ public class SearchResultActivity extends AppCompatActivity {
 
     public JSONObject getFilterRequestObject(FilterRequest request){
         Map<String,String> req = new HashMap<>();
-        req.put("request",gson.toJson(request));
+        req.put("keyword",request.getKeyword());
+        req.put("rating",request.getRating());
+        req.put("category",request.getCategory());
+        req.put("subcategory",request.getSubcategory());
+        req.put("price-from",request.getPriceFrom());
+        req.put("price-to",request.getPriceTo());
         return new JSONObject(req);
     }
 
