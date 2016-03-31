@@ -70,6 +70,9 @@ public class AddCategoryActivity extends AppCompatActivity implements Response.L
             createNewCategoryRequest.setTag(REQUEST_TAG);
             mQueue.add(createNewCategoryRequest);
         }
+        else{
+            edit_category.setError("Please enter category");
+        }
     }
 
     private boolean validateAddnewCategory(String newCategory) {

@@ -8,9 +8,7 @@
         android:title="@string/action_refresh"
         app:showAsAction="collapseActionView|ifRoom"
         android:icon="@android:drawable/ic_menu_search"
-        android:actionViewClass="android.widget.SearchView"
-
-        />
+        android:actionViewClass="android.widget.SearchView" />
 
     <item
         android:id="@+id/action_refresh"

@@ -151,6 +151,9 @@ public class AddSubCategoryActivity extends AppCompatActivity implements Respons
             createNewSubCategoryRequest.setTag(REQUEST_TAG);
             mQueue.add(createNewSubCategoryRequest);
         }
+        else{
+            subcategory.setError("Please enter subcategory");
+        }
     }
 
     private boolean validateAddnewCategory(String newCategory) {
