@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
@@ -188,14 +189,35 @@ public class UpdateProfilePage extends AppCompatActivity  implements Response.Li
     public void onResponse(JSONObject response) {
         progressDialog.hide();
         try {
-         //   if(!response.getBoolean("error")){
-                DisplayMessage.displayToast(getApplicationContext(),"Profile has been updated!!!");
+            if(!response.getBoolean("error")){
+                DisplayMessage.displayToast(getApplicationContext(), "Profile has been updated!!!");
                 Intent intent = new Intent(getApplicationContext(),HomepageActivity.class);
                 startActivity(intent);
-           // }
-          /*  else{
+
+                String username = response.getString("name");
+                String address = response.getString("address");
+                String contact = response.getString("contact");
+                String email = response.getString("email");
+                String usertype = response.getString("usertype");
+                int id = response.getInt("id");
+                User usr = new User();
+                usr.setEmail(email);
+                usr.setAddress(address);
+                usr.setPhone(contact);
+                usr.setUsertype(usertype);
+                usr.setName(username);
+                usr.setId(id);
+                TextView usrn = (TextView) findViewById(R.id.drawer_username);
+
+                usrn.setText(username);
+
+                TextView eml = (TextView) findViewById(R.id.drawer_user_email);
+                eml.setText(email);
+                SharedPrefUtils.storeUserInsharedPref(getApplicationContext(),usr);
+            }
+            else{
                 DisplayMessage.displayToast(getApplicationContext(),response.getString("message"));
-            }*/
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
