@@ -18,6 +18,10 @@
             android:id="@+id/drawer_change_password"
             android:icon="@drawable/ic_menu_manage"
             android:title="Change Password" />
+        <item
+            android:id="@+id/drawer_edit_profile"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Edit Profile" />
     </group>
 
     <item android:title="Others">

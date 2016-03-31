@@ -40,7 +40,9 @@
         <activity android:name=".activities.UpdatePostDetailActivity" />
         <activity android:name=".activities.SearchActivity" />
         <activity android:name=".activities.AddCategoryActivity" />
-        <activity android:name=".activities.AddSubCategoryActivity"></activity>
+        <activity android:name=".activities.AddSubCategoryActivity" />
+        <activity android:name=".activities.EditProfileActivity" />
+        <activity android:name=".activities.UpdateProfilePage"></activity>
     </application>
 
 </manifest>
