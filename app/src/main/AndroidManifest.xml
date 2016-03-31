@@ -38,7 +38,7 @@
         <activity android:name=".activities.ForgetPasswordActivity" />
         <activity android:name=".activities.ChangePasswordActivity" />
         <activity android:name=".activities.UpdatePostDetailActivity" />
-        <activity android:name=".activities.SearchActivity" />
+        <activity android:name=".activities.SearchActivity" android:label="Advanced search" />
         <activity android:name=".activities.AddCategoryActivity" />
         <activity android:name=".activities.AddSubCategoryActivity" />
         <activity android:name=".activities.EditProfileActivity" />

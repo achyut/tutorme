@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.TextView;
 
 import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
@@ -34,6 +36,7 @@ public class SearchResultActivity extends AppCompatActivity {
 
     PostCardAdapter adapter;
     RecyclerView list;
+    private TextView emptyView;
     Gson gson;
     private RequestQueue mQueue;
     ProgressDialog progressDialog;
@@ -44,7 +47,7 @@ public class SearchResultActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_result);
-
+        emptyView = (TextView)findViewById(R.id.empty_view);
 
         LinearLayoutManager lm = new LinearLayoutManager(this);
         adapter = new PostCardAdapter();
@@ -86,6 +89,9 @@ public class SearchResultActivity extends AppCompatActivity {
                 try {
                     JSONArray arr = response.getJSONArray("result");
                     if (arr.length() > 0) {
+                        list.setVisibility(View.VISIBLE);
+                        emptyView.setVisibility(View.GONE);
+
                         for (int i = 0; i < arr.length(); i++) {
                             JSONObject obj = arr.getJSONObject(i);
                             int id = obj.getInt("id");
@@ -97,6 +103,10 @@ public class SearchResultActivity extends AppCompatActivity {
                             adapter.addCard(card);
                             list.scrollToPosition(0);
                         }
+                    }
+                    else{
+                        list.setVisibility(View.GONE);
+                        emptyView.setVisibility(View.VISIBLE);
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();

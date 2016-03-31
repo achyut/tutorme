@@ -13,15 +13,21 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import uta.edu.tutorme.R;
+import uta.edu.tutorme.models.Category;
+import uta.edu.tutorme.models.SubCategory;
 import uta.edu.tutorme.models.User;
 import uta.edu.tutorme.utils.DisplayMessage;
+import uta.edu.tutorme.utils.SharedPrefUtils;
 import uta.edu.tutorme.utils.Urls;
 import uta.edu.tutorme.utils.Validator;
 import uta.edu.tutorme.volly.MyJsonObjectRequest;
@@ -39,16 +45,13 @@ public class UpdateProfilePage extends AppCompatActivity  implements Response.Li
     EditText email;
     EditText phone;
     EditText address;
-    EditText password;
-    EditText confirmpass;
-    EditText usertype;
+    User user;
 
     private void initialize(){
         name = (EditText)findViewById(R.id.update_edit_Name);
         email = (EditText)findViewById(R.id.update_edit_email);
         phone = (EditText)findViewById(R.id.update_edit_phone);
         address = (EditText)findViewById(R.id.update_edit_address);
-           usertype = (EditText)findViewById(R.id.edit_address);
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,18 +59,40 @@ public class UpdateProfilePage extends AppCompatActivity  implements Response.Li
         setContentView(R.layout.activity_update_profile_page);
         initialize();
         progressDialog = new ProgressDialog(this);
-        User user = new User();
-        user.setName("Achyut");
-        user.setEmail("achyut.pdl@gmail.com");
-        user.setAddress("Arbor Oaks, UTA");
-        user.setPhone("4563733729");
-        user.setUsertype("Tutor");
+        mQueue = VolleyRequestQueue.getInstance(this.getApplicationContext())
+                .getRequestQueue();
+        loadUser();
+    }
 
-        name.setText(user.getName());
-        email.setText(user.getEmail());
-        phone.setText(user.getAddress());
-        address.setText(user.getPhone());
-        usertype.setText(user.getUsertype());
+    public void loadUser() {
+        User usr = SharedPrefUtils.getUserFromSession(getApplication());
+        progressDialog.setMessage("Loading user data.");
+        progressDialog.show();
+        MyJsonObjectRequest postRequest = new MyJsonObjectRequest(Request.Method
+                .GET, Urls.getUserDetails(usr.getId()),
+                null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject user) {
+                try {
+
+                    name.setText(user.getString("name"));
+                    email.setText(user.getString("email"));
+                    phone.setText(user.getString("contact"));
+                    address.setText(user.getString("address"));
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                progressDialog.hide();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                progressDialog.hide();
+            }
+        });
+
+        postRequest.setTag(REQUEST_TAG);
+        mQueue.add(postRequest);
     }
 
     protected void onStart() {
@@ -90,7 +115,6 @@ public class UpdateProfilePage extends AppCompatActivity  implements Response.Li
         String emailstr = email.getText().toString();
         String phonestr = phone.getText().toString();
         String addressstr = address.getText().toString();
-        String usertypestr = usertype.getText().toString();
 
         boolean result = true;
         if(!Validator.validateName(namestr)){
@@ -109,21 +133,16 @@ public class UpdateProfilePage extends AppCompatActivity  implements Response.Li
         return result;
     }
 
-    private JSONObject getUpdateProfileJsonObject(){
+    private JSONObject getUpdateProfileJsonObject(User usr){
         String namestr = name.getText().toString().trim();
-        String emailstr = email.getText().toString().trim();
         String phonestr = phone.getText().toString().trim();
         String addressstr = address.getText().toString().trim();
-        String passwordstr = password.getText().toString().trim();
-        String confirmstr = confirmpass.getText().toString().trim();
-        String usertypestr = usertype.getText().toString().trim();
         Map<String, String> reqmap = new HashMap<String, String>();
         reqmap.put("name", namestr);
-        reqmap.put("email",emailstr);
         reqmap.put("address",addressstr);
         reqmap.put("contact",phonestr);
-        reqmap.put("password",passwordstr);
-        reqmap.put("usertype",usertypestr);
+        reqmap.put("email",usr.getEmail());
+        reqmap.put("usertype",usr.getUsertype());
         JSONObject obj = new JSONObject(reqmap);
         return obj;
     }
@@ -131,11 +150,12 @@ public class UpdateProfilePage extends AppCompatActivity  implements Response.Li
 
     public void doUpdateProfile(View view){
         if(validateProfile()){
+            User usr = SharedPrefUtils.getUserFromSession(getApplication());
             progressDialog.setMessage("Updating Profile!!!");
             progressDialog.show();
             MyJsonObjectRequest postRequest = new MyJsonObjectRequest(Request.Method
-                    .POST, Urls.USERS,
-                    getUpdateProfileJsonObject(), this, this);
+                    .POST, Urls.getUserDetails(usr.getId()),
+                    getUpdateProfileJsonObject(usr), this, this);
 
 
             postRequest.setTag(REQUEST_TAG);
