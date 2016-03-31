@@ -6,10 +6,12 @@
         android:orderInCategory="100"
         android:title="@string/action_refresh"
         app:showAsAction="never" />
+    <item android:id="@+id/action_search_advance" android:title="@string/advance_search"
+        android:orderInCategory="101" app:showAsAction="never" />
 
     <item android:id="@+id/action_add_category" android:title="@string/action_add_category"
-        android:orderInCategory="101" app:showAsAction="never" />
-    <item android:id="@+id/action_add_subcategory" android:title="@string/action_add_subcategory"
         android:orderInCategory="102" app:showAsAction="never" />
+    <item android:id="@+id/action_add_subcategory" android:title="@string/action_add_subcategory"
+        android:orderInCategory="103" app:showAsAction="never" />
 
 </menu>

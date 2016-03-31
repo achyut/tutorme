@@ -23,7 +23,6 @@ public class PostCardHolder extends RecyclerView.ViewHolder{
 
     TextView postcardtitle, postcardprice, postcardshortdesc;
     ImageView ivProfile;
-    ImageButton ibReply, ibRetweet, ibStar;
     Context context;
 
     public PostCardHolder(Context context ,View itemView) {

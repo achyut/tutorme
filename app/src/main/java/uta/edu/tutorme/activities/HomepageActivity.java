@@ -172,7 +172,11 @@ public class HomepageActivity extends AppCompatActivity
             startActivity(i);
             return true;
         }
-
+        if(id == R.id.action_search_advance){
+            Intent i = new Intent(getApplicationContext(),SearchActivity.class);
+            startActivity(i);
+            return true;
+        }
         return super.onOptionsItemSelected(item);
     }
 
