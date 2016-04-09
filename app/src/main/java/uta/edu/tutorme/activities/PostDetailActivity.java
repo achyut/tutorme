@@ -180,8 +180,15 @@ public class PostDetailActivity extends AppCompatActivity implements  Response.L
     public void doCall(View view){
         String phonenumber = postContact.getText().toString().trim().toLowerCase();
         Intent intent = new Intent(Intent.ACTION_DIAL);
-        intent.setData(Uri.parse("tel:"+phonenumber));
+        intent.setData(Uri.parse("tel:" + phonenumber));
         startActivity(intent);
+    }
+
+    public void doMessage(View view){
+        String phonenumber = postContact.getText().toString().trim().toLowerCase();
+        Intent sendIntent = new Intent(Intent.ACTION_VIEW);
+        sendIntent.setData(Uri.parse("sms:"+phonenumber));
+        startActivity(sendIntent);
     }
 
     public void doEmail(View view){
