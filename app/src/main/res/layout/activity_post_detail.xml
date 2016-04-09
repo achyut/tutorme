@@ -254,11 +254,20 @@
                 <ImageButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/smsImage"
+                    android:onClick="doMessage"
+                    android:src="@android:drawable/ic_menu_send"
+                    android:layout_alignParentTop="true"
+                    android:layout_toLeftOf="@+id/imageButton"
+                    android:layout_toStartOf="@+id/imageButton" />
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:id="@+id/imageButton"
                     android:onClick="doCall"
                     android:src="@android:drawable/ic_menu_call"
                     android:layout_alignParentTop="true"
-                    android:layout_alignBottom="@+id/exiting_edit_phonenumber"
+                    android:layout_alignBottom="@+id/smsImage"
                     android:layout_alignParentRight="true"
                     android:layout_alignParentEnd="true" />
 
