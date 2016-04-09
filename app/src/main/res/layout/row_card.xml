@@ -72,7 +72,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:padding="@dimen/yak_action_margin">
+            android:padding="@dimen/yak_action_margin"
+            android:weightSum="1">
 <!--
             <ImageButton
                 android:layout_width="@dimen/yak_action_icon_height"
@@ -96,6 +97,23 @@
                 android:layout_height="@dimen/yak_action_icon_height"
                 android:background="@null"
                 android:src="@drawable/ic_reply" />-->
+
+            <RatingBar
+                android:id="@+id/fcor_ratingbar"
+                style="?android:attr/ratingBarStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:progress="70" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="View Reviews"
+                android:id="@+id/view_reviews"
+                android:layout_weight="0.18"
+                android:onClick="goToReviewsPage"/>
+
 
         </LinearLayout>
 

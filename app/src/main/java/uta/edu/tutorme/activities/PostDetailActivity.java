@@ -133,6 +133,10 @@ public class PostDetailActivity extends AppCompatActivity implements  Response.L
                 .show();
     }
 
+    public void doUpdatePost(View view){
+        Intent i = new Intent(getApplicationContext(),UpdatePostDetailActivity.class);
+        startActivity(i);
+    }
 
     public void deletePost() {
         progressDialog.setMessage("Deleting post. Please wait...");
@@ -171,10 +175,6 @@ public class PostDetailActivity extends AppCompatActivity implements  Response.L
         });
         postRequest.setTag(REQUEST_TAG);
         mQueue.add(postRequest);
-    }
-
-    public void doEditPost(View view){
-
     }
 
     public void doCall(View view){
