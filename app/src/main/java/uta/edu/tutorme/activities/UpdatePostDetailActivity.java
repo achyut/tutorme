@@ -24,6 +24,9 @@ import com.android.volley.VolleyError;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import uta.edu.tutorme.R;
 import uta.edu.tutorme.models.Category;
 import uta.edu.tutorme.models.Post;
@@ -55,6 +58,7 @@ public class UpdatePostDetailActivity extends AppCompatActivity implements Respo
     TextView postPrice;
 
     PostCard postCard;
+    User user;
     private RequestQueue mQueue;
     ProgressDialog progressDialog;
     public static final String REQUEST_TAG = "POST_DETAIL_ACTIVITY";
@@ -121,31 +125,82 @@ public class UpdatePostDetailActivity extends AppCompatActivity implements Respo
         return post;
     }
 
-    public void doDeletePost(View view){
+    public void doUpdate(View view){
         new AlertDialog.Builder(this)
-                .setMessage("Are you sure you want to delete this post?")
+                .setMessage("Are you sure you want to Update this post?")
                 .setCancelable(false)
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        deletePost();
+                        UpdatePost();
                     }
                 })
                 .setNegativeButton("No", null)
                 .show();
     }
 
-    public void deletePost() {
-        progressDialog.setMessage("Deleting post. Please wait...");
+    private JSONObject getPostJSONObject() {
+
+
+        String title1 = postTitle.getText().toString();
+        String shortDesc1 = postShortDesc.getText().toString();
+        String longDesc1 = postLongDesc.getText().toString();
+        String price1 = postPrice.getText().toString();
+        String category1 = postCategory.getText().toString();
+        String subcategory = postSubCategory.getText().toString();
+        String startDate1 = postStartDate.getText().toString();
+        String endDate1 = postEndDate.getText().toString();
+        String startTime1 = postStartTime.getText().toString();
+        String endTime1 = postEndTime.getText().toString();
+        String address1 = postAddress.getText().toString();
+        String phoneNumber1 = postContact.getText().toString();
+        String email1 = postEmail.getText().toString();
+
+        Map<String, String> reqmap = new HashMap<String, String>();
+        reqmap.put("title", title1);
+        reqmap.put("shortdesc", shortDesc1);
+        reqmap.put("longdesc", longDesc1);
+        reqmap.put("price", price1);
+
+        reqmap.put("category",category1);
+        reqmap.put("subcategory",subcategory);
+
+
+        /*
+        int pos1 = spinner1.getSelectedItemPosition();
+        Category cat = categoriesMap.get(pos1);
+        int pos2 = spinner2.getSelectedItemPosition();
+
+        reqmap.put("category", String.valueOf(cat.getId()));
+        reqmap.put("subcategory", String.valueOf(cat.getSubCategories().get(pos2).getId()));
+
+        */
+        reqmap.put("startdate", startDate1);
+        reqmap.put("enddate", endDate1);
+        reqmap.put("starttime", startTime1);
+        reqmap.put("endtime", endTime1);
+        reqmap.put("address", address1);
+        reqmap.put("contact", phoneNumber1);
+        reqmap.put("email", email1);
+        reqmap.put("preferedcontact", "Mobile");
+
+        reqmap.put("created_by", String.valueOf(user.getId()));
+
+        JSONObject reqobj = new JSONObject(reqmap);
+        return reqobj;
+    }
+
+    public void UpdatePost() {
+        progressDialog.setMessage("Updating post. Please wait...");
         progressDialog.show();
         MyJsonObjectRequest postRequest = new MyJsonObjectRequest(Request.Method
-                .GET, Urls.getDeletePostURL(postCard.getId()),
-                null, new Response.Listener<JSONObject>() {
+                .GET, Urls.getUpdatePostURL(postCard.getId()),
+                getPostJSONObject(), new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 try {
                     progressDialog.hide();
                     if(!response.getBoolean("error")){
-                        DisplayMessage.displayToast(getApplicationContext(), "Post deleted successfully.");
+                        DisplayMessage.displayToast(getApplicationContext(), "Post Updated successfully.");
                         Intent i = new Intent(getApplicationContext(),HomepageActivity.class);
                         startActivity(i);
                     }
@@ -180,6 +235,7 @@ public class UpdatePostDetailActivity extends AppCompatActivity implements Respo
         SharedPrefUtils.checkIfLoggedIn(getApplicationContext());
         postCard = (PostCard)getIntent().getSerializableExtra("post");
         progressDialog = new ProgressDialog(this);
+        user = SharedPrefUtils.getUserFromSession(getApplicationContext());
 
         postTitle =  (TextView)findViewById(R.id.edit_posttitle);
         postAddress =  (TextView)findViewById(R.id.edit_address);
@@ -233,7 +289,7 @@ public class UpdatePostDetailActivity extends AppCompatActivity implements Respo
         postEndTime.setText(post.getEndtime().toString());
         postCategory.setText(post.getCategory().getName());
         postSubCategory.setText(post.getSubcategory().getName());
-        postPrice.setText("$"+post.getPrice()+"/hr");
+        postPrice.setText(String.valueOf(post.getPrice()));
 
     }
 }

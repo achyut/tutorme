@@ -8,7 +8,7 @@ public class Urls {
     //public static String BASE_URL = "http://192.168.43.245:8000";
 
 
-    public static String BASE_URL = "http://8de16870.ngrok.io";
+    public static String BASE_URL = "http://1426d5a3.ngrok.io";
 
 
     public static String LOGIN_URL= BASE_URL+"/login";
@@ -37,8 +37,12 @@ public class Urls {
     }
 
     public static String getSponsoredURL(int postid){ return BASE_URL+"/sponsor/"+postid;}
+
     public static String getDeletePostURL(int postid){
         return POSTS+"/delete/"+postid;
+    }
+    public static String getUpdatePostURL(int postid){
+        return POSTS+"/"+postid;
     }
     public static String getChangePasswordUrl(int userid){
         return CHANGE_PASSWORD_URL+"/"+userid;
