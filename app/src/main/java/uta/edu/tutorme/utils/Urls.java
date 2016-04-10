@@ -8,7 +8,7 @@ public class Urls {
     //public static String BASE_URL = "http://192.168.43.245:8000";
 
 
-    public static String BASE_URL = "http://1426d5a3.ngrok.io";
+    public static String BASE_URL = "http://12751cd4.ngrok.io";
 
 
     public static String LOGIN_URL= BASE_URL+"/login";

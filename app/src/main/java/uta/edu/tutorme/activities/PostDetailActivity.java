@@ -138,8 +138,9 @@ public class PostDetailActivity extends AppCompatActivity implements  Response.L
     }
 
     public void doUpdatePost(View view){
-        //Intent i = new Intent(getApplicationContext(),UpdatePostDetailActivity.class);
-        //startActivity(i);
+        Intent i = new Intent(getApplicationContext(),UpdatePostDetailActivity.class);
+        i.putExtra("post", postCard);
+        startActivity(i);
     }
 
     public void deletePost() {
@@ -183,6 +184,7 @@ public class PostDetailActivity extends AppCompatActivity implements  Response.L
 
     public void doCall(View view){
         String phonenumber = postContact.getText().toString().trim().toLowerCase();
+
         Intent intent = new Intent(Intent.ACTION_DIAL);
         intent.setData(Uri.parse("tel:" + phonenumber));
         startActivity(intent);
@@ -214,8 +216,8 @@ public class PostDetailActivity extends AppCompatActivity implements  Response.L
 
     public void doOpenMap(View view){
         String address = postAddress.getText().toString().trim().toLowerCase();
-        Uri gmmIntentUri = Uri.parse("geo:0,0?q="+address);
-        Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+        Uri data = Uri.parse("geo:0,0?q=" + address);
+        Intent mapIntent = new Intent(Intent.ACTION_VIEW, data);
         mapIntent.setPackage("com.google.android.apps.maps");
         startActivity(mapIntent);
     }

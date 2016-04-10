@@ -12,6 +12,7 @@ import java.util.List;
 
 import uta.edu.tutorme.R;
 import uta.edu.tutorme.activities.PostDetailActivity;
+import uta.edu.tutorme.activities.ViewReviews;
 import uta.edu.tutorme.models.PostCard;
 
 /**
@@ -50,6 +51,17 @@ public class PostCardHolder extends RecyclerView.ViewHolder{
                 PostCard card = cards.get(position);
                 Bundle bundle = new Bundle();
                 Intent intent = new Intent(context, PostDetailActivity.class);
+                intent.putExtra("post", card);
+                context.startActivity(intent);
+            }
+        });
+
+        viewReview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PostCard card = cards.get(position);
+                Bundle bundle = new Bundle();
+                Intent intent = new Intent(context, ViewReviews.class);
                 intent.putExtra("post", card);
                 context.startActivity(intent);
             }

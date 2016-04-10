@@ -112,7 +112,6 @@
                 android:text="View Reviews"
                 android:id="@+id/view_reviews"
                 android:layout_weight="0.18"
-                android:onClick="goToReviewsPage"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true" />
 
@@ -123,7 +122,6 @@
                 android:text="Sponsored"
                 android:id="@+id/sponsored_text"
                 android:layout_weight="0.18"
-                android:onClick="goToReviewsPage"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true" />

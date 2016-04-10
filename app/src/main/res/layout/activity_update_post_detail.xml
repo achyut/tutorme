@@ -56,53 +56,6 @@
                 android:orientation="horizontal"
                 android:weightSum="1">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="Category"
-                    android:id="@+id/edit_txt_category" />
-
-                <Spinner
-                    android:layout_width="200dp"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/edit_category"
-                    android:spinnerMode="dialog"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentEnd="true" />
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:orientation="horizontal"
-                android:weightSum="1">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="Sub Category"
-                    android:id="@+id/edit_txt_subcategory" />
-
-                <Spinner
-                    android:layout_width="200dp"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/edit_subCategory"
-                    android:spinnerMode="dialog"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentEnd="true" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:orientation="horizontal"
-                android:weightSum="1">
-
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -307,48 +260,13 @@
                 android:text="Preferred Contact Method:"
                 android:id="@+id/txt_contactmethod_update" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="68dp"
-                android:orientation="horizontal"
-                android:weightSum="1">
 
-                <RadioGroup android:id="@+id/radio_contactmethod_update"
-                    android:orientation="horizontal"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <RadioButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="Email"
-                        android:id="@+id/btn_Email_update"
-                        android:checked="false"
-                        android:layout_weight="0.24" />
-                    <RadioButton
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:text="SMS"
-                        android:id="@+id/btn_SMS_update"
-                        android:checked="false"
-                        android:layout_weight="0.31" />
-                    <RadioButton
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:text="Phone Call"
-                        android:id="@+id/btn_phone_update"
-                        android:checked="false"
-                        android:layout_weight="0.31" />
-
-                </RadioGroup>
-
-            </LinearLayout>
             <android.support.design.widget.FloatingActionButton
                 android:id="@+id/fab_update"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
+                android:onClick="doUpdate"
                 android:layout_margin="@dimen/fab_margin"
                 android:src="@drawable/ic_send_icon" />
 

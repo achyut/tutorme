@@ -24,6 +24,9 @@ import com.android.volley.VolleyError;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -53,12 +56,14 @@ public class UpdatePostDetailActivity extends AppCompatActivity implements Respo
     TextView postEndDate;
     TextView postStartTime;
     TextView postEndTime;
-    TextView postCategory;
-    TextView postSubCategory;
     TextView postPrice;
 
     PostCard postCard;
     User user;
+
+    String category;
+    String subcategory;
+
     private RequestQueue mQueue;
     ProgressDialog progressDialog;
     public static final String REQUEST_TAG = "POST_DETAIL_ACTIVITY";
@@ -98,9 +103,11 @@ public class UpdatePostDetailActivity extends AppCompatActivity implements Respo
             String address = request.getString("address");
             String contact = request.getString("contact");
             String email = request.getString("email");
+
             String preferredcontact = request.getString("preferedcontact");
-            String category = request.getJSONObject("category").getString("name");
-            String subcategory = request.getJSONObject("subcategory").getString("name");
+
+            category = request.getJSONObject("category").getString("id");
+            subcategory = request.getJSONObject("subcategory").getString("id");
 
             post.setTitle(title);
             post.setAddress(address);
@@ -113,8 +120,7 @@ public class UpdatePostDetailActivity extends AppCompatActivity implements Respo
             post.setEnddate(enddate);
             post.setStarttime(starttime);
             post.setEndtime(endtime);
-            post.setCategory(new Category(category, false));
-            post.setSubcategory(new SubCategory(subcategory,false));
+
             post.setPrice(price);
             post.setRating(rating);
 
@@ -145,8 +151,8 @@ public class UpdatePostDetailActivity extends AppCompatActivity implements Respo
         String shortDesc1 = postShortDesc.getText().toString();
         String longDesc1 = postLongDesc.getText().toString();
         String price1 = postPrice.getText().toString();
-        String category1 = postCategory.getText().toString();
-        String subcategory = postSubCategory.getText().toString();
+
+
         String startDate1 = postStartDate.getText().toString();
         String endDate1 = postEndDate.getText().toString();
         String startTime1 = postStartTime.getText().toString();
@@ -161,19 +167,9 @@ public class UpdatePostDetailActivity extends AppCompatActivity implements Respo
         reqmap.put("longdesc", longDesc1);
         reqmap.put("price", price1);
 
-        reqmap.put("category",category1);
+        reqmap.put("category",category);
         reqmap.put("subcategory",subcategory);
 
-
-        /*
-        int pos1 = spinner1.getSelectedItemPosition();
-        Category cat = categoriesMap.get(pos1);
-        int pos2 = spinner2.getSelectedItemPosition();
-
-        reqmap.put("category", String.valueOf(cat.getId()));
-        reqmap.put("subcategory", String.valueOf(cat.getSubCategories().get(pos2).getId()));
-
-        */
         reqmap.put("startdate", startDate1);
         reqmap.put("enddate", endDate1);
         reqmap.put("starttime", startTime1);
@@ -193,7 +189,7 @@ public class UpdatePostDetailActivity extends AppCompatActivity implements Respo
         progressDialog.setMessage("Updating post. Please wait...");
         progressDialog.show();
         MyJsonObjectRequest postRequest = new MyJsonObjectRequest(Request.Method
-                .GET, Urls.getUpdatePostURL(postCard.getId()),
+                .POST, Urls.getUpdatePostURL(postCard.getId()),
                 getPostJSONObject(), new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
@@ -237,19 +233,18 @@ public class UpdatePostDetailActivity extends AppCompatActivity implements Respo
         progressDialog = new ProgressDialog(this);
         user = SharedPrefUtils.getUserFromSession(getApplicationContext());
 
-        postTitle =  (TextView)findViewById(R.id.edit_posttitle);
-        postAddress =  (TextView)findViewById(R.id.edit_address);
-        postShortDesc =  (TextView)findViewById(R.id.edit_shortdes);
-        postLongDesc =  (TextView)findViewById(R.id.edit_longdes);
-        postEmail =  (TextView)findViewById(R.id.edit_Emailaddress);
-        postContact =  (TextView)findViewById(R.id.edit_phonenumber);
-        postStartDate =  (TextView)findViewById(R.id.edit_startdate);
-        postEndDate =  (TextView)findViewById(R.id.edit_enddate);
-        postStartTime =  (TextView)findViewById(R.id.edit_starttime);
-        postEndTime =  (TextView)findViewById(R.id.edit_endtime);
-        postCategory =  (TextView)findViewById(R.id.edit_txt_category);
-        postSubCategory =  (TextView)findViewById(R.id.edit_txt_subcategory);
-        postPrice =  (TextView)findViewById(R.id.edit_price);
+        postTitle =  (TextView)findViewById(R.id.edit_posttitle_update);
+        postAddress =  (TextView)findViewById(R.id.edit_address_update);
+        postShortDesc =  (TextView)findViewById(R.id.edit_shortdes_update);
+        postLongDesc =  (TextView)findViewById(R.id.edit_longdes_update);
+        postEmail =  (TextView)findViewById(R.id.edit_Emailaddress_update);
+        postContact =  (TextView)findViewById(R.id.edit_phonenumber_update);
+        postStartDate =  (TextView)findViewById(R.id.edit_startdate_update);
+        postEndDate =  (TextView)findViewById(R.id.edit_enddate_update);
+        postStartTime =  (TextView)findViewById(R.id.edit_starttime_update);
+        postEndTime =  (TextView)findViewById(R.id.edit_endtime_update);
+
+        postPrice =  (TextView)findViewById(R.id.edit_price_update);
 
 
         mQueue = VolleyRequestQueue.getInstance(this.getApplicationContext())
@@ -274,6 +269,9 @@ public class UpdatePostDetailActivity extends AppCompatActivity implements Respo
     @Override
     public void onResponse(JSONObject response) {
         progressDialog.hide();
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat dateformatter = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat timeformatter = new SimpleDateFormat("HH:mm");
 
         Post post = getPostFromUrl(response);
 
@@ -283,12 +281,25 @@ public class UpdatePostDetailActivity extends AppCompatActivity implements Respo
         postLongDesc.setText(post.getLongdesc());
         postEmail.setText(post.getEmail());
         postContact.setText(post.getContact());
-        postStartDate.setText(post.getStartdate().toString());
-        postEndDate.setText(post.getEnddate().toString());
-        postStartTime.setText(post.getStarttime().toString());
-        postEndTime.setText(post.getEndtime().toString());
-        postCategory.setText(post.getCategory().getName());
-        postSubCategory.setText(post.getSubcategory().getName());
+
+
+        Date startdate = null;
+        Date enddate = null;
+        Date startTime = null;
+        Date endTime = null;
+        try {
+            startdate = formatter.parse(post.getStartdate());
+            enddate = formatter.parse(post.getEnddate());
+            startTime = formatter.parse(post.getStarttime());
+            endTime = formatter.parse(post.getEndtime());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        postStartDate.setText(dateformatter.format(startdate));
+        postEndDate.setText(dateformatter.format(enddate));
+        postStartTime.setText(timeformatter.format(startTime));
+        postEndTime.setText(timeformatter.format(endTime));
         postPrice.setText(String.valueOf(post.getPrice()));
 
     }
