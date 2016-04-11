@@ -302,6 +302,5 @@ public class PostDetailActivity extends AppCompatActivity implements  Response.L
             promotebtn.setText("Sponsor This Post");
         }
 
-
     }
 }

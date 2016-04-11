@@ -53,6 +53,7 @@
             android:label="@string/update_profile"></activity>
         <activity android:name=".activities.BiddingPostActivity"
             android:noHistory="true"></activity>
+        <activity android:name=".activities.ViewReviews"></activity>
     </application>
 
 </manifest>

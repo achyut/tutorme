@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -14,14 +13,13 @@ import java.util.List;
 import uta.edu.tutorme.R;
 import uta.edu.tutorme.activities.PostDetailActivity;
 import uta.edu.tutorme.models.PostCard;
-import uta.edu.tutorme.utils.DisplayMessage;
 
 /**
  * Created by ananda on 3/7/16.
  */
 public class PostCardHolder extends RecyclerView.ViewHolder{
 
-    TextView postcardtitle, postcardprice, postcardshortdesc,sponsored;
+    TextView postcardtitle, postcardprice, postcardshortdesc,sponsored,viewReview;
     ImageView ivProfile;
     Context context;
 
@@ -31,6 +29,7 @@ public class PostCardHolder extends RecyclerView.ViewHolder{
         postcardprice = (TextView) itemView.findViewById(R.id.postcard_price);
         sponsored = (TextView) itemView.findViewById(R.id.sponsored_text);
         postcardshortdesc = (TextView) itemView.findViewById(R.id.postcard_shortdesc);
+        viewReview = (TextView) itemView.findViewById(R.id.view_reviews);
         ivProfile = (ImageView) itemView.findViewById(R.id.iv_yak_profile);
         this.context = context;
     }
@@ -50,8 +49,8 @@ public class PostCardHolder extends RecyclerView.ViewHolder{
             public void onClick(View v) {
                 PostCard card = cards.get(position);
                 Bundle bundle = new Bundle();
-                Intent intent = new Intent(context,PostDetailActivity.class);
-                intent.putExtra("post",card);
+                Intent intent = new Intent(context, PostDetailActivity.class);
+                intent.putExtra("post", card);
                 context.startActivity(intent);
             }
         });
