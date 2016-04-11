@@ -278,8 +278,8 @@
                     android:layout_below="@+id/exiting_txt_phonenumber"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
-                    android:layout_toLeftOf="@+id/imageButton"
-                    android:layout_toStartOf="@+id/imageButton" />
+                    android:layout_toStartOf="@+id/smsImage"
+                    android:layout_toLeftOf="@+id/smsImage" />
 
             </RelativeLayout>
 
