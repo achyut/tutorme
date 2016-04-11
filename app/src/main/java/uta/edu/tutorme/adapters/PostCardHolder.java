@@ -21,7 +21,7 @@ import uta.edu.tutorme.utils.DisplayMessage;
  */
 public class PostCardHolder extends RecyclerView.ViewHolder{
 
-    TextView postcardtitle, postcardprice, postcardshortdesc;
+    TextView postcardtitle, postcardprice, postcardshortdesc,sponsored;
     ImageView ivProfile;
     Context context;
 
@@ -29,6 +29,7 @@ public class PostCardHolder extends RecyclerView.ViewHolder{
         super(itemView);
         postcardtitle = (TextView) itemView.findViewById(R.id.postcard_title);
         postcardprice = (TextView) itemView.findViewById(R.id.postcard_price);
+        sponsored = (TextView) itemView.findViewById(R.id.sponsored_text);
         postcardshortdesc = (TextView) itemView.findViewById(R.id.postcard_shortdesc);
         ivProfile = (ImageView) itemView.findViewById(R.id.iv_yak_profile);
         this.context = context;
@@ -37,7 +38,12 @@ public class PostCardHolder extends RecyclerView.ViewHolder{
     public void bind(final List<PostCard> cards,PostCard card, final int position){
         postcardtitle.setText(card.getTitle());
         postcardprice.setText(String.valueOf(card.getPrice()));
-
+        if(card.getSponsored()==1){
+            sponsored.setVisibility(View.VISIBLE);
+        }
+        else{
+            sponsored.setVisibility(View.INVISIBLE);
+        }
         postcardshortdesc.setText(card.getShortdesc());
         postcardshortdesc.setOnClickListener(new View.OnClickListener() {
             @Override

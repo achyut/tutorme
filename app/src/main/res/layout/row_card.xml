@@ -68,7 +68,7 @@
             android:background="@color/card_divider" />
 
         <!-- User Actions -->
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -112,10 +112,24 @@
                 android:text="View Reviews"
                 android:id="@+id/view_reviews"
                 android:layout_weight="0.18"
-                android:onClick="goToReviewsPage"/>
+                android:onClick="goToReviewsPage"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Sponsored"
+                android:id="@+id/sponsored_text"
+                android:layout_weight="0.18"
+                android:onClick="goToReviewsPage"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
 
 
-        </LinearLayout>
+        </RelativeLayout>
 
 
     </LinearLayout>

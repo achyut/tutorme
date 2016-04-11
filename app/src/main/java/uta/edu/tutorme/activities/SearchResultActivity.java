@@ -98,8 +98,9 @@ public class SearchResultActivity extends AppCompatActivity {
                             String title = obj.getString("title");
                             double price = obj.getDouble("price");
                             double rating = obj.getDouble("rating");
+                            double sponsored = obj.getDouble("sponsored");
                             String shortdesc = obj.getString("shortdesc");
-                            PostCard card = new PostCard(id,title,price,rating,shortdesc);
+                            PostCard card = new PostCard(id,title,price,rating,shortdesc,sponsored);
                             adapter.addCard(card);
                             list.scrollToPosition(0);
                         }
