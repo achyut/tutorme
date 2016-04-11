@@ -21,6 +21,7 @@ public class Urls {
     public static String POSTS = BASE_URL+"/post";
     public static String USERS = BASE_URL+"/users";
     public static String SEARCH = BASE_URL+"/search";
+    public static String REVIEWS = BASE_URL+"/reviews";
 
     public static String getPostDetailURL(int postid){
         return POSTS+"/"+postid;
@@ -47,4 +48,9 @@ public class Urls {
     public static String getChangePasswordUrl(int userid){
         return CHANGE_PASSWORD_URL+"/"+userid;
     }
+
+    public static String getPostReviewsURL(int postid) {
+        return POSTS+"/reviews/"+postid;
+    }
+
 }
