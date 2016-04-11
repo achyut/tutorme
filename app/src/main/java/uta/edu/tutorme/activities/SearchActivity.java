@@ -158,6 +158,7 @@ public class SearchActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
         initialize();
+
         mQueue = VolleyRequestQueue.getInstance(this.getApplicationContext())
                 .getRequestQueue();
         setDataInCategories();

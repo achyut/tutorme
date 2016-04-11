@@ -18,6 +18,7 @@ public class Urls {
     public static String POSTS = BASE_URL+"/post";
     public static String USERS = BASE_URL+"/users";
     public static String SEARCH = BASE_URL+"/search";
+    public static String PROMOTE = BASE_URL+"/promote";
 
     public static String getPostDetailURL(int postid){
         return POSTS+"/"+postid;

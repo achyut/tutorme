@@ -442,6 +442,13 @@
                     android:onClick="doDeletePost"
                     android:id="@+id/delete_button"
                     android:layout_alignParentRight="true" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sponsor My Post"
+                    android:onClick="doBidding"
+                    android:id="@+id/promote_button" />
             </RelativeLayout>
 
 
