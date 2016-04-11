@@ -253,13 +253,6 @@
                 android:ems="10"
                 android:id="@+id/edit_Emailaddress_update"
                 android:layout_gravity="center_horizontal" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Preferred Contact Method:"
-                android:id="@+id/txt_contactmethod_update" />
-
 
             <android.support.design.widget.FloatingActionButton
                 android:id="@+id/fab_update"

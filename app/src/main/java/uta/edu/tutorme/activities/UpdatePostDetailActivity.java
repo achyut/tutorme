@@ -293,7 +293,15 @@ public class UpdatePostDetailActivity extends AppCompatActivity implements Respo
             startTime = formatter.parse(post.getStarttime());
             endTime = formatter.parse(post.getEndtime());
         } catch (ParseException e) {
-            e.printStackTrace();
+            try{
+                startdate = dateformatter.parse(post.getStartdate());
+                enddate = dateformatter.parse(post.getEnddate());
+                startTime = timeformatter.parse(post.getStarttime());
+                endTime = timeformatter.parse(post.getEndtime());
+            }
+            catch (ParseException ex){
+                ex.printStackTrace();
+            }
         }
 
         postStartDate.setText(dateformatter.format(startdate));

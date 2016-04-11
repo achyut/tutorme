@@ -71,6 +71,14 @@ public class ViewReviews extends AppCompatActivity implements Response.Listener<
         RatingBar bar = (RatingBar) dialog.findViewById(R.id.review_rating);
         String reviewstr = review.getText().toString().trim();
         String rating = String.valueOf(bar.getRating());
+        if(reviewstr.isEmpty()){
+            review.setError("Please enter review");
+            return;
+        }
+        if(bar.getRating()==0.0){
+            review.setError("Please enter rating");
+            return;
+        }
 
         progressDialog.setMessage("Adding new review. Please wait...");
         progressDialog.show();
