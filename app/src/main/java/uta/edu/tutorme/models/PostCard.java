@@ -72,4 +72,16 @@ public class PostCard implements Serializable{
     public void setSponsored(double sponsored) {
         this.sponsored = sponsored;
     }
+
+    @Override
+    public String toString() {
+        return "PostCard{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", price=" + price +
+                ", rating=" + rating +
+                ", shortdesc='" + shortdesc + '\'' +
+                ", sponsored=" + sponsored +
+                '}';
+    }
 }

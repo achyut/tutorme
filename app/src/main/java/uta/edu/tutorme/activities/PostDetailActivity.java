@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.android.volley.NetworkResponse;
@@ -48,6 +49,7 @@ public class PostDetailActivity extends AppCompatActivity implements  Response.L
     TextView postCategory;
     TextView postSubCategory;
     TextView postPrice;
+    TextView sponsoredPrice;
 
     PostCard postCard;
     private RequestQueue mQueue;
@@ -96,6 +98,7 @@ public class PostDetailActivity extends AppCompatActivity implements  Response.L
             String preferredcontact = request.getString("preferedcontact");
             String category = request.getJSONObject("category").getString("name");
             String subcategory = request.getJSONObject("subcategory").getString("name");
+            double sponsoredPrice = request.getDouble("sponsorprice");
 
             post.setTitle(title);
             post.setAddress(address);
@@ -109,9 +112,10 @@ public class PostDetailActivity extends AppCompatActivity implements  Response.L
             post.setStarttime(starttime);
             post.setEndtime(endtime);
             post.setCategory(new Category(category, false));
-            post.setSubcategory(new SubCategory(subcategory,false));
+            post.setSubcategory(new SubCategory(subcategory, false));
             post.setPrice(price);
             post.setRating(rating);
+            post.setSponsorprice(sponsoredPrice);
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -134,8 +138,8 @@ public class PostDetailActivity extends AppCompatActivity implements  Response.L
     }
 
     public void doUpdatePost(View view){
-        Intent i = new Intent(getApplicationContext(),UpdatePostDetailActivity.class);
-        startActivity(i);
+        //Intent i = new Intent(getApplicationContext(),UpdatePostDetailActivity.class);
+        //startActivity(i);
     }
 
     public void deletePost() {
@@ -186,8 +190,12 @@ public class PostDetailActivity extends AppCompatActivity implements  Response.L
 
     public void doMessage(View view){
         String phonenumber = postContact.getText().toString().trim().toLowerCase();
+        String title = postTitle.getText().toString().trim().toLowerCase();
+
         Intent sendIntent = new Intent(Intent.ACTION_VIEW);
+
         sendIntent.setData(Uri.parse("sms:"+phonenumber));
+        sendIntent.putExtra("sms_body", "Hello, I would like to take" + title+" the course that has been posted in tutor me. Thank you.");
         startActivity(sendIntent);
     }
 
@@ -214,6 +222,9 @@ public class PostDetailActivity extends AppCompatActivity implements  Response.L
 
     public void doBidding(View view){
         Intent bidIntent = new Intent(getApplicationContext(), BiddingPostActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("post", postCard);
+        bidIntent.putExtras(bundle);
         startActivity(bidIntent);
     }
 
@@ -239,7 +250,7 @@ public class PostDetailActivity extends AppCompatActivity implements  Response.L
         postSubCategory =  (TextView)findViewById(R.id.exiting_edt_subcategory);
         postPrice =  (TextView)findViewById(R.id.exiting_edit_price);
 
-
+        sponsoredPrice = (TextView)findViewById(R.id.sponsored_amount_text);
         mQueue = VolleyRequestQueue.getInstance(this.getApplicationContext())
                 .getRequestQueue();
 
@@ -278,6 +289,19 @@ public class PostDetailActivity extends AppCompatActivity implements  Response.L
         postCategory.setText(post.getCategory().getName());
         postSubCategory.setText(post.getSubcategory().getName());
         postPrice.setText("$"+post.getPrice()+"/hr");
+
+        Button promotebtn = (Button)findViewById(R.id.promote_button);
+
+        if(post.getSponsorprice()>0){
+            sponsoredPrice.setVisibility(View.VISIBLE);
+            sponsoredPrice.setText("Current bidding price: " + post.getSponsorprice());
+            promotebtn.setText("Update Bid amount");
+        }
+        else{
+            sponsoredPrice.setVisibility(View.INVISIBLE);
+            promotebtn.setText("Sponsor This Post");
+        }
+
 
     }
 }

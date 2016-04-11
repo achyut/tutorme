@@ -27,6 +27,25 @@
         android:ems="10"
         android:id="@+id/input_amount" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enter the Credit/Debit card number:"
+        android:id="@+id/txt_credit_details" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/editText" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enter card expiry date:"
+        android:id="@+id/textView2" />
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
