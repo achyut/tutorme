@@ -133,6 +133,10 @@ public class PostDetailActivity extends AppCompatActivity implements  Response.L
                 .show();
     }
 
+    public void doUpdatePost(View view){
+        Intent i = new Intent(getApplicationContext(),UpdatePostDetailActivity.class);
+        startActivity(i);
+    }
 
     public void deletePost() {
         progressDialog.setMessage("Deleting post. Please wait...");
@@ -173,15 +177,18 @@ public class PostDetailActivity extends AppCompatActivity implements  Response.L
         mQueue.add(postRequest);
     }
 
-    public void doEditPost(View view){
-
-    }
-
     public void doCall(View view){
         String phonenumber = postContact.getText().toString().trim().toLowerCase();
         Intent intent = new Intent(Intent.ACTION_DIAL);
-        intent.setData(Uri.parse("tel:"+phonenumber));
+        intent.setData(Uri.parse("tel:" + phonenumber));
         startActivity(intent);
+    }
+
+    public void doMessage(View view){
+        String phonenumber = postContact.getText().toString().trim().toLowerCase();
+        Intent sendIntent = new Intent(Intent.ACTION_VIEW);
+        sendIntent.setData(Uri.parse("sms:"+phonenumber));
+        startActivity(sendIntent);
     }
 
     public void doEmail(View view){
