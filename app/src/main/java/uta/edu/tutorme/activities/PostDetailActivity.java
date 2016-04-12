@@ -206,6 +206,10 @@ public class PostDetailActivity extends AppCompatActivity implements  Response.L
         startActivity(mapIntent);
     }
 
+    public void doBidding(View view){
+        Intent bidIntent = new Intent(getApplicationContext(), BiddingPostActivity.class);
+        startActivity(bidIntent);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

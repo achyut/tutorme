@@ -52,10 +52,6 @@ public class HomepageActivity extends AppCompatActivity
     private void doOpenCreateNewAdv(){
         Intent intent = new Intent(this,AddNewAdvActivity.class);
         startActivity(intent);
-/*
-       Intent i = getIntent();
-        Post postobj= (Post)i.getSerializableExtra("postObj");*/
-
     }
 
     @Override
@@ -91,6 +87,7 @@ public class HomepageActivity extends AppCompatActivity
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
+
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
@@ -106,13 +103,6 @@ public class HomepageActivity extends AppCompatActivity
                 .getRequestQueue();
         refreshList();
 
-
-
-        TextView username = (TextView) drawer.findViewById(R.id.drawer_username);
-        //username.setText("User");
-
-        TextView email = (TextView) drawer.findViewById(R.id.drawer_user_email);
-        //email.setText(user.getEmail());
     }
 
     private void refreshList(){
@@ -138,15 +128,17 @@ public class HomepageActivity extends AppCompatActivity
         }
     }
 
-    public void openPostDetails(View view){
-
-     //   DisplayMessage.displayToast(getApplicationContext(), "Opeaning post details "+position);
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.homepage, menu);
+        TextView username = (TextView) findViewById(R.id.drawer_username);
+
+        username.setText(user.getName());
+
+        TextView email = (TextView) findViewById(R.id.drawer_user_email);
+        email.setText(user.getEmail());
         return true;
     }
 
@@ -172,7 +164,11 @@ public class HomepageActivity extends AppCompatActivity
             startActivity(i);
             return true;
         }
-
+        if(id == R.id.search){
+            Intent i = new Intent(getApplicationContext(),SearchActivity.class);
+            startActivity(i);
+            return true;
+        }
         return super.onOptionsItemSelected(item);
     }
 

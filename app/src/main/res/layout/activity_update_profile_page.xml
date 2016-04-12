@@ -89,52 +89,12 @@
                     android:ems="10"
                     android:id="@+id/update_edit_address" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="I am a:"
-                    android:id="@+id/update_txt_usertype" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="68dp"
-                    android:orientation="horizontal"
-                    android:weightSum="1">
-
-                    <RadioGroup android:id="@+id/update_radio_usertype"
-                        android:orientation="horizontal"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-                        <RadioButton
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:text="student"
-                            android:id="@+id/update_btn_student"
-                            android:checked="false"
-                            android:layout_weight="0.24"
-                            android:enabled="false"/>
-                        <RadioButton
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:text="tutor"
-                            android:id="@+id/update_btn_tutor"
-                            android:checked="false"
-                            android:layout_weight="0.31"
-                            android:enabled="false"/>
-
-                    </RadioGroup>
-
-                </LinearLayout>
-
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="submit"
                     android:id="@+id/update_btn_submit"
-                    android:onClick="doRegister"
+                    android:onClick="doUpdateProfile"
                     android:layout_gravity="center_horizontal" />
 
             </LinearLayout>

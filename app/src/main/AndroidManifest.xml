@@ -38,11 +38,19 @@
         <activity android:name=".activities.ForgetPasswordActivity" />
         <activity android:name=".activities.ChangePasswordActivity" />
         <activity android:name=".activities.UpdatePostDetailActivity" />
-        <activity android:name=".activities.SearchActivity" />
+        <activity
+            android:name=".activities.SearchActivity"
+            android:label="Search" />
         <activity android:name=".activities.AddCategoryActivity" />
         <activity android:name=".activities.AddSubCategoryActivity" />
         <activity android:name=".activities.EditProfileActivity" />
-        <activity android:name=".activities.UpdateProfilePage"></activity>
+        <activity
+            android:name=".activities.SearchResultActivity"
+            android:label="Search Results" />
+        <activity
+            android:name=".activities.UpdateProfilePage"
+            android:label="@string/update_profile"></activity>
+        <activity android:name=".activities.BiddingPostActivity"></activity>
     </application>
 
 </manifest>
