@@ -222,17 +222,6 @@
                     android:id="@+id/exiting_txt_endtime"
                     android:layout_alignParentTop="true" />
 
-                <TextView
-                    android:layout_width="200dp"
-                    android:layout_height="wrap_content"
-                    android:inputType="time"
-                    android:ems="10"
-                    android:id="@+id/exiting_edit_endtime"
-                    android:layout_weight="0.82"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentEnd="true" />
-
             </RelativeLayout>
 
             <TextView
@@ -265,11 +254,20 @@
                 <ImageButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/smsImage"
+                    android:onClick="doMessage"
+                    android:src="@android:drawable/ic_menu_send"
+                    android:layout_alignParentTop="true"
+                    android:layout_toLeftOf="@+id/imageButton"
+                    android:layout_toStartOf="@+id/imageButton" />
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:id="@+id/imageButton"
                     android:onClick="doCall"
                     android:src="@android:drawable/ic_menu_call"
                     android:layout_alignParentTop="true"
-                    android:layout_alignBottom="@+id/exiting_edit_phonenumber"
+                    android:layout_alignBottom="@+id/smsImage"
                     android:layout_alignParentRight="true"
                     android:layout_alignParentEnd="true" />
 
@@ -284,6 +282,17 @@
                     android:layout_alignParentStart="true"
                     android:layout_toLeftOf="@+id/imageButton"
                     android:layout_toStartOf="@+id/imageButton" />
+
+                <TextView
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="time"
+                    android:ems="10"
+                    android:id="@+id/exiting_edit_endtime"
+                    android:layout_weight="0.82"
+                    android:layout_alignTop="@+id/exiting_edit_phonenumber"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true" />
 
             </RelativeLayout>
 
@@ -422,6 +431,7 @@
                     android:layout_height="wrap_content"
                     android:text="Update Post"
                     android:id="@+id/update_details_button"
+                    android:onClick="doUpdatePost"
                     android:layout_alignParentLeft="true" />
 
                 <Button
@@ -431,6 +441,13 @@
                     android:onClick="doDeletePost"
                     android:id="@+id/delete_button"
                     android:layout_alignParentRight="true" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sponsor My Post"
+                    android:onClick="doBidding"
+                    android:id="@+id/promote_button" />
             </RelativeLayout>
 
 
