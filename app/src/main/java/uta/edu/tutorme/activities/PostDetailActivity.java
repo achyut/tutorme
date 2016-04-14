@@ -268,6 +268,5 @@ public class PostDetailActivity extends AppCompatActivity implements  Response.L
         postCategory.setText(post.getCategory().getName());
         postSubCategory.setText(post.getSubcategory().getName());
         postPrice.setText("$"+post.getPrice()+"/hr");
-
     }
 }
