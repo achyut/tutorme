@@ -215,6 +215,9 @@ public class PostDetailActivity extends AppCompatActivity implements  Response.L
 
     public void doBidding(View view){
         Intent bidIntent = new Intent(getApplicationContext(), BiddingPostActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("post", postCard);
+        bidIntent.putExtras(bundle);
         startActivity(bidIntent);
     }
 
