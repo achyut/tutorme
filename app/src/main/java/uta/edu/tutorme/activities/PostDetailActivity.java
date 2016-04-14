@@ -202,7 +202,6 @@ public class PostDetailActivity extends AppCompatActivity implements  Response.L
 
         intent.setData(data);
         startActivity(intent);
-
     }
 
     public void doOpenMap(View view){
