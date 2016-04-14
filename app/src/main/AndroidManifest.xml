@@ -49,8 +49,9 @@
             android:label="Search Results" />
         <activity
             android:name=".activities.UpdateProfilePage"
-            android:label="@string/update_profile"></activity>
-        <activity android:name=".activities.BiddingPostActivity"></activity>
+            android:label="@string/update_profile" />
+        <activity android:name=".activities.BiddingPostActivity" />
+        <activity android:name=".activities.ViewReviews"></activity>
     </application>
 
 </manifest>
