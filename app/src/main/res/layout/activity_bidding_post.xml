@@ -41,10 +41,31 @@
         android:id="@+id/editText" />
 
     <TextView
+        android:layout_width="204dp"
+        android:layout_height="wrap_content"
+        android:text="Enter the CVV number:"
+        android:id="@+id/txt_cvv" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/editText3" />
+
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Enter card expiry date:"
         android:id="@+id/textView2" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="date"
+        android:ems="10"
+        android:id="@+id/editText2"
+        android:layout_gravity="center_horizontal" />
 
     <Button
         android:layout_width="wrap_content"
