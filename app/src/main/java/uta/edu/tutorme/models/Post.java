@@ -15,6 +15,7 @@ public class Post implements Serializable{
     private String address;
     private String contact;
     private String email;
+    private double sponsorprice;
     private String preferedcontact;
     private Category category;
     private SubCategory subcategory;
@@ -131,6 +132,14 @@ public class Post implements Serializable{
 
     public void setPreferedcontact(String preferedcontact) {
         this.preferedcontact = preferedcontact;
+    }
+
+    public double getSponsorprice() {
+        return sponsorprice;
+    }
+
+    public void setSponsorprice(double sponsorprice) {
+        this.sponsorprice = sponsorprice;
     }
 
     public Category getCategory() {

@@ -4,7 +4,12 @@ package uta.edu.tutorme.utils;
  * Created by ananda on 3/7/16.
  */
 public class Urls {
-    public static String BASE_URL = "http://8de16870.ngrok.io";
+
+
+
+    public static String BASE_URL = "http://12751cd4.ngrok.io";
+
+
     public static String LOGIN_URL= BASE_URL+"/login";
     public static String FORGOT_PASSWORD_URL = BASE_URL+"/forgot";
     private static String CHANGE_PASSWORD_URL = BASE_URL+"/changepassword";
@@ -15,7 +20,7 @@ public class Urls {
     public static String POSTS = BASE_URL+"/post";
     public static String USERS = BASE_URL+"/users";
     public static String SEARCH = BASE_URL+"/search";
-    public static String PROMOTE = BASE_URL+"/promote";
+    public static String REVIEWS = BASE_URL+"/reviews";
 
     public static String getPostDetailURL(int postid){
         return POSTS+"/"+postid;
@@ -31,10 +36,20 @@ public class Urls {
         return CATEGORIES+"/subcategories/"+categoryid;
     }
 
+    public static String getSponsoredURL(int postid){ return BASE_URL+"/sponsor/"+postid;}
+
     public static String getDeletePostURL(int postid){
         return POSTS+"/delete/"+postid;
+    }
+    public static String getUpdatePostURL(int postid){
+        return POSTS+"/"+postid;
     }
     public static String getChangePasswordUrl(int userid){
         return CHANGE_PASSWORD_URL+"/"+userid;
     }
+
+    public static String getPostReviewsURL(int postid) {
+        return POSTS+"/reviews/"+postid;
+    }
+
 }

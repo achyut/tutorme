@@ -11,14 +11,19 @@ public class PostCard implements Serializable{
     private double price;
     private double rating;
     private String shortdesc;
+    private double sponsored;
 
-    public PostCard(int id, String title, double price, double rating, String shortdesc) {
+
+    public PostCard(int id, String title, double price, double rating, String shortdesc,double sponsored) {
         this.id = id;
         this.title = title;
         this.price = price;
         this.rating = rating;
         this.shortdesc = shortdesc;
+
+        this.sponsored = sponsored;
     }
+
 
     public int getId() {
         return id;
@@ -58,5 +63,25 @@ public class PostCard implements Serializable{
 
     public void setShortdesc(String shortdesc) {
         this.shortdesc = shortdesc;
+    }
+
+    public double getSponsored() {
+        return sponsored;
+    }
+
+    public void setSponsored(double sponsored) {
+        this.sponsored = sponsored;
+    }
+
+    @Override
+    public String toString() {
+        return "PostCard{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", price=" + price +
+                ", rating=" + rating +
+                ", shortdesc='" + shortdesc + '\'' +
+                ", sponsored=" + sponsored +
+                '}';
     }
 }

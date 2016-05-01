@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
 
     <application
         android:allowBackup="true"
@@ -49,9 +50,11 @@
             android:label="Search Results" />
         <activity
             android:name=".activities.UpdateProfilePage"
-            android:label="@string/update_profile" />
-        <activity android:name=".activities.BiddingPostActivity" />
-        <activity android:name=".activities.ViewReviews"></activity>
+            android:label="@string/update_profile"></activity>
+        <activity android:name=".activities.BiddingPostActivity"
+            android:noHistory="true"></activity>
+
+        <activity android:name=".activities.ViewReviews" android:label="Reviews"></activity>
     </application>
 
 </manifest>

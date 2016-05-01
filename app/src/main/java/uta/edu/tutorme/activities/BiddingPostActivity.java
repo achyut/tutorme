@@ -27,6 +27,7 @@ import uta.edu.tutorme.utils.SharedPrefUtils;
 import uta.edu.tutorme.utils.Urls;
 import uta.edu.tutorme.volly.MyJsonObjectRequest;
 import uta.edu.tutorme.volly.VolleyRequestQueue;
+import uta.edu.tutorme.volly.VollyUtils;
 
 public class BiddingPostActivity extends AppCompatActivity implements Response.Listener<JSONObject>,
         Response.ErrorListener {
@@ -57,18 +58,17 @@ public class BiddingPostActivity extends AppCompatActivity implements Response.L
 
     public JSONObject getBiddingRequestObject(EditText amount){
         Map<String,String> obj = new HashMap<>();
-        obj.put("amount",amount.getText().toString());
-        obj.put("post",String.valueOf(postCard.getId()));
+        obj.put("sponsorprice",amount.getText().toString());
         return new JSONObject(obj);
     }
 
     @Override
     public void onErrorResponse(VolleyError error) {
         NetworkResponse response = error.networkResponse;
-
-        if(response!=null && response.statusCode == 401){
-            DisplayMessage.displayToast(getApplicationContext(), "Invalid Amount Entered");
-        }else{
+        if (response != null && response.statusCode == 400) {
+            DisplayMessage.displayToast(getApplicationContext(), VollyUtils.getString(response, "message"));
+        }
+        else{
             DisplayMessage.displayToast(getApplicationContext(), "OOPS!! Some error occured ");
         }
 
@@ -81,6 +81,10 @@ public class BiddingPostActivity extends AppCompatActivity implements Response.L
             if(!response.getBoolean("error")){
                 DisplayMessage.displayToast(getApplicationContext(), "Bid amount successfully placed!");
                 Intent i = new Intent(getApplicationContext(),PostDetailActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("post", postCard);
+                i.putExtras(bundle);
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 startActivity(i);
             }
             else{
@@ -93,7 +97,7 @@ public class BiddingPostActivity extends AppCompatActivity implements Response.L
 
     public  void setAmount(){
         MyJsonObjectRequest promoteRequest = new MyJsonObjectRequest(Request.Method
-                .POST, Urls.PROMOTE,
+                .POST, Urls.getSponsoredURL(postCard.getId()),
                 getBiddingRequestObject(amount), this, this);
 
         /*MyJsonObjectRequest postdetailrequest = new MyJsonObjectRequest(Request.Method
@@ -116,7 +120,7 @@ public class BiddingPostActivity extends AppCompatActivity implements Response.L
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bidding_post);
-        initialize();
         postCard = (PostCard)getIntent().getSerializableExtra("post");
+        initialize();
     }
 }
